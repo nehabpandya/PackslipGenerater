@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ITe_INDIAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Code' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Dispatch_Code">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PartNum" Type="nvarchar" MaxLength="200" />
+    <Property Name="Part Desc" Type="nvarchar(max)" />
+    <Property Name="FDA Product Code" Type="nvarchar" MaxLength="10" />
+    <Property Name="Industry &amp; Product Code" Type="nvarchar" MaxLength="10" />
+    <Property Name="Tariff" Type="decimal" Precision="10" Scale="4" />
+    <Property Name="FDA Classification" Type="nvarchar" MaxLength="50" />
+    <Property Name="US HTS" Type="decimal" Precision="10" Scale="4" />
+    <Property Name="Invoice Description" Type="nvarchar" MaxLength="500" />
+    <Property Name="Methodology" Type="nvarchar" MaxLength="500" />
+    <Property Name="Notes/Questions" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Grade' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Dispatch_Grade">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InputSerialNumber" Type="int" />
+    <Property Name="Material Type" Type="nvarchar" MaxLength="500" />
+    <Property Name="Grade" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Dispatch_PackslipNum">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Packslip No" Type="int" />
+    <Property Name="Invoice No" Type="int" />
+  </EntityType>
+  <EntityType Name="DispatchData">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Sr No" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Packslip No" Type="int" Nullable="false" />
+    <Property Name="Invoice No" Type="int" Nullable="false" />
+    <Property Name="Category" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" />
+    <Property Name="PartNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="PoNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="LineNo" Type="int" />
+    <Property Name="JobNo" Type="nvarchar" MaxLength="100" />
+    <Property Name="LM" Type="bit" />
+    <Property Name="Qty" Type="int" />
+    <Property Name="w/pcs" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Box" Type="int" />
+    <Property Name="Material Details" Type="nvarchar(max)" />
+    <Property Name="total weight" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="packing type" Type="nvarchar" MaxLength="500" />
+    <Property Name="Box weight" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="supervisor approval" Type="bit" />
+    <Property Name="purchaser verification" Type="bit" />
+    <Property Name="finance approval" Type="bit" />
+  </EntityType>
+  <EntityContainer Name="ITe_INDIAModelStoreContainer">
+    <EntitySet Name="Dispatch_PackslipNum" EntityType="Self.Dispatch_PackslipNum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DispatchData" EntityType="Self.DispatchData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Dispatch_Code].[ID] AS [ID], 
+    [Dispatch_Code].[PartNum] AS [PartNum], 
+    [Dispatch_Code].[Part Desc] AS [Part Desc], 
+    [Dispatch_Code].[FDA Product Code] AS [FDA Product Code], 
+    [Dispatch_Code].[Industry &amp; Product Code] AS [Industry &amp; Product Code], 
+    [Dispatch_Code].[Tariff] AS [Tariff], 
+    [Dispatch_Code].[FDA Classification] AS [FDA Classification], 
+    [Dispatch_Code].[US HTS] AS [US HTS], 
+    [Dispatch_Code].[Invoice Description] AS [Invoice Description], 
+    [Dispatch_Code].[Methodology] AS [Methodology], 
+    [Dispatch_Code].[Notes/Questions] AS [Notes/Questions]
+    FROM [dbo].[Dispatch_Code] AS [Dispatch_Code]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Dispatch_Grade" EntityType="Self.Dispatch_Grade" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Dispatch_Grade].[ID] AS [ID], 
+    [Dispatch_Grade].[InputSerialNumber] AS [InputSerialNumber], 
+    [Dispatch_Grade].[Material Type] AS [Material Type], 
+    [Dispatch_Grade].[Grade] AS [Grade]
+    FROM [dbo].[Dispatch_Grade] AS [Dispatch_Grade]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

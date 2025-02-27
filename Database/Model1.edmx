@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ITe_INDIAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Code' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Dispatch_Code">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartNum" Type="nvarchar" MaxLength="200" />
+          <Property Name="Part Desc" Type="nvarchar(max)" />
+          <Property Name="FDA Product Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Industry &amp; Product Code" Type="nvarchar" MaxLength="10" />
+          <Property Name="Tariff" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="FDA Classification" Type="nvarchar" MaxLength="50" />
+          <Property Name="US HTS" Type="decimal" Precision="10" Scale="4" />
+          <Property Name="Invoice Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Methodology" Type="nvarchar" MaxLength="500" />
+          <Property Name="Notes/Questions" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Grade' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Dispatch_Grade">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InputSerialNumber" Type="int" />
+          <Property Name="Material Type" Type="nvarchar" MaxLength="500" />
+          <Property Name="Grade" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Dispatch_PackslipNum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Packslip No" Type="int" />
+          <Property Name="Invoice No" Type="int" />
+        </EntityType>
+        <EntityType Name="DispatchData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Sr No" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Packslip No" Type="int" Nullable="false" />
+          <Property Name="Invoice No" Type="int" Nullable="false" />
+          <Property Name="Category" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="PartNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="PoNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="LineNo" Type="int" />
+          <Property Name="JobNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="LM" Type="bit" />
+          <Property Name="Qty" Type="int" />
+          <Property Name="w/pcs" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Box" Type="int" />
+          <Property Name="Material Details" Type="nvarchar(max)" />
+          <Property Name="total weight" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="packing type" Type="nvarchar" MaxLength="500" />
+          <Property Name="Box weight" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="supervisor approval" Type="bit" />
+          <Property Name="purchaser verification" Type="bit" />
+          <Property Name="finance approval" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="ITe_INDIAModelStoreContainer">
+          <EntitySet Name="Dispatch_PackslipNum" EntityType="Self.Dispatch_PackslipNum" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DispatchData" EntityType="Self.DispatchData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Dispatch_Code].[ID] AS [ID], 
+    [Dispatch_Code].[PartNum] AS [PartNum], 
+    [Dispatch_Code].[Part Desc] AS [Part Desc], 
+    [Dispatch_Code].[FDA Product Code] AS [FDA Product Code], 
+    [Dispatch_Code].[Industry &amp; Product Code] AS [Industry &amp; Product Code], 
+    [Dispatch_Code].[Tariff] AS [Tariff], 
+    [Dispatch_Code].[FDA Classification] AS [FDA Classification], 
+    [Dispatch_Code].[US HTS] AS [US HTS], 
+    [Dispatch_Code].[Invoice Description] AS [Invoice Description], 
+    [Dispatch_Code].[Methodology] AS [Methodology], 
+    [Dispatch_Code].[Notes/Questions] AS [Notes/Questions]
+    FROM [dbo].[Dispatch_Code] AS [Dispatch_Code]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Dispatch_Grade" EntityType="Self.Dispatch_Grade" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Dispatch_Grade].[ID] AS [ID], 
+    [Dispatch_Grade].[InputSerialNumber] AS [InputSerialNumber], 
+    [Dispatch_Grade].[Material Type] AS [Material Type], 
+    [Dispatch_Grade].[Grade] AS [Grade]
+    FROM [dbo].[Dispatch_Grade] AS [Dispatch_Grade]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ITe_INDIAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Dispatch_PackslipNum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Packslip_No" Type="Int32" />
+          <Property Name="Invoice_No" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DispatchData">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Sr_No" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Packslip_No" Type="Int32" Nullable="false" />
+          <Property Name="Invoice_No" Type="Int32" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="PartNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PoNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LineNo" Type="Int32" />
+          <Property Name="JobNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LM" Type="Boolean" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="w_pcs" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Box" Type="Int32" />
+          <Property Name="Material_Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="total_weight" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="packing_type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Box_weight" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="supervisor_approval" Type="Boolean" />
+          <Property Name="purchaser_verification" Type="Boolean" />
+          <Property Name="finance_approval" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Dispatch_Code">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartNum" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Part_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FDA_Product_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Industry___Product_Code" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Tariff" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="FDA_Classification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="US_HTS" Type="Decimal" Precision="10" Scale="4" />
+          <Property Name="Invoice_Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Methodology" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Notes_Questions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Dispatch_Grade">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InputSerialNumber" Type="Int32" />
+          <Property Name="Material_Type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="ITe_INDIAEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Dispatch_PackslipNum" EntityType="Self.Dispatch_PackslipNum" />
+          <EntitySet Name="DispatchDatas" EntityType="Self.DispatchData" />
+          <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" />
+          <EntitySet Name="Dispatch_Grade" EntityType="Self.Dispatch_Grade" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ITe_INDIAModelStoreContainer" CdmEntityContainer="ITe_INDIAEntities">
+          <EntitySetMapping Name="Dispatch_PackslipNum">
+            <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_PackslipNum">
+              <MappingFragment StoreEntitySet="Dispatch_PackslipNum">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Packslip_No" ColumnName="Packslip No" />
+                <ScalarProperty Name="Invoice_No" ColumnName="Invoice No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DispatchDatas">
+            <EntityTypeMapping TypeName="ITe_INDIAModel.DispatchData">
+              <MappingFragment StoreEntitySet="DispatchData">
+                <ScalarProperty Name="Sr_No" ColumnName="Sr No" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Packslip_No" ColumnName="Packslip No" />
+                <ScalarProperty Name="Invoice_No" ColumnName="Invoice No" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+                <ScalarProperty Name="PoNo" ColumnName="PoNo" />
+                <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+                <ScalarProperty Name="JobNo" ColumnName="JobNo" />
+                <ScalarProperty Name="LM" ColumnName="LM" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="w_pcs" ColumnName="w/pcs" />
+                <ScalarProperty Name="Box" ColumnName="Box" />
+                <ScalarProperty Name="Material_Details" ColumnName="Material Details" />
+                <ScalarProperty Name="total_weight" ColumnName="total weight" />
+                <ScalarProperty Name="packing_type" ColumnName="packing type" />
+                <ScalarProperty Name="Box_weight" ColumnName="Box weight" />
+                <ScalarProperty Name="supervisor_approval" ColumnName="supervisor approval" />
+                <ScalarProperty Name="purchaser_verification" ColumnName="purchaser verification" />
+                <ScalarProperty Name="finance_approval" ColumnName="finance approval" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dispatch_Code">
+            <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Code">
+              <MappingFragment StoreEntitySet="Dispatch_Code">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PartNum" ColumnName="PartNum" />
+                <ScalarProperty Name="Part_Desc" ColumnName="Part Desc" />
+                <ScalarProperty Name="FDA_Product_Code" ColumnName="FDA Product Code" />
+                <ScalarProperty Name="Industry___Product_Code" ColumnName="Industry &amp; Product Code" />
+                <ScalarProperty Name="Tariff" ColumnName="Tariff" />
+                <ScalarProperty Name="FDA_Classification" ColumnName="FDA Classification" />
+                <ScalarProperty Name="US_HTS" ColumnName="US HTS" />
+                <ScalarProperty Name="Invoice_Description" ColumnName="Invoice Description" />
+                <ScalarProperty Name="Methodology" ColumnName="Methodology" />
+                <ScalarProperty Name="Notes_Questions" ColumnName="Notes/Questions" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dispatch_Grade">
+            <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Grade">
+              <MappingFragment StoreEntitySet="Dispatch_Grade">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InputSerialNumber" ColumnName="InputSerialNumber" />
+                <ScalarProperty Name="Material_Type" ColumnName="Material Type" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
