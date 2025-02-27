@@ -1,23 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ITe_INDIAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Dispatch_PackslipNum">
+  <EntityContainer Name="ITe_INDIAEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dispatch_PackingDetails" EntityType="ITe_INDIAModel.Dispatch_PackingDetails" />
+    <EntitySet Name="DispatchDatas" EntityType="ITe_INDIAModel.DispatchData" />
+    <EntitySet Name="Dispatch_Code" EntityType="ITe_INDIAModel.Dispatch_Code" />
+    <EntitySet Name="Dispatch_Grade" EntityType="ITe_INDIAModel.Dispatch_Grade" />
+  </EntityContainer>
+  <EntityType Name="Dispatch_PackingDetails">
     <Key>
       <PropertyRef Name="ID" />
+      <PropertyRef Name="PackslipNo" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Packslip_No" Type="Int32" />
-    <Property Name="Invoice_No" Type="Int32" />
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="PackslipNo" Type="Int32" Nullable="false" />
+    <Property Name="InvoiceNo" Type="Int32" />
+    <Property Name="Category" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="DispatchData">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="Sr_No" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="P_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ID" Type="Int32" Nullable="false" />
     <Property Name="Packslip_No" Type="Int32" Nullable="false" />
     <Property Name="Invoice_No" Type="Int32" Nullable="false" />
-    <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Date" Type="DateTime" Precision="3" />
     <Property Name="PartNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="PoNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="LineNo" Type="Int32" />
@@ -59,10 +66,4 @@
     <Property Name="Material_Type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityContainer Name="ITe_INDIAEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Dispatch_PackslipNum" EntityType="Self.Dispatch_PackslipNum" />
-    <EntitySet Name="DispatchDatas" EntityType="Self.DispatchData" />
-    <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" />
-    <EntitySet Name="Dispatch_Grade" EntityType="Self.Dispatch_Grade" />
-  </EntityContainer>
 </Schema>

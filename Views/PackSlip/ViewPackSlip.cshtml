@@ -1,0 +1,45 @@
+﻿@model PackSlipApp.ViewModel.ViewPackSlipViewModel
+@{
+    ViewBag.Title = "View PackSlip Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Packslip No</th>
+            <th>Invoice No</th>
+            <th>Generate Packslip</th>
+            <th>Generate Invoice</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model?.ListOfPackList != null)
+        {
+            foreach (var item in Model?.ListOfPackList)
+            {
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.PackslipNo</td>
+                    <td>@item.InvoiceNo</td>
+                    <td>
+                        <a href="@Url.Action("GeneratePackslip", "PackSlip", new { packslipNo = item.PackslipNo, invoiceNo = item.InvoiceNo })"
+                           class="btn btn-primary">
+                            Generate Packslip
+                        </a>
+                    </td>
+                    <td>
+                        <a href="@Url.Action("GenerateInvoice", "PackSlip", new { packslipNo = item.PackslipNo, invoiceNo = item.InvoiceNo })"
+                           class="btn btn-primary">
+                            Generate Invoice
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+

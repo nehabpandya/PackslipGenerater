@@ -1,0 +1,270 @@
+﻿@{
+    ViewBag.Title = "Invoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .header-title {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 10px;
+    }
+
+    .text-bold {
+        font-weight: bold;
+    }
+
+    input[type="text"], input[type="date"] {
+        width: 100%;
+        border: none;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .invoice-container {
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+    }
+
+    . print {
+        body
+
+    {
+        width: 210mm;
+        height: 297mm;
+        margin: 0;
+        padding: 0;
+    }
+
+    .invoice-container {
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+    }
+
+    table {
+        page-break-before: auto;
+        page-break-after: auto;
+        page-break-inside: avoid;
+    }
+    }
+</style>
+
+<div class="invoice-container">
+    <div class="header-title">INVOICE DETAILS</div>
+    <!-- Excel Button Positioned at the Top Right -->
+    <div class="text-end mb-2">
+        <button class="btn btn-success" onclick="downloadExcel()">
+            <i class="fas fa-file-excel"></i> Excel
+        </button>
+    </div>    <table>
+        <tr>
+            <td class="text-bold ">Invoice No</td>
+            <td>
+                <input class="form-control  bg-light border-0" type="text" id="amountTotalPay" value="EXP-386/2024-25" />
+
+            </td>
+
+            <td class="text-bold">Invoice Date</td>
+            <td><input type="text" name="InvoiceDate" value="24/Jan/25" /></td>
+        </tr>
+        <tr>
+            <td class="text-bold">Pack Slip No</td>
+            <td><input type="text" name="PackSlipNo" value="4773/2024" /></td>
+            <td class="text-bold">Pack Slip Date</td>
+            <td><input type="text" name="PackSlipDate" value="24/Jan/25" /></td>
+        </tr>
+    </table>
+
+    <br />
+
+    <table>
+        <tr>
+            <!-- Left Section: Address Details -->
+            <td style="width: 50%;">
+                <p>
+                    <strong>Exporter:</strong><br>
+                    <b>S.S.White Technologies India Pvt. Ltd.</b><br>
+                    Regd Office / Works: Survey No 2788/3<br>
+                    Wadhwan Ahmedabad Highway<br>
+                    Near Krishna Petrol Pump, Wadhwan<br>
+                    Dist Surendranagar-363030, Gujarat, (India)<br>
+                    <b>Ph:</b> (91)-2752-287514<br>
+                    <b>CIN: U29299GJ2003PTC072165</b><br>
+                    <b>IEC No: 4103000872</b><br>
+                    <b>GSTIN: 24AAHCS2396B1ZI</b><br>
+                    FEI #: 3011365613<br>
+                    FDA Facility Regn #: 3011365613<br>
+                    <b>The Company named in this column is the manufacturer of all the parts listed on this Invoice.</b>
+                </p>
+            </td>
+
+            <!-- Right Section: Port and Shipping Details -->
+            <td style="width: 50%;">
+                <table>
+                    <tr>
+                        <td class="text-bold">Port of Loading</td>
+                        <td>Ahmedabad</td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">Port of Discharge</td>
+                        <td>Florida USA</td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">Final Destination</td>
+                        <td>Florida</td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">Country of Origin</td>
+                        <td>India</td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">Destination Country</td>
+                        <td>USA</td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">Payment Terms</td>
+                        <td>120 Days from BL/AWB Date</td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">Terms of Delivery</td>
+                        <td>Ex-Works</td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">Other Reference</td>
+                        <td>
+                            1. MDR Loan Licence Number: MFG/MD/2024/000377 <br>
+                            2. All Medical devices are Class 1 510(K) Exempt as per US FDA.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-bold">Other Details</td>
+                        <td>Kind Attention: Shiv Agarwal</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <br />
+
+    <!-- Consignee & Buyer Details -->
+    <table>
+        <tr>
+            <td class="text-bold">Consignee</td>
+            <td class="text-bold">Buyer (If Other than Consignee)</td>
+            <td class="text-bold">Buyer's PO No and Date</td>
+        </tr>
+        <tr>
+            <td>
+                <b>S.S. White Technologies Inc</b><br>
+                8300, Sheen Drive,<br>
+                St Petersburg, FL-33709<br>
+                USA<br>
+                US FACILITY REG. # 2249418
+            </td>
+            <td>
+                <b>S.S. White Technologies Inc</b><br>
+                8300, Sheen Drive,<br>
+                St Petersburg, FL-33709<br>
+                USA
+            </td>
+            <td>
+                <b>40644</b><br>
+                23/Jan/2025
+            </td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Sl No</th>
+            <th>Invoice & Adv. License No</th>
+            <th>A4 Lot</th>
+            <th>Part No</th>
+            <th>Description</th>
+            <th>Quantity (Pcs)</th>
+            <th>Quantity (Kg)</th>
+            <th>Unit Price (USD)</th>
+            <th>Total Value (USD)</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>2410100658</td>
+            <td>TP946</td>
+            <td>TP946</td>
+            <td class="text-left">Insertion and Removal Instruments</td>
+            <td>111</td>
+            <td>1.14</td>
+            <td>22.78</td>
+            <td>2529.58</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2410100658</td>
+            <td>104-04-07</td>
+            <td>104-04-07</td>
+            <td class="text-left">Insertion and Removal Instruments</td>
+            <td>152</td>
+            <td>35.46</td>
+            <td>57.84</td>
+            <td>8791.68</td>
+        </tr>
+        <tr>
+            <td colspan="8" class="text-bold text-left">Total</td>
+            <td class="text-bold">25938.53</td>
+        </tr>
+    </table>
+    <br>
+
+    <table>
+        <tr>
+            <td colspan="2" class="text-bold">Total Amount (in Words)</td>
+            <td colspan="7">USD Twenty Two Thousand Nine Hundred Forty Five and Eighty Eight Cents Only</td>
+        </tr>
+    </table>
+
+    <br>
+
+    <table>
+        <tr>
+            <th>Summary of Advance License</th>
+            <th>Export Item Sr no</th>
+            <th>Export Qty (Kg)</th>
+            <th>Import Item Description</th>
+            <th>Import Obligation (Kg)</th>
+        </tr>
+        <tr>
+            <td>Advance License No. 2410100658</td>
+            <td>1</td>
+            <td>41.10</td>
+            <td>SS GI GC 440A</td>
+            <td>41.10</td>
+        </tr>
+    </table>
+</div>
+<script>
+function downloadExcel() {
+    debugger
+    window.location.href = "/PackSlip/DownloadExcel"; // Redirects to the MVC controller method
+    }
+</script>

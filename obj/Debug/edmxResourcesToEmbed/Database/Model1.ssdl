@@ -29,24 +29,25 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Grade' does not have a prim
     <Property Name="Material Type" Type="nvarchar" MaxLength="500" />
     <Property Name="Grade" Type="nvarchar" MaxLength="10" />
   </EntityType>
-  <EntityType Name="Dispatch_PackslipNum">
+  <EntityType Name="Dispatch_PackingDetails">
     <Key>
       <PropertyRef Name="ID" />
+      <PropertyRef Name="PackslipNo" />
     </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Packslip No" Type="int" />
-    <Property Name="Invoice No" Type="int" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="PackslipNo" Type="int" Nullable="false" />
+    <Property Name="InvoiceNo" Type="int" />
+    <Property Name="Category" Type="nvarchar" MaxLength="200" />
+    <Property Name="Date" Type="datetime" />
   </EntityType>
   <EntityType Name="DispatchData">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="Sr No" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="P ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID" Type="int" Nullable="false" />
     <Property Name="Packslip No" Type="int" Nullable="false" />
     <Property Name="Invoice No" Type="int" Nullable="false" />
-    <Property Name="Category" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Date" Type="datetime" />
     <Property Name="PartNo" Type="nvarchar" MaxLength="100" />
     <Property Name="PoNo" Type="nvarchar" MaxLength="100" />
     <Property Name="LineNo" Type="int" />
@@ -64,7 +65,7 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Grade' does not have a prim
     <Property Name="finance approval" Type="bit" />
   </EntityType>
   <EntityContainer Name="ITe_INDIAModelStoreContainer">
-    <EntitySet Name="Dispatch_PackslipNum" EntityType="Self.Dispatch_PackslipNum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dispatch_PackingDetails" EntityType="Self.Dispatch_PackingDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DispatchData" EntityType="Self.DispatchData" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 

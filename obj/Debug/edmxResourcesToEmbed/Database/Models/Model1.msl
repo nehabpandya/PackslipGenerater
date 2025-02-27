@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ITe_INDIAModelStoreContainer" CdmEntityContainer="ITe_INDIAEntities1">
+    <EntitySetMapping Name="Dispatch_PackingDetails">
+      <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_PackingDetails">
+        <MappingFragment StoreEntitySet="Dispatch_PackingDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PackslipNo" ColumnName="PackslipNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DispatchDatas">
+      <EntityTypeMapping TypeName="ITe_INDIAModel.DispatchData">
+        <MappingFragment StoreEntitySet="DispatchData">
+          <ScalarProperty Name="P_ID" ColumnName="P ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Packslip_No" ColumnName="Packslip No" />
+          <ScalarProperty Name="Invoice_No" ColumnName="Invoice No" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="PoNo" ColumnName="PoNo" />
+          <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+          <ScalarProperty Name="JobNo" ColumnName="JobNo" />
+          <ScalarProperty Name="LM" ColumnName="LM" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="w_pcs" ColumnName="w/pcs" />
+          <ScalarProperty Name="Box" ColumnName="Box" />
+          <ScalarProperty Name="Material_Details" ColumnName="Material Details" />
+          <ScalarProperty Name="total_weight" ColumnName="total weight" />
+          <ScalarProperty Name="packing_type" ColumnName="packing type" />
+          <ScalarProperty Name="Box_weight" ColumnName="Box weight" />
+          <ScalarProperty Name="supervisor_approval" ColumnName="supervisor approval" />
+          <ScalarProperty Name="purchaser_verification" ColumnName="purchaser verification" />
+          <ScalarProperty Name="finance_approval" ColumnName="finance approval" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dispatch_Code">
+      <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Code">
+        <MappingFragment StoreEntitySet="Dispatch_Code">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PartNum" ColumnName="PartNum" />
+          <ScalarProperty Name="Part_Desc" ColumnName="Part Desc" />
+          <ScalarProperty Name="FDA_Product_Code" ColumnName="FDA Product Code" />
+          <ScalarProperty Name="Industry___Product_Code" ColumnName="Industry &amp; Product Code" />
+          <ScalarProperty Name="Tariff" ColumnName="Tariff" />
+          <ScalarProperty Name="FDA_Classification" ColumnName="FDA Classification" />
+          <ScalarProperty Name="US_HTS" ColumnName="US HTS" />
+          <ScalarProperty Name="Invoice_Description" ColumnName="Invoice Description" />
+          <ScalarProperty Name="Methodology" ColumnName="Methodology" />
+          <ScalarProperty Name="Notes_Questions" ColumnName="Notes/Questions" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dispatch_Grade">
+      <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Grade">
+        <MappingFragment StoreEntitySet="Dispatch_Grade">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="InputSerialNumber" ColumnName="InputSerialNumber" />
+          <ScalarProperty Name="Material_Type" ColumnName="Material Type" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
