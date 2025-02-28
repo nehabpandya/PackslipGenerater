@@ -15,8 +15,8 @@ namespace PackSlipApp.Database.Models
     public partial class Dispatch_PackingDetails
     {
         public int ID { get; set; }
-        public int PackslipNo { get; set; }
-        public Nullable<int> InvoiceNo { get; set; }
+        public string PackslipNo { get; set; }
+        public string InvoiceNo { get; set; }
         public string Category { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
     }

@@ -18,32 +18,35 @@ namespace PackSlipApp.Controllers
             List<ViewPackSlip> list = context.Dispatch_PackingDetails
                .Select(x => new ViewPackSlip
                {
-                   id = x.ID,
+                   Id = x.ID,
                    PackslipNo = x.PackslipNo,
                    InvoiceNo = x.InvoiceNo
                })
                .ToList();
-            ViewPackSlipViewModel model = new ViewPackSlipViewModel();
-            model.ListOfPackList = list;
+            ViewPackSlipViewModel model = new ViewPackSlipViewModel
+            {
+                ListOfPackList = list
+            };
             return View(model);
         }
 
-        public ActionResult GeneratePackslip(int packslipNo, int invoiceNo)
+        public ActionResult GeneratePackslip(string packslipNo, string invoiceNo)
         {
+            var addDetails = context.dispatch_Staticdata.FirstOrDefault();
             GeneratedViewmodel model = new GeneratedViewmodel
             {
+
                 PackSlipMainData = new ViewPackSlip
                 {
-                    id = 1,
-                    PackslipNo = 1,
-                    InvoiceNo = 1,
-                }, 
-                UseInputList = new ViewPackSlipViewModel(), // Initialize as needed
+                    PackslipNo = packslipNo,
+                    InvoiceNo = invoiceNo,
+                },
+
                 InvoiceNo = invoiceNo,
                 InvoiceDate = DateTime.Now,
-                PackSlipDate = DateTime.Now.AddDays(-1),
-                AddressHeading = "Dummy Address Heading",
-                Address = "123, Dummy Street, City, Country",
+                PackSlipDate = DateTime.Now,
+                AddressHeading = "Exporter", // need to discuss
+                Address = addDetails.SNPlantAdd,
                 CIN = "CIN123456",
                 IEC = "IEC654321",
                 GSTIN = "GSTIN789012",
@@ -58,53 +61,32 @@ namespace PackSlipApp.Controllers
                 TermsOfDelivery = "FOB",
                 OtherReference = "Ref-001",
                 OtherDetails = "Some additional details",
-                Consignee = "XYZ Corporation",
+                Consignee = addDetails.ConsigneeAdd,
                 BuyerPONum = 987654,
                 BuyerDate = DateTime.Now.AddDays(-10),
                 SummaryOfAdvanceLicence = "Summary here",
-                ExportItemSrNo = "EXP12345",
-                ExportQty = "1000",
-                ImportItemDesc = "Imported Goods",
+               
                 ImportObigationKg = "500 KG",
-                PoItemList = new List<ListOfItemsInPo> // Changed to List
-                   {
-                    new ListOfItemsInPo
-                    {
-                        AdvanceLicenceNo = 456789,
-                        A4Lot = 12,
-                        PartNum = "P1234",
-                        PartDesc = "Sample Part 1",
-                        qtyPc = 50,
-                        qtyKg = 100,
-                        UnitPrice = 500.75,
-                        TotalValue = 50075
-                    },
-                    new ListOfItemsInPo
-                    {
-                        AdvanceLicenceNo = 456790,
-                        A4Lot = 15,
-                        PartNum = "P5678",
-                        PartDesc = "Sample Part 2",
-                        qtyPc = 30,
-                        qtyKg = 60,
-                        UnitPrice = 300.50,
-                        TotalValue = 18030
-                    },
-                    new ListOfItemsInPo
-                    {
-                        AdvanceLicenceNo = 456791,
-                        A4Lot = 20,
-                        PartNum = "P91011",
-                        PartDesc = "Sample Part 3",
-                        qtyPc = 75,
-                        qtyKg = 150,
-                        UnitPrice = 450.00,
-                        TotalValue = 33750
-                    }
-                }
+
+                PoItemList = context.Dispatch_Data.
+                Where(d => d.PackslipNo == packslipNo && d.InvoiceNo == invoiceNo)
+                  .Select(x => new ListOfItemsInPo
+                  {
+                      AdvanceLicenceNo = 1,
+                      A4Lot = 20,
+                      PartNum = x.PartNo,
+                      PartDesc = x.PartDesc,
+                      QtyWPc = x.Qty,
+                      UnitPrice = 450.00,
+
+                  })
+                .ToList()
+
+              
             };
 
-            return View();
+
+            return View(model);
         }
 
 

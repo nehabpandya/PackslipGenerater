@@ -12,26 +12,27 @@ namespace PackSlipApp.Database.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DispatchData
+    public partial class Dispatch_Data
     {
-        public int P_ID { get; set; }
         public int ID { get; set; }
-        public int Packslip_No { get; set; }
-        public int Invoice_No { get; set; }
+        public int PID { get; set; }
+        public string PackslipNo { get; set; }
+        public string InvoiceNo { get; set; }
         public string PartNo { get; set; }
         public string PoNo { get; set; }
         public Nullable<int> LineNo { get; set; }
         public string JobNo { get; set; }
         public Nullable<bool> LM { get; set; }
         public Nullable<int> Qty { get; set; }
-        public Nullable<decimal> w_pcs { get; set; }
+        public Nullable<decimal> wPcs { get; set; }
         public Nullable<int> Box { get; set; }
-        public string Material_Details { get; set; }
-        public Nullable<decimal> total_weight { get; set; }
-        public string packing_type { get; set; }
-        public Nullable<decimal> Box_weight { get; set; }
-        public Nullable<bool> supervisor_approval { get; set; }
-        public Nullable<bool> purchaser_verification { get; set; }
-        public Nullable<bool> finance_approval { get; set; }
+        public string MaterialDetails { get; set; }
+        public Nullable<decimal> TotalWeight { get; set; }
+        public string PackingType { get; set; }
+        public Nullable<decimal> BoxWeight { get; set; }
+        public Nullable<bool> SupervisorApproval { get; set; }
+        public Nullable<bool> PurchaserVerification { get; set; }
+        public Nullable<bool> FinanceApproval { get; set; }
+        public string PartDesc { get; set; }
     }
 }

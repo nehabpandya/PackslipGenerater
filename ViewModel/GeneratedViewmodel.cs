@@ -13,7 +13,7 @@ namespace PackSlipApp.ViewModel
 
         public ViewPackSlipViewModel UseInputList;
 
-        public int InvoiceNo { get; set; }
+        public string InvoiceNo { get; set; }
         public DateTime? InvoiceDate { get; set; }
         public DateTime? PackSlipDate { get; set; }
         public string AddressHeading { get; set; }
@@ -37,11 +37,15 @@ namespace PackSlipApp.ViewModel
         public DateTime BuyerDate { get; set; }
 
         public string SummaryOfAdvanceLicence { get; set; }
-        public string ExportItemSrNo { get; set; }
-        public string ExportQty { get; set; }
-        public string ImportItemDesc { get; set; }
+       
+       
         public string ImportObigationKg { get; set; }
         public List<ListOfItemsInPo> PoItemList { get; set; }
+
+        public double? SumOfTotal { get; set; }
+        public double? ExportQtyKgs { get; set; }
+        public double? ImportObligationKgs { get; set; }
+
 
     }
 
@@ -51,10 +55,15 @@ namespace PackSlipApp.ViewModel
         public int A4Lot { get; set; }
         public string PartNum { get; set; }
         public string PartDesc { get; set; }
-        public Double? qtyPc { get; set; }
-        public Double? qtyKg { get; set; }
-        public Double? UnitPrice { get; set; }
-        public Double? TotalValue { get; set; }
+        public double? QtyWPc { get; set; }  
+        public double? Qty { get; set; }
+
+        public double? QtyKg => (Qty.HasValue && QtyWPc.HasValue) ? (Qty.Value * QtyWPc.Value) : (double?)null;
+
+        public double? UnitPrice { get; set; }
+
+        public double? TotalValue => (Qty.HasValue && UnitPrice.HasValue) ? (Qty.Value * UnitPrice.Value) : (double?)null;
+
         public string TotalValueInWords => TotalValue.HasValue
         ? ConvertToWords((long)TotalValue.Value)
         : "Zero";
@@ -66,6 +75,7 @@ namespace PackSlipApp.ViewModel
             var culture = new CultureInfo("en-IN"); 
             return number.ToString("N0", culture) + " Rupees"; 
         }
+        public string ImportItemDesc { get; set; }
     }
 
   

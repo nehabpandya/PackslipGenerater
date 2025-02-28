@@ -1,39 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="ITe_INDIAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ITe_INDIAEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Dispatch_PackingDetails" EntityType="ITe_INDIAModel.Dispatch_PackingDetails" />
+    <EntitySet Name="Dispatch_Code" EntityType="ITe_INDIAModel.Dispatch_Code" />
+    <EntitySet Name="Dispatch_Grade" EntityType="ITe_INDIAModel.Dispatch_Grade" />
+    <EntitySet Name="dispatch_Staticdata" EntityType="ITe_INDIAModel.dispatch_Staticdata" />
+    <EntitySet Name="dispatch_type" EntityType="ITe_INDIAModel.dispatch_type" />
+    <EntitySet Name="Dispatch_Data" EntityType="ITe_INDIAModel.Dispatch_Data" />
+  </EntityContainer>
   <EntityType Name="Dispatch_PackingDetails">
     <Key>
       <PropertyRef Name="ID" />
       <PropertyRef Name="PackslipNo" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="PackslipNo" Type="Int32" Nullable="false" />
-    <Property Name="InvoiceNo" Type="Int32" />
+    <Property Name="PackslipNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Category" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Date" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="DispatchData">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="P_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="Packslip_No" Type="Int32" Nullable="false" />
-    <Property Name="Invoice_No" Type="Int32" Nullable="false" />
-    <Property Name="PartNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="PoNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="LineNo" Type="Int32" />
-    <Property Name="JobNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="LM" Type="Boolean" />
-    <Property Name="Qty" Type="Int32" />
-    <Property Name="w_pcs" Type="Decimal" Precision="10" Scale="2" />
-    <Property Name="Box" Type="Int32" />
-    <Property Name="Material_Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="total_weight" Type="Decimal" Precision="10" Scale="2" />
-    <Property Name="packing_type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Box_weight" Type="Decimal" Precision="10" Scale="2" />
-    <Property Name="supervisor_approval" Type="Boolean" />
-    <Property Name="purchaser_verification" Type="Boolean" />
-    <Property Name="finance_approval" Type="Boolean" />
   </EntityType>
   <EntityType Name="Dispatch_Code">
     <Key>
@@ -60,10 +44,74 @@
     <Property Name="Material_Type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityContainer Name="ITe_INDIAEntities1" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Dispatch_PackingDetails" EntityType="Self.Dispatch_PackingDetails" />
-    <EntitySet Name="DispatchDatas" EntityType="Self.DispatchData" />
-    <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" />
-    <EntitySet Name="Dispatch_Grade" EntityType="Self.Dispatch_Grade" />
-  </EntityContainer>
+  <EntityType Name="dispatch_Staticdata">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="InvoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="InvoiceDate" Type="DateTime" Precision="0" />
+    <Property Name="PackSlipNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PackSlipDate" Type="DateTime" Precision="0" />
+    <Property Name="PortOfLoading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PortOfDischarge" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CountryOfOrigin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentTerms" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Vessel_FlightNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FinalDestination" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DestinationCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TermsOfDelivery" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IECNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="GSTIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FEI" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FDAFacilityRegn" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SNPlantAdd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ConsigneeAdd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BuyerAdd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="dispatch_type">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OurPlantAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OurPlantAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="OurPlantAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ConsigneeAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ConsigneeAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ConsigneeAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BuyerAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BuyerAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BuyerAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Dispatch_Data">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="PID" />
+      <PropertyRef Name="PackslipNo" />
+      <PropertyRef Name="InvoiceNo" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PID" Type="Int32" Nullable="false" />
+    <Property Name="PackslipNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InvoiceNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PoNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LineNo" Type="Int32" />
+    <Property Name="JobNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LM" Type="Boolean" />
+    <Property Name="Qty" Type="Int32" />
+    <Property Name="wPcs" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Box" Type="Int32" />
+    <Property Name="MaterialDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TotalWeight" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="PackingType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BoxWeight" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="SupervisorApproval" Type="Boolean" />
+    <Property Name="PurchaserVerification" Type="Boolean" />
+    <Property Name="FinanceApproval" Type="Boolean" />
+    <Property Name="PartDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

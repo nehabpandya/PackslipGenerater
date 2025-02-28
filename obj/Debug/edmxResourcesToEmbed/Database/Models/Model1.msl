@@ -4,63 +4,108 @@
     <EntitySetMapping Name="Dispatch_PackingDetails">
       <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_PackingDetails">
         <MappingFragment StoreEntitySet="Dispatch_PackingDetails">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="PackslipNo" ColumnName="PackslipNo" />
-          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-          <ScalarProperty Name="Category" ColumnName="Category" />
           <ScalarProperty Name="Date" ColumnName="Date" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DispatchDatas">
-      <EntityTypeMapping TypeName="ITe_INDIAModel.DispatchData">
-        <MappingFragment StoreEntitySet="DispatchData">
-          <ScalarProperty Name="P_ID" ColumnName="P ID" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="PackslipNo" ColumnName="PackslipNo" />
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="Packslip_No" ColumnName="Packslip No" />
-          <ScalarProperty Name="Invoice_No" ColumnName="Invoice No" />
-          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
-          <ScalarProperty Name="PoNo" ColumnName="PoNo" />
-          <ScalarProperty Name="LineNo" ColumnName="LineNo" />
-          <ScalarProperty Name="JobNo" ColumnName="JobNo" />
-          <ScalarProperty Name="LM" ColumnName="LM" />
-          <ScalarProperty Name="Qty" ColumnName="Qty" />
-          <ScalarProperty Name="w_pcs" ColumnName="w/pcs" />
-          <ScalarProperty Name="Box" ColumnName="Box" />
-          <ScalarProperty Name="Material_Details" ColumnName="Material Details" />
-          <ScalarProperty Name="total_weight" ColumnName="total weight" />
-          <ScalarProperty Name="packing_type" ColumnName="packing type" />
-          <ScalarProperty Name="Box_weight" ColumnName="Box weight" />
-          <ScalarProperty Name="supervisor_approval" ColumnName="supervisor approval" />
-          <ScalarProperty Name="purchaser_verification" ColumnName="purchaser verification" />
-          <ScalarProperty Name="finance_approval" ColumnName="finance approval" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Dispatch_Code">
       <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Code">
         <MappingFragment StoreEntitySet="Dispatch_Code">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="PartNum" ColumnName="PartNum" />
-          <ScalarProperty Name="Part_Desc" ColumnName="Part Desc" />
-          <ScalarProperty Name="FDA_Product_Code" ColumnName="FDA Product Code" />
-          <ScalarProperty Name="Industry___Product_Code" ColumnName="Industry &amp; Product Code" />
-          <ScalarProperty Name="Tariff" ColumnName="Tariff" />
-          <ScalarProperty Name="FDA_Classification" ColumnName="FDA Classification" />
-          <ScalarProperty Name="US_HTS" ColumnName="US HTS" />
-          <ScalarProperty Name="Invoice_Description" ColumnName="Invoice Description" />
-          <ScalarProperty Name="Methodology" ColumnName="Methodology" />
           <ScalarProperty Name="Notes_Questions" ColumnName="Notes/Questions" />
+          <ScalarProperty Name="Methodology" ColumnName="Methodology" />
+          <ScalarProperty Name="Invoice_Description" ColumnName="Invoice Description" />
+          <ScalarProperty Name="US_HTS" ColumnName="US HTS" />
+          <ScalarProperty Name="FDA_Classification" ColumnName="FDA Classification" />
+          <ScalarProperty Name="Tariff" ColumnName="Tariff" />
+          <ScalarProperty Name="Industry___Product_Code" ColumnName="Industry &amp; Product Code" />
+          <ScalarProperty Name="FDA_Product_Code" ColumnName="FDA Product Code" />
+          <ScalarProperty Name="Part_Desc" ColumnName="Part Desc" />
+          <ScalarProperty Name="PartNum" ColumnName="PartNum" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Dispatch_Grade">
       <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Grade">
         <MappingFragment StoreEntitySet="Dispatch_Grade">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="InputSerialNumber" ColumnName="InputSerialNumber" />
-          <ScalarProperty Name="Material_Type" ColumnName="Material Type" />
           <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="Material_Type" ColumnName="Material Type" />
+          <ScalarProperty Name="InputSerialNumber" ColumnName="InputSerialNumber" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dispatch_Staticdata">
+      <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_Staticdata">
+        <MappingFragment StoreEntitySet="dispatch_Staticdata">
+          <ScalarProperty Name="BuyerAdd" ColumnName="BuyerAdd" />
+          <ScalarProperty Name="ConsigneeAdd" ColumnName="ConsigneeAdd" />
+          <ScalarProperty Name="SNPlantAdd" ColumnName="SNPlantAdd" />
+          <ScalarProperty Name="FDAFacilityRegn" ColumnName="FDAFacilityRegn" />
+          <ScalarProperty Name="FEI" ColumnName="FEI" />
+          <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
+          <ScalarProperty Name="IECNO" ColumnName="IECNO" />
+          <ScalarProperty Name="CIN" ColumnName="CIN" />
+          <ScalarProperty Name="TermsOfDelivery" ColumnName="TermsOfDelivery" />
+          <ScalarProperty Name="DestinationCountry" ColumnName="DestinationCountry" />
+          <ScalarProperty Name="FinalDestination" ColumnName="FinalDestination" />
+          <ScalarProperty Name="Vessel_FlightNo" ColumnName="Vessel_FlightNo" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="CountryOfOrigin" ColumnName="CountryOfOrigin" />
+          <ScalarProperty Name="PortOfDischarge" ColumnName="PortOfDischarge" />
+          <ScalarProperty Name="PortOfLoading" ColumnName="PortOfLoading" />
+          <ScalarProperty Name="PackSlipDate" ColumnName="PackSlipDate" />
+          <ScalarProperty Name="PackSlipNo" ColumnName="PackSlipNo" />
+          <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dispatch_type">
+      <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
+        <MappingFragment StoreEntitySet="dispatch_type">
+          <ScalarProperty Name="BuyerAddressLine3" ColumnName="BuyerAddressLine3" />
+          <ScalarProperty Name="BuyerAddressLine2" ColumnName="BuyerAddressLine2" />
+          <ScalarProperty Name="BuyerAddressLine1" ColumnName="BuyerAddressLine1" />
+          <ScalarProperty Name="ConsigneeAddressLine3" ColumnName="ConsigneeAddressLine3" />
+          <ScalarProperty Name="ConsigneeAddressLine2" ColumnName="ConsigneeAddressLine2" />
+          <ScalarProperty Name="ConsigneeAddressLine1" ColumnName="ConsigneeAddressLine1" />
+          <ScalarProperty Name="OurPlantAddressLine3" ColumnName="OurPlantAddressLine3" />
+          <ScalarProperty Name="OurPlantAddressLine2" ColumnName="OurPlantAddressLine2" />
+          <ScalarProperty Name="OurPlantAddressLine1" ColumnName="OurPlantAddressLine1" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dispatch_Data">
+      <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Data">
+        <MappingFragment StoreEntitySet="Dispatch_Data">
+          <ScalarProperty Name="PartDesc" ColumnName="PartDesc" />
+          <ScalarProperty Name="FinanceApproval" ColumnName="FinanceApproval" />
+          <ScalarProperty Name="PurchaserVerification" ColumnName="PurchaserVerification" />
+          <ScalarProperty Name="SupervisorApproval" ColumnName="SupervisorApproval" />
+          <ScalarProperty Name="BoxWeight" ColumnName="BoxWeight" />
+          <ScalarProperty Name="PackingType" ColumnName="PackingType" />
+          <ScalarProperty Name="TotalWeight" ColumnName="TotalWeight" />
+          <ScalarProperty Name="MaterialDetails" ColumnName="MaterialDetails" />
+          <ScalarProperty Name="Box" ColumnName="Box" />
+          <ScalarProperty Name="wPcs" ColumnName="wPcs" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="LM" ColumnName="LM" />
+          <ScalarProperty Name="JobNo" ColumnName="JobNo" />
+          <ScalarProperty Name="LineNo" ColumnName="LineNo" />
+          <ScalarProperty Name="PoNo" ColumnName="PoNo" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+          <ScalarProperty Name="PackslipNo" ColumnName="PackslipNo" />
+          <ScalarProperty Name="PID" ColumnName="PID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

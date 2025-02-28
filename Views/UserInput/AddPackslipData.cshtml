@@ -1,8 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Add Packking Details";
-    ViewBag.pTitle = "Add Packking Details";
-    ViewBag.pageTitle = "Invoices";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //ViewBag.Title = "Add Packking Details";
+    //ViewBag.pTitle = "Add Packking Details";
+    //ViewBag.pageTitle = "Invoices";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @section styles{
@@ -13,249 +13,331 @@
     <link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
 }
 
-<div class="row justify-content-center">
-    <div class="col-xxl-9">
-        <div class="card">
-            <form class="needs-validation" novalidate id="invoice_form">
-                <div class="card-body border-bottom border-bottom-dashed p-4">
-                    <div class="row">
-                        <div class="col-lg-4">
-                          
-                        </div><!--end col-->
-                        <div class="col-lg-4 ms-auto">
-                            <div class="mb-2">
-                                <input type="text" class="form-control bg-light border-0" id="registrationNumber" maxlength="12" placeholder="Packing Slip No" required />
-                              
-                            </div>
-                         
-                        </div>
-                    </div><!--end row-->
-                </div>
-                <div class="card-body p-4">
-                    <div class="row g-3">
-                        <div class="col-lg-3 col-sm-6">
-                            <label for="invoicenoInput">Job No</label>
-                            <input type="text" class="form-control bg-light border-0" id="invoicenoInput" placeholder="Invoice No" value="#VL25000355" readonly="readonly" />
-                        </div><!--end col-->
-                        <div class="col-lg-3 col-sm-6">
-                            <div>
-                                <label for="date-field">Part No</label>
-                                <input type="text" class="form-control bg-light border-0" id="date-field" data-provider="flatpickr" data-time="true" placeholder="Select Date-time">
-                            </div>
-                        </div><!--end col-->
-                        <div class="col-lg-3 col-sm-6">
-                            <label for="choices-payment-status">Type</label>
-                            <div class="input-light">
-                                <select class="form-control bg-light border-0" data-choices data-choices-search-false id="choices-payment-status" required>
-                                    <option value="">Select Payment Status</option>
-                                    <option value="Paid">Paid</option>
-                                    <option value="Unpaid">Unpaid</option>
-                                    <option value="Refund">Refund</option>
-                                </select>
-                            </div>
-                        </div><!--end col-->
-                        <div class="col-lg-3 col-sm-6">
-                            <div>
-                                <label for="totalamountInput">LM</label>
-                                <input type="text" class="form-control bg-light border-0" id="totalamountInput" placeholder="$0.00" readonly />
-                            </div>
-                        </div><!--end col-->
-                    </div><!--end row-->
-                    <div class="row g-3">
-                        <div class="col-lg-3 col-sm-6">
-                            <label for="invoicenoInput">Qty</label>
-                            <input type="text" class="form-control bg-light border-0" id="invoicenoInput" placeholder="Invoice No" value="#VL25000355" readonly="readonly" />
-                        </div><!--end col-->
-                        <div class="col-lg-3 col-sm-6">
-                            <div>
-                                <label for="date-field">W/pcs</label>
-                                <input type="text" class="form-control bg-light border-0" id="date-field" data-provider="flatpickr" data-time="true" placeholder="Select Date-time">
-                            </div>
-                        </div><!--end col-->
-                        <div class="col-lg-3 col-sm-6">
-                            <label for="choices-payment-status">Box</label>
-                            <div class="input-light">
-                                <select class="form-control bg-light border-0" data-choices data-choices-search-false id="choices-payment-status" required>
-                                    <option value="">Select Payment Status</option>
-                                    <option value="Paid">Paid</option>
-                                    <option value="Unpaid">Unpaid</option>
-                                    <option value="Refund">Refund</option>
-                                </select>
-                            </div>
-                        </div><!--end col-->
-                        <div class="col-lg-3 col-sm-6">
-                            <div>
-                                <label for="totalamountInput">PO#</label>
-                                <input type="text" class="form-control bg-light border-0" id="totalamountInput" placeholder="$0.00" readonly />
-                            </div>
-                        </div><!--end col-->
-                    </div><!--end row-->
-                </div>
-            
-                <div class="card-body p-4">
-                    <div class="table-responsive">
-                        <table class="invoice-table table table-borderless table-nowrap mb-0">
-                            <thead class="align-middle">
-                                <tr class="table-active">
-                                    <th scope="col" style="width: 50px;">#</th>
-                                    <th scope="col">
-                                        Product Details
-                                    </th>
-                                    <th scope="col" style="width: 120px;">
-                                        <div class="d-flex currency-select input-light align-items-center">
-                                            Rate
-                                            <select class="form-selectborder-0 bg-light" data-choices data-choices-search-false id="choices-payment-currency" onchange="otherPayment()">
-                                                <option value="$">($)</option>
-                                                <option value="£">(£)</option>
-                                                <option value="₹">(₹)</option>
-                                                <option value="€">(€)</option>
-                                            </select>
-                                        </div>
-                                    </th>
-                                    <th scope="col" style="width: 120px;">Quantity</th>
-                                    <th scope="col" class="text-end" style="width: 150px;">Amount</th>
-                                    <th scope="col" class="text-end" style="width: 105px;"></th>
-                                </tr>
-                            </thead>
-                            <tbody id="newlink">
-                                <tr id="1" class="product">
-                                    <th scope="row" class="product-id">1</th>
-                                    <td class="text-start">
-                                        <div class="mb-2">
-                                            <input type="text" class="form-control bg-light border-0" id="productName-1" placeholder="Product Name" required />
-                                            <div class="invalid-feedback">
-                                                Please enter a product name
-                                            </div>
-                                        </div>
-                                        <textarea class="form-control bg-light border-0" id="productDetails-1" rows="2" placeholder="Product Details"></textarea>
-                                    </td>
-                                    <td>
-                                        <input type="number" class="form-control product-price bg-light border-0" id="productRate-1" step="0.01" placeholder="0.00" required />
-                                        <div class="invalid-feedback">
-                                            Please enter a rate
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="input-step">
-                                            <button type="button" class='minus'>–</button>
-                                            <input type="number" class="product-quantity" id="product-qty-1" value="0" readonly>
-                                            <button type="button" class='plus'>+</button>
-                                        </div>
-                                    </td>
-                                    <td class="text-end">
-                                        <div>
-                                            <input type="text" class="form-control bg-light border-0 product-line-price" id="productPrice-1" placeholder="$0.00" readonly />
-                                        </div>
-                                    </td>
-                                    <td class="product-removal">
-                                        <a href="javascript:void(0)" class="btn btn-success">Delete</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <tbody>
-                                <tr id="newForm" style="display: none;"><td class="d-none" colspan="5"><p>Add New Form</p></td></tr>
-                                <tr>
-                                    <td colspan="5">
-                                        <a href="javascript:new_link()" id="add-item" class="btn btn-soft-secondary fw-medium"><i class="ri-add-fill me-1 align-bottom"></i> Add Item</a>
-                                    </td>
-                                </tr>
-                                <tr class="border-top border-top-dashed mt-2">
-                                    <td colspan="3"></td>
-                                    <td colspan="2" class="p-0">
-                                        <table class="table table-borderless table-sm table-nowrap align-middle mb-0">
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">Sub Total</th>
-                                                    <td style="width:150px;">
-                                                        <input type="text" class="form-control bg-light border-0" id="cart-subtotal" placeholder="$0.00" readonly />
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Estimated Tax (12.5%)</th>
-                                                    <td>
-                                                        <input type="text" class="form-control bg-light border-0" id="cart-tax" placeholder="$0.00" readonly />
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Discount <small class="text-muted">(VELZON15)</small></th>
-                                                    <td>
-                                                        <input type="text" class="form-control bg-light border-0" id="cart-discount" placeholder="$0.00" readonly />
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">Shipping Charge</th>
-                                                    <td>
-                                                        <input type="text" class="form-control bg-light border-0" id="cart-shipping" placeholder="$0.00" readonly />
-                                                    </td>
-                                                </tr>
-                                                <tr class="border-top border-top-dashed">
-                                                    <th scope="row">Total Amount</th>
-                                                    <td>
-                                                        <input type="text" class="form-control bg-light border-0" id="cart-total" placeholder="$0.00" readonly />
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <!--end table-->
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!--end table-->
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-lg-4">
-                            <div class="mb-2">
-                                <label for="choices-payment-type" class="form-label text-muted text-uppercase fw-semibold">Payment Details</label>
-                                <div class="input-light">
-                                    <select class="form-control bg-light border-0" data-choices data-choices-search-false data-choices-removeItem id="choices-payment-type">
-                                        <option value="">Payment Method</option>
-                                        <option value="Mastercard">Mastercard</option>
-                                        <option value="Credit Card">Credit Card</option>
-                                        <option value="Visa">Visa</option>
-                                        <option value="Paypal">Paypal</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="mb-2">
-                                <input class="form-control bg-light border-0" type="text" id="cardholderName" placeholder="Card Holder Name">
-                            </div>
-                            <div class="mb-2">
-                                <input class="form-control bg-light border-0" type="text" id="cardNumber" placeholder="xxxx xxxx xxxx xxxx">
-                            </div>
-                            <div>
-                                <input class="form-control  bg-light border-0" type="text" id="amountTotalPay" placeholder="$0.00" readonly />
-                            </div>
-                        </div><!--end col-->
-                    </div><!--end row-->
-                    <div class="mt-4">
-                        <label for="exampleFormControlTextarea1" class="form-label text-muted text-uppercase fw-semibold">NOTES</label>
-                        <textarea class="form-control alert alert-info" id="exampleFormControlTextarea1" placeholder="Notes" rows="2" required>All accounts are to be paid within 7 days from receipt of invoice. To be paid by cheque or credit card or direct payment online. If account is not paid within 7 days the credits details supplied as confirmation of work undertaken will be charged the agreed quoted fee noted above.</textarea>
-                    </div>
-                    <div class="hstack gap-2 justify-content-end d-print-none mt-4">
-                        <button type="submit" class="btn btn-success"><i class="ri-printer-line align-bottom me-1"></i> Save</button>
-                        <a href="javascript:void(0);" class="btn btn-primary"><i class="ri-download-2-line align-bottom me-1"></i> Download Invoice</a>
-                        <a href="javascript:void(0);" class="btn btn-danger"><i class="ri-send-plane-fill align-bottom me-1"></i> Send Invoice</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div><!--end col-->
-</div><!--end row-->
-
-@section scripts{
-    <!-- dropzone min -->
-    <script src="~/assets/libs/dropzone/dropzone-min.js"></script>
-
-    <!-- cleave.js -->
-    <script src="~/assets/libs/cleave.js/cleave.min.js"></script>
-
-    <!--Invoice create init js-->
-    <script src="~/assets/js/pages/invoicecreate.init.js"></script>
-
-    <!-- Sweet Alerts js -->
-    <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
-
-    <!-- App js -->
-    <script src="~/assets/js/app.js"></script>
+@{
+    var _DropDownListService = new PackSlipApp.Service.Dispatchservice();
+    var _JobList = _DropDownListService.GetJobNum();
+    var _POList = _DropDownListService.GetPONum();
+    //var _PartNoList = _DropDownListService.GetPartNum();
+    //var _LineNo = _DropDownListService.GetPOlineno();
 }
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header align-items-center d-flex">
+            <h2 class="card-title mb-0 flex-grow-1">Add Packing List</h2>
+            <div class="flex-shrink-0">
+                <div class="form-check form-switch form-switch-right form-switch-md">
+                    <h3>Packing Slip No : 739</h3>
+                </div>
+            </div>
+        </div><!-- end card header -->
+        <div class="card-body">
+            <div class="live-preview">
+                <div class="row gy-4">
+                    <div class="col-xxl-2 col-md-2">
+                        <label class="form-label">Packing List Type</label>
+                        <select class="form-control" id="packingListType">
+                            <option value="" disabled selected>-- Select --</option>
+                            <option value="Medical">Medical</option>
+                            <option value="Sterilize">Sterilize</option>
+                            <option value="Fitting">Fitting</option>
+                            <option value="Fitting Advance">Fitting Advance</option>
+                            <option value="Medical Advance">Medical Advance</option>
+                            <option value="Free sample">Free sample</option>
+                            <option value="UK">UK</option>
+                        </select>
+                    </div>
+                    <div class="col-xxl-2 col-md-2">
+                        <label class="form-label">Jobno</label>
+                        <select class="form-control" id="jobNo" onchange="getpartno();">
+                            @foreach (var item in _JobList)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-xxl-2 col-md-2">
+                        <label class="form-label">Part No</label>
+                        <input type="text" class="form-control col-12" id="partNo">
+                    </div>
+                    <div class="col-xxl-1 col-md-1">
+                        <label class="form-label">LM</label>
+                        <input type="checkbox" class="form-check col-12" id="lm">
+                    </div>
+                    <div class="col-xxl-1 col-md-1">
+                        <label class="form-label">Qty</label>
+                        <input type="text" class="form-control" id="qty">
+                    </div>
+                    <div class="col-xxl-2 col-md-2">
+                        <label class="form-label">W/Pcs</label>
+                        <input type="text" class="form-control" id="wPcs">
+                    </div>
+                    <div class="col-xxl-2 col-md-2">
+                        <label class="form-label">Box</label>
+                        <input type="text" class="form-control" id="box">
+                    </div>
+                    <div class="col-xxl-2 col-md-2">
+                        <label class="form-label">Po#</label>
+                        <select class="form-control" id="po">
+                        </select>
+                    </div>
+                    <div class="col-xxl-2 col-md-2">
+                        <label class="form-label">Line No</label>
+                        <select class="form-control" id="lineNo">
+                        </select>
+                    </div>
+                    <div class="col-xxl-2 col-md-2">
+                        <label class="form-label">Material Details</label>
+                        <input type="text" class="form-control" id="materialDetails">
+                    </div>
+                    <div class="col-xxl-2 col-md-2">
+                        <label class="form-label">Total Weight</label>
+                        <input type="text" class="form-control" id="totalWeight">
+                    </div>
+                    <div class="col-xxl-2 col-md-2">
+                        <label class="form-label">Packing Type</label>
+                        <input type="text" class="form-control" id="packingType">
+                    </div>
+                    <div class="col-xxl-2 col-md-2">
+                        <label class="form-label">Box Weight</label>
+                        <input type="text" class="form-control" id="boxWeight">
+                    </div>
+                </div>
+                <br>
+                <button class="btn btn-primary" onclick="addPackingItem()">Add Item</button>
+                <br><br>
+
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Packing Type</th>
+                            <th>Part No</th>
+                            <th>Job No</th>
+                            <th>LM</th>
+                            <th>Qty</th>
+                            <th>W/Pcs</th>
+                            <th>Box</th>
+                            <th>Po#</th>
+                            <th>Line No</th>
+                            <th>Material Details</th>
+                            <th>Total Weight</th>
+                            <th>Packing Type</th>
+                            <th>Box Weight</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="packingTableBody"></tbody>
+                </table>
+
+                <button class="btn btn-success" onclick="submitPackingList()">Submit Packing List</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function getpartno() {
+        var element = document.getElementById("jobNo");
+
+        var value = element.value;
+
+        $.getJSON('/UserInput/GetPartnorevno', { idjobnumber: value }, function (data) {
+            debugger
+            if (data !== null) {
+                debugger
+                $("#partNo").val(data.PartNum);
+
+                var poOptions = `<option value="" disabled selected>Select PO Number</option>`;
+                if (data.PoNum && data.PoNum.length > 0) {
+                    poOptions += data.PoNum.map(po => `<option value="${po}">${po}</option>`).join('');
+                } else {
+                    poOptions += '<option value="" disabled>No PO Available</option>';
+                }
+                $("#po").html(poOptions); // Set dropdown options
+
+                // Generate Line Number options as a single string
+                var lineOptions = `<option value="" disabled selected>Select Line Number</option>`;
+                if (data.Lineno && data.Lineno.length > 0) {
+                    lineOptions += data.Lineno.map(line => `<option value="${line}">${line}</option>`).join('');
+                } else {
+                    lineOptions += '<option value="" disabled>No Line Number Available</option>';
+                }
+                $("#lineNo").html(lineOptions); // Set dropdown options
+            } else {
+                console.log("No data found or error occurred.");
+            }
+        });
+    }
+    var packingList = [];
+
+    function addPackingItem() {
+        var packingListType = $("#packingListType").val(); // Get selected type
+        var partNo = $("#partNo").val().trim();
+        var jobNo = $("#jobNo").val().trim();
+        var lm = $("#lm").is(":checked") ? "Yes" : "No"; // Checkbox value
+        var qty = $("#qty").val().trim();
+        var wPcs = $("#wPcs").val().trim();
+        var box = $("#box").val().trim();
+        var po = $("#po").val();
+        var lineNo = $("#lineNo").val();
+        var materialDetails = $("#materialDetails").val().trim();
+        var totalWeight = $("#totalWeight").val().trim();
+        var packingType = $("#packingType").val().trim();
+        var boxWeight = $("#boxWeight").val().trim();
+
+        // Validate if any field is empty
+        if (!packingListType) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Error',
+                text: 'Please select a Packing List Type!',
+                confirmButtonColor: '#d33'
+            });
+            return;
+        }
+
+        if (!partNo || !jobNo || !qty || !wPcs || !box || !po || !lineNo || !materialDetails || !totalWeight || !packingType || !boxWeight) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Error',
+                text: 'All fields except LM must be filled!',
+                confirmButtonColor: '#d33'
+            });
+            return;
+        }
+
+        var item = {
+            SrNo: packingList.length + 1, // Assign Serial Number dynamically
+            PackingListType: packingListType, // Store selected type
+            PartNo: partNo,
+            JobNo: jobNo,
+            LM: lm,
+            Qty: qty,
+            WPcs: wPcs,
+            Box: box,
+            Po: po,
+            LineNo: lineNo,
+            MaterialDetails: materialDetails,
+            TotalWeight: totalWeight,
+            PackingType: packingType,
+            BoxWeight: boxWeight
+        };
+
+        packingList.push(item);
+        updateTable();
+
+        // Clear all input fields except the packing list type
+        $(".form-control").not("#packingListType").val("");
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Item Added',
+            text: 'Packing item successfully added!',
+            confirmButtonColor: '#28a745'
+        });
+    }
+
+    function updateTable() {
+        var tableBody = $("#packingTableBody");
+        tableBody.empty();
+
+        packingList.forEach((item, index) => {
+            var newRow = `<tr>
+                <td>${index + 1}</td> <!-- Sr No -->
+                <td>${item.PackingListType}</td>
+                <td>${item.PartNo}</td>
+                <td>${item.JobNo}</td>
+                <td>${item.LM}</td>
+                <td>${item.Qty}</td>
+                <td>${item.WPcs}</td>
+                <td>${item.Box}</td>
+                <td>${item.Po}</td>
+                <td>${item.LineNo}</td>
+                <td>${item.MaterialDetails}</td>
+                <td>${item.TotalWeight}</td>
+                <td>${item.PackingType}</td>
+                <td>${item.BoxWeight}</td>
+                <td><button class='btn btn-danger' onclick='removeItem(${index})'>Remove</button></td>
+            </tr>`;
+            tableBody.append(newRow);
+        });
+    }
+
+    function removeItem(index) {
+        packingList.splice(index, 1);
+        updateTable();
+
+        Swal.fire({
+            icon: "info",
+            title: "Item Removed",
+            text: "Packing item successfully removed!",
+            confirmButtonColor: "#007bff"
+        });
+    }
+
+    function submitPackingList() {
+        if (packingList.length === 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'No Data',
+                text: 'No packing items to submit!',
+                confirmButtonColor: '#d33'
+            });
+            return;
+        }
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "Do you want to submit the packing list?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, submit it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: '@Url.Action("SavePackingList", "UserInput")',
+                    type: "POST",
+                    data: JSON.stringify({ packingList: packingList }),
+                    contentType: "application/json",
+                    success: function (response) {
+                        Swal.fire({
+                            icon: response.success ? 'success' : 'error',
+                            title: response.success ? 'Success' : 'Error',
+                            text: response.message,
+                            confirmButtonColor: '#28a745'
+                        });
+
+                        if (response.success) {
+                            packingList = [];
+                            updateTable();
+                            $("#packingListType").val(""); // Clear dropdown only on submit
+                        }
+                    },
+                    error: function () {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Error while saving the packing list!',
+                            confirmButtonColor: '#d33'
+                        });
+                    }
+                });
+            }
+        });
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="~/assets/libs/dropzone/dropzone-min.js"></script>
+
+<!-- cleave.js -->
+<script src="~/assets/libs/cleave.js/cleave.min.js"></script>
+
+<!--Invoice create init js-->
+<script src="~/assets/js/pages/invoicecreate.init.js"></script>
+
+<!-- Sweet Alerts js -->
+<script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+
+<!-- App js -->
+<script src="~/assets/js/app.js"></script>

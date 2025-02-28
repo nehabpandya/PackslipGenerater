@@ -12,8 +12,8 @@ namespace PackSlipApp.ViewModel
 
     public class ViewPackSlip
     {
-        public int id { get; set; }
-        public int? PackslipNo { get; set; }
-        public int? InvoiceNo { get; set; }
+        public int Id { get; set; }
+        public string PackslipNo { get; set; }
+        public string InvoiceNo { get; set; }
     }
 }
