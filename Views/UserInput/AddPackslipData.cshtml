@@ -11,14 +11,13 @@
 
     <!-- Sweet Alert css-->
     <link href="~/assets/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" type="text/css" />
-}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
+}
 @{
     var _DropDownListService = new PackSlipApp.Service.Dispatchservice();
     var _JobList = _DropDownListService.GetJobNum();
     var _POList = _DropDownListService.GetPONum();
-    //var _PartNoList = _DropDownListService.GetPartNum();
-    //var _LineNo = _DropDownListService.GetPOlineno();
 }
 <div class="col-lg-12">
     <div class="card">
@@ -26,7 +25,7 @@
             <h2 class="card-title mb-0 flex-grow-1">Add Packing List</h2>
             <div class="flex-shrink-0">
                 <div class="form-check form-switch form-switch-right form-switch-md">
-                    <h3>Packing Slip No : 739</h3>
+                    <h3>Packing Slip No : @ViewBag.PackslipNo</h3>
                 </div>
             </div>
         </div><!-- end card header -->
@@ -35,7 +34,7 @@
                 <div class="row gy-4">
                     <div class="col-xxl-2 col-md-2">
                         <label class="form-label">Packing List Type</label>
-                        <select class="form-control" id="packingListType">
+                        <select class="form-control js-example-basic-single" id="packingListType">
                             <option value="" disabled selected>-- Select --</option>
                             <option value="Medical">Medical</option>
                             <option value="Sterilize">Sterilize</option>
@@ -48,7 +47,9 @@
                     </div>
                     <div class="col-xxl-2 col-md-2">
                         <label class="form-label">Jobno</label>
-                        <select class="form-control" id="jobNo" onchange="getpartno();">
+                        <select class="form-control js-example-basic-single" id="jobNo" onchange="getpartno();">
+                            <option value="">Select Job Number</option>
+
                             @foreach (var item in _JobList)
                             {
                                 <option value="@item.Value">@item.Text</option>
@@ -57,32 +58,32 @@
                     </div>
                     <div class="col-xxl-2 col-md-2">
                         <label class="form-label">Part No</label>
-                        <input type="text" class="form-control col-12" id="partNo">
+                        <input type="text" class="form-control col-12" id="partNo" disabled>
                     </div>
                     <div class="col-xxl-1 col-md-1">
-                        <label class="form-label">LM</label>
+                        <label class="form-label" style="margin-left: 60px;">LM</label>
                         <input type="checkbox" class="form-check col-12" id="lm">
                     </div>
                     <div class="col-xxl-1 col-md-1">
                         <label class="form-label">Qty</label>
-                        <input type="text" class="form-control" id="qty">
+                        <input type="number" class="form-control" id="qty" oninput="calculateTotalWeight()">
                     </div>
                     <div class="col-xxl-2 col-md-2">
                         <label class="form-label">W/Pcs</label>
-                        <input type="text" class="form-control" id="wPcs">
+                        <input type="number" class="form-control" id="wPcs" oninput="calculateTotalWeight()">
                     </div>
                     <div class="col-xxl-2 col-md-2">
                         <label class="form-label">Box</label>
-                        <input type="text" class="form-control" id="box">
+                        <input type="number" class="form-control" id="box">
                     </div>
                     <div class="col-xxl-2 col-md-2">
                         <label class="form-label">Po#</label>
-                        <select class="form-control" id="po">
+                        <select class="form-control js-example-basic-single" id="po">
                         </select>
                     </div>
                     <div class="col-xxl-2 col-md-2">
                         <label class="form-label">Line No</label>
-                        <select class="form-control" id="lineNo">
+                        <select class="form-control js-example-basic-single" id="lineNo">
                         </select>
                     </div>
                     <div class="col-xxl-2 col-md-2">
@@ -91,15 +92,21 @@
                     </div>
                     <div class="col-xxl-2 col-md-2">
                         <label class="form-label">Total Weight</label>
-                        <input type="text" class="form-control" id="totalWeight">
+                        <input type="text" class="form-control" id="totalWeight" disabled>
                     </div>
                     <div class="col-xxl-2 col-md-2">
-                        <label class="form-label">Packing Type</label>
-                        <input type="text" class="form-control" id="packingType">
+                        <label class="form-label">Box Type</label>
+                        <select class="form-control js-example-basic-single" id="packingType" onchange="calculateBoxWeight()">
+                            <option value="" disabled selected>-- Select --</option>
+                            <option value="17*14*6">17*14*6</option>
+                            <option value="15*10*4">15*10*4</option>
+                            <option value="10*10*5">10*10*5</option>
+                            <option value="22*16*12">22*16*12</option>
+                        </select>
                     </div>
                     <div class="col-xxl-2 col-md-2">
-                        <label class="form-label">Box Weight</label>
-                        <input type="text" class="form-control" id="boxWeight">
+                        <label class="form-label">Box Weight(kg)</label>
+                        <input type="text" class="form-control" id="boxWeight" disabled>
                     </div>
                 </div>
                 <br>
@@ -121,7 +128,7 @@
                             <th>Line No</th>
                             <th>Material Details</th>
                             <th>Total Weight</th>
-                            <th>Packing Type</th>
+                            <th>Box Type</th>
                             <th>Box Weight</th>
                             <th>Action</th>
                         </tr>
@@ -167,13 +174,45 @@
             }
         });
     }
+
+    function calculateTotalWeight() {
+        debugger
+        let qty = parseFloat(document.getElementById("qty").value) || 0;
+        let wPcs = parseFloat(document.getElementById("wPcs").value) || 0;
+
+        let totalWeight = qty * wPcs;
+
+        document.getElementById("totalWeight").value = totalWeight.toFixed(2);
+    }
+
+    function calculateBoxWeight() {
+        debugger
+        let packingType = document.getElementById("packingType").value;
+        if (packingType == "22*16*12") {
+            packingType = "0.790";
+        }
+        else if (packingType == "10*10*5") {
+            packingType = "0.440";
+        }
+        else if (packingType == "15*10*4") {
+            packingType = "0.350";
+        }
+        else if (packingType == "17*14*6") {
+            packingType = "2.372";
+        }
+        let boxCount = parseFloat(document.getElementById("box").value) || 0;
+
+        let totalBoxWeight = boxCount * packingType;
+
+        document.getElementById("boxWeight").value = totalBoxWeight.toFixed(3);
+    }
     var packingList = [];
 
     function addPackingItem() {
-        var packingListType = $("#packingListType").val(); // Get selected type
+        var packingListType = $("#packingListType").val();
         var partNo = $("#partNo").val().trim();
         var jobNo = $("#jobNo").val().trim();
-        var lm = $("#lm").is(":checked") ? "Yes" : "No"; // Checkbox value
+        var lm = $("#lm").is(":checked") ? 1 : 0;
         var qty = $("#qty").val().trim();
         var wPcs = $("#wPcs").val().trim();
         var box = $("#box").val().trim();
@@ -184,7 +223,6 @@
         var packingType = $("#packingType").val().trim();
         var boxWeight = $("#boxWeight").val().trim();
 
-        // Validate if any field is empty
         if (!packingListType) {
             Swal.fire({
                 icon: 'error',
@@ -311,7 +349,9 @@
                         if (response.success) {
                             packingList = [];
                             updateTable();
-                            $("#packingListType").val(""); // Clear dropdown only on submit
+                            $("#packingListType").val("");
+                            console.log(response.redirectUrl);
+                            window.location.href = response.redirectUrl;
                         }
                     },
                     error: function () {
@@ -338,6 +378,8 @@
 
 <!-- Sweet Alerts js -->
 <script src="~/assets/libs/sweetalert2/sweetalert2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+<script src="~/assets/js/pages/select2.init.js"></script>
 <!-- App js -->
 <script src="~/assets/js/app.js"></script>

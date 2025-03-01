@@ -41,6 +41,9 @@
     <Property Name="FinanceApproval" Type="bit" />
     <Property Name="PartDesc" Type="nvarchar(max)" />
     <Property Name="BoxSize" Type="int" />
+    <Property Name="BoxLength" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="BoxHeight" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="BoxWidth" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Dispatch_Grade">
     <Key>

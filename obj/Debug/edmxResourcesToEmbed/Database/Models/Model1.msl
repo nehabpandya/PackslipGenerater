@@ -21,6 +21,9 @@
     <EntitySetMapping Name="Dispatch_Data">
       <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Data">
         <MappingFragment StoreEntitySet="Dispatch_Data">
+          <ScalarProperty Name="BoxWidth" ColumnName="BoxWidth" />
+          <ScalarProperty Name="BoxHeight" ColumnName="BoxHeight" />
+          <ScalarProperty Name="BoxLength" ColumnName="BoxLength" />
           <ScalarProperty Name="BoxSize" ColumnName="BoxSize" />
           <ScalarProperty Name="PartDesc" ColumnName="PartDesc" />
           <ScalarProperty Name="FinanceApproval" ColumnName="FinanceApproval" />

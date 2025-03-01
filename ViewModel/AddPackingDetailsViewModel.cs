@@ -25,6 +25,10 @@ namespace PackSlipApp.ViewModel
         public decimal TotalWeight { get; set; }
         public string PackingType { get; set; }
         public decimal BoxWeight { get; set; }
+        public decimal BoxWidth { get; set; }
+        public decimal BoxLength { get; set; }
+        public decimal BoxHeight { get; set; }
+        public string PackingListType { get; set; }
 
 
     }

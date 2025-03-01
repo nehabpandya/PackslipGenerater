@@ -49,6 +49,9 @@
     <Property Name="FinanceApproval" Type="Boolean" />
     <Property Name="PartDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="BoxSize" Type="Int32" />
+    <Property Name="BoxLength" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="BoxHeight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="BoxWidth" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Dispatch_Grade">
     <Key>

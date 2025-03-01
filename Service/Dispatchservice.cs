@@ -139,5 +139,13 @@ namespace PackSlipApp.Service
             return dataTable;
 
         }
+
+        public string GetFinancialYear()
+        {
+            int currentYear = DateTime.Now.Year;
+            int nextYear = currentYear + 1;
+
+            return (DateTime.Now.Month >= 4) ? $"{currentYear}-{nextYear % 100}" : $"{currentYear}-{nextYear % 100}";
+        }
     }
 }
