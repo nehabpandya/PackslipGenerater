@@ -21,19 +21,14 @@
           <Property Name="Methodology" Type="nvarchar" MaxLength="500" />
           <Property Name="Notes/Questions" Type="nvarchar(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Data' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Dispatch_Data">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="PID" />
-            <PropertyRef Name="PackslipNo" />
-            <PropertyRef Name="InvoiceNo" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PID" Type="int" Nullable="false" />
-          <Property Name="PackslipNo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PackslipNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
           <Property Name="PartNo" Type="nvarchar" MaxLength="100" />
           <Property Name="PoNo" Type="nvarchar" MaxLength="100" />
           <Property Name="LineNo" Type="int" />
@@ -50,6 +45,7 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Data' does not have a prima
           <Property Name="PurchaserVerification" Type="bit" />
           <Property Name="FinanceApproval" Type="bit" />
           <Property Name="PartDesc" Type="nvarchar(max)" />
+          <Property Name="BoxSize" Type="int" />
         </EntityType>
         <EntityType Name="Dispatch_Grade">
           <Key>
@@ -60,12 +56,9 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Data' does not have a prima
           <Property Name="Material Type" Type="nvarchar" MaxLength="500" />
           <Property Name="Grade" Type="nvarchar" MaxLength="10" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_PackingDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Dispatch_PackingDetails">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="PackslipNo" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PackslipNo" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -78,26 +71,24 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_PackingDetails' does not ha
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
-          <Property Name="InvoiceNo" Type="varchar(max)" />
-          <Property Name="InvoiceDate" Type="date" />
-          <Property Name="PackSlipNo" Type="varchar(max)" />
-          <Property Name="PackSlipDate" Type="date" />
+          <Property Name="SNAddLine1" Type="varchar(max)" />
+          <Property Name="SNAddLine2" Type="varchar(max)" />
+          <Property Name="SNAddLine3" Type="varchar(max)" />
+          <Property Name="SNAddLine4" Type="varchar(max)" />
+          <Property Name="SNAddLine5" Type="varchar(max)" />
+          <Property Name="SNAddLine6" Type="varchar(max)" />
+          <Property Name="SNAddLine7" Type="varchar(max)" />
           <Property Name="PortOfLoading" Type="varchar(max)" />
-          <Property Name="PortOfDischarge" Type="varchar(max)" />
           <Property Name="CountryOfOrigin" Type="varchar(max)" />
           <Property Name="PaymentTerms" Type="varchar(max)" />
           <Property Name="Vessel_FlightNo" Type="varchar(max)" />
-          <Property Name="FinalDestination" Type="varchar(max)" />
-          <Property Name="DestinationCountry" Type="varchar(max)" />
           <Property Name="TermsOfDelivery" Type="varchar(max)" />
-          <Property Name="CIN" Type="varchar(max)" />
           <Property Name="IECNO" Type="varchar(max)" />
           <Property Name="GSTIN" Type="varchar(max)" />
-          <Property Name="FEI" Type="varchar(max)" />
-          <Property Name="FDAFacilityRegn" Type="varchar(max)" />
-          <Property Name="SNPlantAdd" Type="varchar(max)" />
-          <Property Name="ConsigneeAdd" Type="varchar(max)" />
-          <Property Name="BuyerAdd" Type="varchar(max)" />
+          <Property Name="FEI#" Type="varchar(max)" />
+          <Property Name="FDAFacilityRegn#" Type="varchar(max)" />
+          <Property Name="CIN" Type="varchar(max)" />
+          <Property Name="Signature" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="dispatch_type">
           <Key>
@@ -117,66 +108,24 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_PackingDetails' does not ha
         </EntityType>
         <EntityContainer Name="ITe_INDIAModelStoreContainer">
           <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dispatch_Data" EntityType="Self.Dispatch_Data" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Dispatch_Grade" EntityType="Self.Dispatch_Grade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dispatch_PackingDetails" EntityType="Self.Dispatch_PackingDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dispatch_Staticdata" EntityType="Self.dispatch_Staticdata" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dispatch_type" EntityType="Self.dispatch_type" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Dispatch_Data" EntityType="Self.Dispatch_Data" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Dispatch_Data].[ID] AS [ID], 
-    [Dispatch_Data].[PID] AS [PID], 
-    [Dispatch_Data].[PackslipNo] AS [PackslipNo], 
-    [Dispatch_Data].[InvoiceNo] AS [InvoiceNo], 
-    [Dispatch_Data].[PartNo] AS [PartNo], 
-    [Dispatch_Data].[PoNo] AS [PoNo], 
-    [Dispatch_Data].[LineNo] AS [LineNo], 
-    [Dispatch_Data].[JobNo] AS [JobNo], 
-    [Dispatch_Data].[LM] AS [LM], 
-    [Dispatch_Data].[Qty] AS [Qty], 
-    [Dispatch_Data].[wPcs] AS [wPcs], 
-    [Dispatch_Data].[Box] AS [Box], 
-    [Dispatch_Data].[MaterialDetails] AS [MaterialDetails], 
-    [Dispatch_Data].[TotalWeight] AS [TotalWeight], 
-    [Dispatch_Data].[PackingType] AS [PackingType], 
-    [Dispatch_Data].[BoxWeight] AS [BoxWeight], 
-    [Dispatch_Data].[SupervisorApproval] AS [SupervisorApproval], 
-    [Dispatch_Data].[PurchaserVerification] AS [PurchaserVerification], 
-    [Dispatch_Data].[FinanceApproval] AS [FinanceApproval], 
-    [Dispatch_Data].[PartDesc] AS [PartDesc]
-    FROM [dbo].[Dispatch_Data] AS [Dispatch_Data]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Dispatch_PackingDetails" EntityType="Self.Dispatch_PackingDetails" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Dispatch_PackingDetails].[ID] AS [ID], 
-    [Dispatch_PackingDetails].[PackslipNo] AS [PackslipNo], 
-    [Dispatch_PackingDetails].[InvoiceNo] AS [InvoiceNo], 
-    [Dispatch_PackingDetails].[Category] AS [Category], 
-    [Dispatch_PackingDetails].[Date] AS [Date]
-    FROM [dbo].[Dispatch_PackingDetails] AS [Dispatch_PackingDetails]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ITe_INDIAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ITe_INDIAEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Dispatch_PackingDetails" EntityType="ITe_INDIAModel.Dispatch_PackingDetails" />
           <EntitySet Name="Dispatch_Code" EntityType="ITe_INDIAModel.Dispatch_Code" />
+          <EntitySet Name="Dispatch_Data" EntityType="ITe_INDIAModel.Dispatch_Data" />
           <EntitySet Name="Dispatch_Grade" EntityType="ITe_INDIAModel.Dispatch_Grade" />
+          <EntitySet Name="Dispatch_PackingDetails" EntityType="ITe_INDIAModel.Dispatch_PackingDetails" />
           <EntitySet Name="dispatch_Staticdata" EntityType="ITe_INDIAModel.dispatch_Staticdata" />
           <EntitySet Name="dispatch_type" EntityType="ITe_INDIAModel.dispatch_type" />
-          <EntitySet Name="Dispatch_Data" EntityType="ITe_INDIAModel.Dispatch_Data" />
         </EntityContainer>
-        <EntityType Name="Dispatch_PackingDetails">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="PackslipNo" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="PackslipNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Category" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="Dispatch_Code">
           <Key>
             <PropertyRef Name="ID" />
@@ -193,6 +142,32 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_PackingDetails' does not ha
           <Property Name="Methodology" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Notes_Questions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Dispatch_Data">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PID" Type="Int32" Nullable="false" />
+          <Property Name="PackslipNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PartNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PoNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LineNo" Type="Int32" />
+          <Property Name="JobNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LM" Type="Boolean" />
+          <Property Name="Qty" Type="Int32" />
+          <Property Name="wPcs" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Box" Type="Int32" />
+          <Property Name="MaterialDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TotalWeight" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="PackingType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="BoxWeight" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="SupervisorApproval" Type="Boolean" />
+          <Property Name="PurchaserVerification" Type="Boolean" />
+          <Property Name="FinanceApproval" Type="Boolean" />
+          <Property Name="PartDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BoxSize" Type="Int32" />
+        </EntityType>
         <EntityType Name="Dispatch_Grade">
           <Key>
             <PropertyRef Name="ID" />
@@ -202,31 +177,39 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_PackingDetails' does not ha
           <Property Name="Material_Type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Grade" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Dispatch_PackingDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackslipNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InvoiceNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="dispatch_Staticdata">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="InvoiceNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="InvoiceDate" Type="DateTime" Precision="0" />
-          <Property Name="PackSlipNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PackSlipDate" Type="DateTime" Precision="0" />
+          <Property Name="SNAddLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SNAddLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SNAddLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SNAddLine4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SNAddLine5" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SNAddLine6" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SNAddLine7" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PortOfLoading" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="PortOfDischarge" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="CountryOfOrigin" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="PaymentTerms" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Vessel_FlightNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FinalDestination" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="DestinationCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TermsOfDelivery" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="IECNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="GSTIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FEI" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="FDAFacilityRegn" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SNPlantAdd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ConsigneeAdd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="BuyerAdd" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FEI_" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FDAFacilityRegn_" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Signature" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="dispatch_type">
           <Key>
@@ -244,51 +227,12 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_PackingDetails' does not ha
           <Property Name="BuyerAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="BuyerAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Dispatch_Data">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="PID" />
-            <PropertyRef Name="PackslipNo" />
-            <PropertyRef Name="InvoiceNo" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PID" Type="Int32" Nullable="false" />
-          <Property Name="PackslipNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="InvoiceNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PartNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="PoNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LineNo" Type="Int32" />
-          <Property Name="JobNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LM" Type="Boolean" />
-          <Property Name="Qty" Type="Int32" />
-          <Property Name="wPcs" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="Box" Type="Int32" />
-          <Property Name="MaterialDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TotalWeight" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="PackingType" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="BoxWeight" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="SupervisorApproval" Type="Boolean" />
-          <Property Name="PurchaserVerification" Type="Boolean" />
-          <Property Name="FinanceApproval" Type="Boolean" />
-          <Property Name="PartDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ITe_INDIAModelStoreContainer" CdmEntityContainer="ITe_INDIAEntities1">
-          <EntitySetMapping Name="Dispatch_PackingDetails">
-            <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_PackingDetails">
-              <MappingFragment StoreEntitySet="Dispatch_PackingDetails">
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Category" ColumnName="Category" />
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="PackslipNo" ColumnName="PackslipNo" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Dispatch_Code">
             <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Code">
               <MappingFragment StoreEntitySet="Dispatch_Code">
@@ -306,63 +250,10 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_PackingDetails' does not ha
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Dispatch_Grade">
-            <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Grade">
-              <MappingFragment StoreEntitySet="Dispatch_Grade">
-                <ScalarProperty Name="Grade" ColumnName="Grade" />
-                <ScalarProperty Name="Material_Type" ColumnName="Material Type" />
-                <ScalarProperty Name="InputSerialNumber" ColumnName="InputSerialNumber" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="dispatch_Staticdata">
-            <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_Staticdata">
-              <MappingFragment StoreEntitySet="dispatch_Staticdata">
-                <ScalarProperty Name="BuyerAdd" ColumnName="BuyerAdd" />
-                <ScalarProperty Name="ConsigneeAdd" ColumnName="ConsigneeAdd" />
-                <ScalarProperty Name="SNPlantAdd" ColumnName="SNPlantAdd" />
-                <ScalarProperty Name="FDAFacilityRegn" ColumnName="FDAFacilityRegn" />
-                <ScalarProperty Name="FEI" ColumnName="FEI" />
-                <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
-                <ScalarProperty Name="IECNO" ColumnName="IECNO" />
-                <ScalarProperty Name="CIN" ColumnName="CIN" />
-                <ScalarProperty Name="TermsOfDelivery" ColumnName="TermsOfDelivery" />
-                <ScalarProperty Name="DestinationCountry" ColumnName="DestinationCountry" />
-                <ScalarProperty Name="FinalDestination" ColumnName="FinalDestination" />
-                <ScalarProperty Name="Vessel_FlightNo" ColumnName="Vessel_FlightNo" />
-                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
-                <ScalarProperty Name="CountryOfOrigin" ColumnName="CountryOfOrigin" />
-                <ScalarProperty Name="PortOfDischarge" ColumnName="PortOfDischarge" />
-                <ScalarProperty Name="PortOfLoading" ColumnName="PortOfLoading" />
-                <ScalarProperty Name="PackSlipDate" ColumnName="PackSlipDate" />
-                <ScalarProperty Name="PackSlipNo" ColumnName="PackSlipNo" />
-                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
-                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="dispatch_type">
-            <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
-              <MappingFragment StoreEntitySet="dispatch_type">
-                <ScalarProperty Name="BuyerAddressLine3" ColumnName="BuyerAddressLine3" />
-                <ScalarProperty Name="BuyerAddressLine2" ColumnName="BuyerAddressLine2" />
-                <ScalarProperty Name="BuyerAddressLine1" ColumnName="BuyerAddressLine1" />
-                <ScalarProperty Name="ConsigneeAddressLine3" ColumnName="ConsigneeAddressLine3" />
-                <ScalarProperty Name="ConsigneeAddressLine2" ColumnName="ConsigneeAddressLine2" />
-                <ScalarProperty Name="ConsigneeAddressLine1" ColumnName="ConsigneeAddressLine1" />
-                <ScalarProperty Name="OurPlantAddressLine3" ColumnName="OurPlantAddressLine3" />
-                <ScalarProperty Name="OurPlantAddressLine2" ColumnName="OurPlantAddressLine2" />
-                <ScalarProperty Name="OurPlantAddressLine1" ColumnName="OurPlantAddressLine1" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Dispatch_Data">
             <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Data">
               <MappingFragment StoreEntitySet="Dispatch_Data">
+                <ScalarProperty Name="BoxSize" ColumnName="BoxSize" />
                 <ScalarProperty Name="PartDesc" ColumnName="PartDesc" />
                 <ScalarProperty Name="FinanceApproval" ColumnName="FinanceApproval" />
                 <ScalarProperty Name="PurchaserVerification" ColumnName="PurchaserVerification" />
@@ -383,6 +274,69 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_PackingDetails' does not ha
                 <ScalarProperty Name="PackslipNo" ColumnName="PackslipNo" />
                 <ScalarProperty Name="PID" ColumnName="PID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dispatch_Grade">
+            <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_Grade">
+              <MappingFragment StoreEntitySet="Dispatch_Grade">
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="Material_Type" ColumnName="Material Type" />
+                <ScalarProperty Name="InputSerialNumber" ColumnName="InputSerialNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dispatch_PackingDetails">
+            <EntityTypeMapping TypeName="ITe_INDIAModel.Dispatch_PackingDetails">
+              <MappingFragment StoreEntitySet="Dispatch_PackingDetails">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="InvoiceNo" ColumnName="InvoiceNo" />
+                <ScalarProperty Name="PackslipNo" ColumnName="PackslipNo" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dispatch_Staticdata">
+            <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_Staticdata">
+              <MappingFragment StoreEntitySet="dispatch_Staticdata">
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="FDAFacilityRegn_" ColumnName="FDAFacilityRegn#" />
+                <ScalarProperty Name="FEI_" ColumnName="FEI#" />
+                <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
+                <ScalarProperty Name="IECNO" ColumnName="IECNO" />
+                <ScalarProperty Name="TermsOfDelivery" ColumnName="TermsOfDelivery" />
+                <ScalarProperty Name="Vessel_FlightNo" ColumnName="Vessel_FlightNo" />
+                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+                <ScalarProperty Name="CountryOfOrigin" ColumnName="CountryOfOrigin" />
+                <ScalarProperty Name="PortOfLoading" ColumnName="PortOfLoading" />
+                <ScalarProperty Name="SNAddLine7" ColumnName="SNAddLine7" />
+                <ScalarProperty Name="SNAddLine6" ColumnName="SNAddLine6" />
+                <ScalarProperty Name="SNAddLine5" ColumnName="SNAddLine5" />
+                <ScalarProperty Name="SNAddLine4" ColumnName="SNAddLine4" />
+                <ScalarProperty Name="SNAddLine3" ColumnName="SNAddLine3" />
+                <ScalarProperty Name="SNAddLine2" ColumnName="SNAddLine2" />
+                <ScalarProperty Name="SNAddLine1" ColumnName="SNAddLine1" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dispatch_type">
+            <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
+              <MappingFragment StoreEntitySet="dispatch_type">
+                <ScalarProperty Name="BuyerAddressLine3" ColumnName="BuyerAddressLine3" />
+                <ScalarProperty Name="BuyerAddressLine2" ColumnName="BuyerAddressLine2" />
+                <ScalarProperty Name="BuyerAddressLine1" ColumnName="BuyerAddressLine1" />
+                <ScalarProperty Name="ConsigneeAddressLine3" ColumnName="ConsigneeAddressLine3" />
+                <ScalarProperty Name="ConsigneeAddressLine2" ColumnName="ConsigneeAddressLine2" />
+                <ScalarProperty Name="ConsigneeAddressLine1" ColumnName="ConsigneeAddressLine1" />
+                <ScalarProperty Name="OurPlantAddressLine3" ColumnName="OurPlantAddressLine3" />
+                <ScalarProperty Name="OurPlantAddressLine2" ColumnName="OurPlantAddressLine2" />
+                <ScalarProperty Name="OurPlantAddressLine1" ColumnName="OurPlantAddressLine1" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

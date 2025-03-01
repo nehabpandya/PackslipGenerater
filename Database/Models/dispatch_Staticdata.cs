@@ -15,25 +15,23 @@ namespace PackSlipApp.Database.Models
     public partial class dispatch_Staticdata
     {
         public int ID { get; set; }
-        public string InvoiceNo { get; set; }
-        public Nullable<System.DateTime> InvoiceDate { get; set; }
-        public string PackSlipNo { get; set; }
-        public Nullable<System.DateTime> PackSlipDate { get; set; }
+        public string SNAddLine1 { get; set; }
+        public string SNAddLine2 { get; set; }
+        public string SNAddLine3 { get; set; }
+        public string SNAddLine4 { get; set; }
+        public string SNAddLine5 { get; set; }
+        public string SNAddLine6 { get; set; }
+        public string SNAddLine7 { get; set; }
         public string PortOfLoading { get; set; }
-        public string PortOfDischarge { get; set; }
         public string CountryOfOrigin { get; set; }
         public string PaymentTerms { get; set; }
         public string Vessel_FlightNo { get; set; }
-        public string FinalDestination { get; set; }
-        public string DestinationCountry { get; set; }
         public string TermsOfDelivery { get; set; }
-        public string CIN { get; set; }
         public string IECNO { get; set; }
         public string GSTIN { get; set; }
-        public string FEI { get; set; }
-        public string FDAFacilityRegn { get; set; }
-        public string SNPlantAdd { get; set; }
-        public string ConsigneeAdd { get; set; }
-        public string BuyerAdd { get; set; }
+        public string FEI_ { get; set; }
+        public string FDAFacilityRegn_ { get; set; }
+        public string CIN { get; set; }
+        public string Signature { get; set; }
     }
 }

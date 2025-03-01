@@ -12,10 +12,15 @@ namespace PackSlipApp.ViewModel
         public ViewPackSlip PackSlipMainData;
 
         public ViewPackSlipViewModel UseInputList;
-
+        
         public string InvoiceNo { get; set; }
+
         public DateTime? InvoiceDate { get; set; }
+        public string FormattedInvoiceDate => InvoiceDate?.ToString("dd-MMM-yyyy");
+
         public DateTime? PackSlipDate { get; set; }
+        public string FormattedPackSlipDate => PackSlipDate?.ToString("dd-MMM-yyyy");
+
         public string AddressHeading { get; set; }
         public string Address { get; set; }
         public string CIN { get; set; }
@@ -46,12 +51,27 @@ namespace PackSlipApp.ViewModel
         public double? ExportQtyKgs { get; set; }
         public double? ImportObligationKgs { get; set; }
 
+        public string SNAddLine1 { get; set; }
+        public string SNAddLine2 { get; set; }
+        public string SNAddLine3 { get; set; }
+        public string SNAddLine4 { get; set; }
+        public string SNAddLine5 { get; set; }
+        public string SNAddLine6 { get; set; }
+        public string SNAddLine7 { get; set; }
+        public string PaymentTerms { get; set; }
+        public string Vessel_FlightNo { get; set; }
+        public string IECNO { get; set; }
+        public string FEI_ { get; set; }
+        public string FDAFacilityRegn_ { get; set; }
+        public string Signature { get; set; }
+
 
     }
 
     public class ListOfItemsInPo
     {
         public int AdvanceLicenceNo { get; set; }
+        public string PONo { get; set; }
         public int A4Lot { get; set; }
         public string PartNum { get; set; }
         public string PartDesc { get; set; }

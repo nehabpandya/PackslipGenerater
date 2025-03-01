@@ -34,5 +34,6 @@ namespace PackSlipApp.Database.Models
         public Nullable<bool> PurchaserVerification { get; set; }
         public Nullable<bool> FinanceApproval { get; set; }
         public string PartDesc { get; set; }
+        public Nullable<int> BoxSize { get; set; }
     }
 }

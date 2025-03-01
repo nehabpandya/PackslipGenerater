@@ -16,19 +16,14 @@
     <Property Name="Methodology" Type="nvarchar" MaxLength="500" />
     <Property Name="Notes/Questions" Type="nvarchar(max)" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Data' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Dispatch_Data">
     <Key>
       <PropertyRef Name="ID" />
-      <PropertyRef Name="PID" />
-      <PropertyRef Name="PackslipNo" />
-      <PropertyRef Name="InvoiceNo" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PID" Type="int" Nullable="false" />
-    <Property Name="PackslipNo" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PackslipNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="InvoiceNo" Type="nvarchar" MaxLength="50" />
     <Property Name="PartNo" Type="nvarchar" MaxLength="100" />
     <Property Name="PoNo" Type="nvarchar" MaxLength="100" />
     <Property Name="LineNo" Type="int" />
@@ -45,6 +40,7 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Data' does not have a prima
     <Property Name="PurchaserVerification" Type="bit" />
     <Property Name="FinanceApproval" Type="bit" />
     <Property Name="PartDesc" Type="nvarchar(max)" />
+    <Property Name="BoxSize" Type="int" />
   </EntityType>
   <EntityType Name="Dispatch_Grade">
     <Key>
@@ -55,12 +51,9 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_Data' does not have a prima
     <Property Name="Material Type" Type="nvarchar" MaxLength="500" />
     <Property Name="Grade" Type="nvarchar" MaxLength="10" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_PackingDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="Dispatch_PackingDetails">
     <Key>
       <PropertyRef Name="ID" />
-      <PropertyRef Name="PackslipNo" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PackslipNo" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -73,26 +66,24 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_PackingDetails' does not ha
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="InvoiceNo" Type="varchar(max)" />
-    <Property Name="InvoiceDate" Type="date" />
-    <Property Name="PackSlipNo" Type="varchar(max)" />
-    <Property Name="PackSlipDate" Type="date" />
+    <Property Name="SNAddLine1" Type="varchar(max)" />
+    <Property Name="SNAddLine2" Type="varchar(max)" />
+    <Property Name="SNAddLine3" Type="varchar(max)" />
+    <Property Name="SNAddLine4" Type="varchar(max)" />
+    <Property Name="SNAddLine5" Type="varchar(max)" />
+    <Property Name="SNAddLine6" Type="varchar(max)" />
+    <Property Name="SNAddLine7" Type="varchar(max)" />
     <Property Name="PortOfLoading" Type="varchar(max)" />
-    <Property Name="PortOfDischarge" Type="varchar(max)" />
     <Property Name="CountryOfOrigin" Type="varchar(max)" />
     <Property Name="PaymentTerms" Type="varchar(max)" />
     <Property Name="Vessel_FlightNo" Type="varchar(max)" />
-    <Property Name="FinalDestination" Type="varchar(max)" />
-    <Property Name="DestinationCountry" Type="varchar(max)" />
     <Property Name="TermsOfDelivery" Type="varchar(max)" />
-    <Property Name="CIN" Type="varchar(max)" />
     <Property Name="IECNO" Type="varchar(max)" />
     <Property Name="GSTIN" Type="varchar(max)" />
-    <Property Name="FEI" Type="varchar(max)" />
-    <Property Name="FDAFacilityRegn" Type="varchar(max)" />
-    <Property Name="SNPlantAdd" Type="varchar(max)" />
-    <Property Name="ConsigneeAdd" Type="varchar(max)" />
-    <Property Name="BuyerAdd" Type="varchar(max)" />
+    <Property Name="FEI#" Type="varchar(max)" />
+    <Property Name="FDAFacilityRegn#" Type="varchar(max)" />
+    <Property Name="CIN" Type="varchar(max)" />
+    <Property Name="Signature" Type="nchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="dispatch_type">
     <Key>
@@ -112,41 +103,10 @@ warning 6002: The table/view 'ITe_INDIA.dbo.Dispatch_PackingDetails' does not ha
   </EntityType>
   <EntityContainer Name="ITe_INDIAModelStoreContainer">
     <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dispatch_Data" EntityType="Self.Dispatch_Data" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Dispatch_Grade" EntityType="Self.Dispatch_Grade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Dispatch_PackingDetails" EntityType="Self.Dispatch_PackingDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="dispatch_Staticdata" EntityType="Self.dispatch_Staticdata" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="dispatch_type" EntityType="Self.dispatch_type" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Dispatch_Data" EntityType="Self.Dispatch_Data" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Dispatch_Data].[ID] AS [ID], 
-    [Dispatch_Data].[PID] AS [PID], 
-    [Dispatch_Data].[PackslipNo] AS [PackslipNo], 
-    [Dispatch_Data].[InvoiceNo] AS [InvoiceNo], 
-    [Dispatch_Data].[PartNo] AS [PartNo], 
-    [Dispatch_Data].[PoNo] AS [PoNo], 
-    [Dispatch_Data].[LineNo] AS [LineNo], 
-    [Dispatch_Data].[JobNo] AS [JobNo], 
-    [Dispatch_Data].[LM] AS [LM], 
-    [Dispatch_Data].[Qty] AS [Qty], 
-    [Dispatch_Data].[wPcs] AS [wPcs], 
-    [Dispatch_Data].[Box] AS [Box], 
-    [Dispatch_Data].[MaterialDetails] AS [MaterialDetails], 
-    [Dispatch_Data].[TotalWeight] AS [TotalWeight], 
-    [Dispatch_Data].[PackingType] AS [PackingType], 
-    [Dispatch_Data].[BoxWeight] AS [BoxWeight], 
-    [Dispatch_Data].[SupervisorApproval] AS [SupervisorApproval], 
-    [Dispatch_Data].[PurchaserVerification] AS [PurchaserVerification], 
-    [Dispatch_Data].[FinanceApproval] AS [FinanceApproval], 
-    [Dispatch_Data].[PartDesc] AS [PartDesc]
-    FROM [dbo].[Dispatch_Data] AS [Dispatch_Data]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="Dispatch_PackingDetails" EntityType="Self.Dispatch_PackingDetails" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Dispatch_PackingDetails].[ID] AS [ID], 
-    [Dispatch_PackingDetails].[PackslipNo] AS [PackslipNo], 
-    [Dispatch_PackingDetails].[InvoiceNo] AS [InvoiceNo], 
-    [Dispatch_PackingDetails].[Category] AS [Category], 
-    [Dispatch_PackingDetails].[Date] AS [Date]
-    FROM [dbo].[Dispatch_PackingDetails] AS [Dispatch_PackingDetails]</DefiningQuery>
-    </EntitySet>
   </EntityContainer>
 </Schema>

@@ -25,11 +25,11 @@ namespace PackSlipApp.Database.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Dispatch_PackingDetails> Dispatch_PackingDetails { get; set; }
         public virtual DbSet<Dispatch_Code> Dispatch_Code { get; set; }
+        public virtual DbSet<Dispatch_Data> Dispatch_Data { get; set; }
         public virtual DbSet<Dispatch_Grade> Dispatch_Grade { get; set; }
+        public virtual DbSet<Dispatch_PackingDetails> Dispatch_PackingDetails { get; set; }
         public virtual DbSet<dispatch_Staticdata> dispatch_Staticdata { get; set; }
         public virtual DbSet<dispatch_type> dispatch_type { get; set; }
-        public virtual DbSet<Dispatch_Data> Dispatch_Data { get; set; }
     }
 }

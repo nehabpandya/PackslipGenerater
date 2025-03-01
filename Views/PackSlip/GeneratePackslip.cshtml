@@ -6,267 +6,352 @@
 }
 
 <style>
-    body {
-        font-family: Arial, sans-serif;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
+    .table-bordered {
         border: 1px solid black;
     }
-
-    th, td {
-        border: 1px solid black;
-        padding: 8px;
-        text-align: left;
-        vertical-align: top;
+    .no-bottom-border {
+        border-bottom: 1px solid white !important;
     }
 
-    .header-title {
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-        padding: 10px;
-    }
-
-    .text-bold {
-        font-weight: bold;
-    }
-
-    input[type="text"], input[type="date"] {
-        width: 100%;
-        border: none;
-        padding: 5px;
-        font-size: 14px;
-    }
-
-    .invoice-container {
-        width: 100%;
-        max-width: 800px;
-        margin: auto;
-    }
-
-    . print {
-        body
-
-    {
-        width: 210mm;
-        height: 297mm;
-        margin: 0;
-        padding: 0;
-    }
-
-    .invoice-container {
-        width: 100%;
-        margin: 0;
-        padding: 10px;
-    }
-
-    table {
-        page-break-before: auto;
-        page-break-after: auto;
-        page-break-inside: avoid;
-    }
-    }
 </style>
 
-<div class="invoice-container">
-    <div class="header-title">PackSlip Details</div>
-    <!-- Excel Button Positioned at the Top Right -->
-    <div class="text-end mb-2">
-        <button class="btn btn-success" onclick="downloadExcel()">
-            <i class="fas fa-file-excel"></i> Excel
-        </button>
-    </div>    <table>
+<div class="card">
+
+    <div class="row m-3">
+        <div class="col-10">
+            <h3><b>PackSlip Details</b></h3>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-success" onclick="downloadExcel()">
+                <i class="fas fa-file-excel"></i> Excel
+            </button>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
         <tr>
-            <td class="text-bold ">Invoice No</td>
+            <td colspan="10" align="center" style="font-weight: bold; font-size: 18px;"><center> PACKING LIST </center></td>
+        </tr>
+
+        <tr>
+            <td colspan="5"><b>Expoter</b></td>
+            <td colspan="1">Invoice No</td>
+            <td colspan="1">@Model.InvoiceNo</td>
+            <td class="no-bottom-border" colspan="1"></td>
+            <td colspan="1">Invoice Date</td>
+            <td colspan="1">@Model.FormattedInvoiceDate</td>
+        </tr>
+        <tr>
+            <td colspan="5">@Model.SNAddLine1</td>
+            <td colspan="1">Packslip No</td>
+            <td colspan="1">@Model.PackSlipMainData.PackslipNo</td>
+            <td class="no-bottom-border" colspan="1"></td>
+            <td colspan="1">Packslip Date</td>
+            <td colspan="1">@Model.FormattedPackSlipDate</td>
+        </tr>
+        <tr>
+            <td colspan="5">@Model.SNAddLine2</td>
+            <td colspan="1">Port of Loading</td>
+            <td colspan="1">@Model.PortOfLoading</td>
+            <td class="no-bottom-border" colspan="1"></td>
+            <td colspan="1">Vessel/Flight No</td>
+            <td colspan="1"></td>
+        </tr>
+        <tr>
+            <td colspan="5">@Model.SNAddLine3</td>
+            <td colspan="1">Port of Discharge</td>
+            <td colspan="1">@Model.PortOfDischarge</td>
+            <td class="no-bottom-border" colspan="1"></td>
+            <td colspan="1">Final Destination</td>
+            <td colspan="1">@Model.FinalDestination</td>
+        </tr>
+        <tr>
+            <td colspan="5">@Model.SNAddLine4</td>
+            <td colspan="1">Country Of Origin</td>
+            <td colspan="1">@Model.CountryOfOrigin</td>
+            <td colspan="1"></td>
+            <td colspan="1">Destination Country</td>
+            <td colspan="1">@Model.DestinationCountry</td>
+        </tr>
+
+        <tr>
+            <td colspan="5">@Model.SNAddLine5</td>
+            <td colspan="1">Payment Terms</td>
+            <td colspan="4">@Model.PaymentTerms</td>
+
+        </tr>
+
+        <tr>
+            <td colspan="5">@Model.SNAddLine6</td>
+            <td class="no-bottom-border" colspan="5">Other Reference</td>
+        </tr>
+
+        <tr>
+            <td colspan="5">@Model.SNAddLine7</td>
+            <td class="no-bottom-border" colspan="5">1 Medical Device</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">CIN</td>
+            <td colspan="3">@Model.CIN</td>
+            <td colspan="5">2 Medical Device</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">IES NO</td>
+            <td colspan="3">@Model.IECNO</td>
+            <td class="no-bottom-border" colspan="5">Other Details</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">GSTIN</td>
+            <td colspan="3">@Model.GSTIN</td>
+            <td class="no-bottom-border" colspan="5"></td>
+        </tr>
+        <tr>
+            <td colspan="2">FEI#</td>
+            <td  colspan="3">@Model.FEI_</td>
+            <td class="no-bottom-border" colspan="5">Kind Attention:</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">FDA Facility Regn#</td><br>
+            <td colspan="3">@Model.FDAFacilityRegn_</td>
+            <td colspan="5"></td>
+        </tr>
+        <tr>
+            <td class="no-bottom-border" colspan="4"></td>
+            <td class="no-bottom-border" colspan="3"></td>
+            <td class="no-bottom-border" colspan="3"></td>
+        </tr>
+        <tr>
+            <td class="no-bottom-border" colspan="4">Consignee</td>
+            <td class="no-bottom-border" colspan="3">Buyer (If Other than Consignee)</td>
+            <td class="no-bottom-border" colspan="3">Buyer PO No & Date</td>
+        </tr>
+        <tr>
+            <td class="no-bottom-border" colspan="4">@Model.Consignee</td>
+            <td class="no-bottom-border" colspan="3">S.S.White Technologie Inc</td>
+            <td class="no-bottom-border" colspan="3"></td>
+        </tr>
+
+        <tr>
+            <td class="no-bottom-border" colspan="4">Add1</td>
+            <td class="no-bottom-border" colspan="3">Add1</td>
+            <td class="no-bottom-border" colspan="3"></td>
+        </tr>
+
+        <tr>
+            <td class="no-bottom-border" colspan="4">Add2</td>
+            <td class="no-bottom-border" colspan="3">Add2</td>
+            <td class="no-bottom-border" colspan="3"></td>
+        </tr>
+
+        <tr>
+            <td class="no-bottom-border" colspan="4">Add3</td>
+            <td class="no-bottom-border" colspan="3">Add3</td>
+            <td class="no-bottom-border" colspan="3"></td>
+        </tr>
+        <tr>
+            <td colspan="4">Add4</td>
+            <td colspan="3">Add4</td>
+            <td colspan="3"></td>
+        </tr>
+        <tr>
+            <td colspan="9"></td>
+        </tr>
+        <tr>
             <td>
-                <input class="form-control  bg-light border-0" type="text" id="amountTotalPay" value="EXP-386/2024-25" />
-
-            </td>
-
-            <td class="text-bold">@Model.InvoiceDate</td>
-            <td><input type="text" name="InvoiceDate" value="24/Jan/25" /></td>
-        </tr>
-        <tr>
-            <td class="text-bold">Pack Slip No</td>
-            <td><input type="text" name="PackSlipNo" value="4773/2024" /></td>
-            <td class="text-bold">Pack Slip Date</td>
-            <td><input type="text" name="PackSlipDate" value="24/Jan/25" /></td>
-        </tr>
-    </table>
-
-    <br />
-
-    <table>
-        <tr>
-            <!-- Left Section: Address Details -->
-            <td style="width: 50%;">
-                <p>
-                    <strong>Exporter:</strong><br>
-                    <b>S.S.White Technologies India Pvt. Ltd.</b><br>
-                    Regd Office / Works: Survey No 2788/3<br>
-                    Wadhwan Ahmedabad Highway<br>
-                    Near Krishna Petrol Pump, Wadhwan<br>
-                    Dist Surendranagar-363030, Gujarat, (India)<br>
-                    <b>Ph:</b> (91)-2752-287514<br>
-                    <b>CIN: U29299GJ2003PTC072165</b><br>
-                    <b>IEC No: 4103000872</b><br>
-                    <b>GSTIN: 24AAHCS2396B1ZI</b><br>
-                    FEI #: 3011365613<br>
-                    FDA Facility Regn #: 3011365613<br>
-                    <b>The Company named in this column is the manufacturer of all the parts listed on this Invoice.</b>
-                </p>
-            </td>
-
-            <!-- Right Section: Port and Shipping Details -->
-            <td style="width: 50%;">
-                <table>
-                    <tr>
-                        <td class="text-bold">Port of Loading</td>
-                        <td>Ahmedabad</td>
-                    </tr>
-                    <tr>
-                        <td class="text-bold">Port of Discharge</td>
-                        <td>Florida USA</td>
-                    </tr>
-                    <tr>
-                        <td class="text-bold">Final Destination</td>
-                        <td>Florida</td>
-                    </tr>
-                    <tr>
-                        <td class="text-bold">Country of Origin</td>
-                        <td>India</td>
-                    </tr>
-                    <tr>
-                        <td class="text-bold">Destination Country</td>
-                        <td>USA</td>
-                    </tr>
-                    <tr>
-                        <td class="text-bold">Payment Terms</td>
-                        <td>120 Days from BL/AWB Date</td>
-                    </tr>
-                    <tr>
-                        <td class="text-bold">Terms of Delivery</td>
-                        <td>Ex-Works</td>
-                    </tr>
-                    <tr>
-                        <td class="text-bold">Other Reference</td>
-                        <td>
-                            1. MDR Loan Licence Number: MFG/MD/2024/000377 <br>
-                            2. All Medical devices are Class 1 510(K) Exempt as per US FDA.
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-bold">Other Details</td>
-                        <td>Kind Attention: Shiv Agarwal</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-
-    <br />
-
-    <!-- Consignee & Buyer Details -->
-    <table>
-        <tr>
-            <td class="text-bold">Consignee</td>
-            <td class="text-bold">Buyer (If Other than Consignee)</td>
-            <td class="text-bold">Buyer's PO No and Date</td>
-        </tr>
-        <tr>
-            <td>
-                <b>S.S. White Technologies Inc</b><br>
-                8300, Sheen Drive,<br>
-                St Petersburg, FL-33709<br>
-                USA<br>
-                US FACILITY REG. # 2249418
+                Sr No
             </td>
             <td>
-                <b>S.S. White Technologies Inc</b><br>
-                8300, Sheen Drive,<br>
-                St Petersburg, FL-33709<br>
-                USA
+                Marks & Nos
+            </td>
+            <td colspan="2">
+                <center>
+                    No & Kind of Packing
+                </center>
             </td>
             <td>
-                <b>40644</b><br>
-                23/Jan/2025
+                Part No
+            </td>
+            <td>
+                Description
+            </td>
+            <td>
+                Quantity (Pcs)
+            </td>
+            <td>
+                UOM
+            </td>
+            <td>
+                Net Weight (Kgs)
+            </td>
+            <td>
+                Gross Weight (Kgs)
             </td>
         </tr>
+        @if (Model?.PoItemList != null)
+        {
+            int Count = 1;
+            foreach (var item in Model.PoItemList)
+            {
+                <tr>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       @Count
+                    </td>
+
+                    <td>
+                        Line 1
+                        <br>
+                        Line 2
+                        <br>
+                        Line 3
+                    </td>
+                    <td>
+                        PO No
+                        <br>
+                        @item.PONo
+                        <br>
+
+                    </td>
+                    <td>
+                        Line 1
+                        <br>
+                        Box
+                        <br>
+                        Box Size
+                        <br>
+                        (Size in Inches)
+                    </td>
+                    <td>
+                        1234
+                    </td>
+                    <td>
+                        Line 1
+                        <br>
+                        RM Grade:
+                        <br>
+                        Mat Desc
+                        <br>
+                        US FDA Product Code:
+                        <br>
+                        RITC:
+                        <br>
+                        HS Code:
+                        <br>
+                        Laser Marked Lot No:
+
+                    </td>
+                    <td>
+                        uom
+                    </td>
+                    <td>
+                        net weight
+                    </td>
+                    <td>
+                        gross weghit
+                    </td>
+                </tr>
+                Count++;
+            }
+        }
+
+        <tr>
+            <td> </td>
+            <td>Total</td>
+            <td>some No Boxes</td>
+            <td></td>
+            <td>Total</td>
+            <td>some No</td>
+            <td></td>
+            <td>some No</td>
+            <td>some No</td>
+        </tr>
+        <tr>
+            <td colspan="10"> </td>
+
+        </tr>
+        <tr>
+            <td colspan="10">
+                <center>
+                    <b>
+                        Made in India
+                    </b>
+                </center>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">Total Pallets</td>
+            <td colspan="1"></td>
+            <td colspan="7"></td>
+
+
+        </tr>
+        <tr>
+            <td colspan="2">Total Boxes</td>
+            <td colspan="1"></td>
+            <td colspan="7"></td>
+
+
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td colspan="1"></td>
+            <td colspan="7"></td>
+
+
+        </tr>
+        <tr>
+            <td colspan="2">Total Net Weight</td>
+            <td colspan="1"></td>
+            <td colspan="7"></td>
+
+
+        </tr>
+        <tr>
+            <td colspan="2">Total Gross Weight</td>
+            <td colspan="1"></td>
+            <td colspan="7"><center>Signature : </center></td>
+
+
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td colspan="1"></td>
+            <td colspan="7"></td>
+
+
+        </tr>
+
     </table>
 
-    <table>
-        <tr>
-            <th>Sl No</th>
-            <th>Invoice & Adv. License No</th>
-            <th>A4 Lot</th>
-            <th>Part No</th>
-            <th>Description</th>
-            <th>Quantity (Pcs)</th>
-            <th>Quantity (Kg)</th>
-            <th>Unit Price (USD)</th>
-            <th>Total Value (USD)</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>2410100658</td>
-            <td>TP946</td>
-            <td>TP946</td>
-            <td class="text-left">Insertion and Removal Instruments</td>
-            <td>111</td>
-            <td>1.14</td>
-            <td>22.78</td>
-            <td>2529.58</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>2410100658</td>
-            <td>104-04-07</td>
-            <td>104-04-07</td>
-            <td class="text-left">Insertion and Removal Instruments</td>
-            <td>152</td>
-            <td>35.46</td>
-            <td>57.84</td>
-            <td>8791.68</td>
-        </tr>
-        <tr>
-            <td colspan="8" class="text-bold text-left">Total</td>
-            <td class="text-bold">25938.53</td>
-        </tr>
-    </table>
-    <br>
-
-    <table>
-        <tr>
-            <td colspan="2" class="text-bold">Total Amount (in Words)</td>
-            <td colspan="7">USD Twenty Two Thousand Nine Hundred Forty Five and Eighty Eight Cents Only</td>
-        </tr>
-    </table>
-
-    <br>
-
-    <table>
-        <tr>
-            <th>Summary of Advance License</th>
-            <th>Export Item Sr no</th>
-            <th>Export Qty (Kg)</th>
-            <th>Import Item Description</th>
-            <th>Import Obligation (Kg)</th>
-        </tr>
-        <tr>
-            <td>Advance License No. 2410100658</td>
-            <td>1</td>
-            <td>41.10</td>
-            <td>SS GI GC 440A</td>
-            <td>41.10</td>
-        </tr>
-    </table>
 </div>
+
+
 <script>
-function downloadExcel() {
-    debugger
-    window.location.href = "/PackSlip/DownloadExcel"; // Redirects to the MVC controller method
+    function downloadExcel() {
+        debugger
+        window.location.href = "/PackSlip/DownloadExcel"; // Redirects to the MVC controller method
     }
 </script>
