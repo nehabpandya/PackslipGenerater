@@ -125,6 +125,72 @@
           <Property Name="BuyerFacility" Type="varchar(max)" />
           <Property Name="BuyerCountry" Type="varchar(max)" />
           <Property Name="BuyerPhone" Type="int" />
+          <Property Name="PortOfDischarge" Type="varchar(max)" />
+          <Property Name="KindAttention" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="USER_MST">
+          <Key>
+            <PropertyRef Name="TenentID" />
+            <PropertyRef Name="USER_ID" />
+            <PropertyRef Name="LOCATION_ID" />
+          </Key>
+          <Property Name="TenentID" Type="int" Nullable="false" />
+          <Property Name="USER_ID" Type="int" Nullable="false" />
+          <Property Name="LOCATION_ID" Type="int" Nullable="false" />
+          <Property Name="CRUP_ID" Type="int" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LAST_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIRST_NAME1" Type="nvarchar" MaxLength="50" />
+          <Property Name="LAST_NAME1" Type="nvarchar" MaxLength="50" />
+          <Property Name="FIRST_NAME2" Type="nvarchar" MaxLength="50" />
+          <Property Name="LAST_NAME2" Type="nvarchar" MaxLength="50" />
+          <Property Name="LOGIN_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="150" />
+          <Property Name="USER_TYPE" Type="int" />
+          <Property Name="REMARKS" Type="nvarchar" MaxLength="500" />
+          <Property Name="ACTIVE_FLAG" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="LAST_LOGIN_DT" Type="datetime" />
+          <Property Name="USER_DETAIL_ID" Type="int" />
+          <Property Name="ACC_LOCK" Type="varchar" MaxLength="1" />
+          <Property Name="FIRST_TIME" Type="varchar" MaxLength="1" />
+          <Property Name="PASSWORD_CHNG" Type="nvarchar" MaxLength="150" />
+          <Property Name="THEME_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="APPROVAL_DT" Type="datetime" />
+          <Property Name="VERIFICATION_CD" Type="nvarchar" MaxLength="40" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Till_DT" Type="datetime" />
+          <Property Name="IsSignature" Type="bit" />
+          <Property Name="SignatureImage" Type="varchar" MaxLength="1000" />
+          <Property Name="Avtar" Type="varchar" MaxLength="1000" />
+          <Property Name="CompId" Type="int" />
+          <Property Name="EmpID" Type="int" />
+          <Property Name="CheckinSwitch" Type="bit" />
+          <Property Name="LoginActive" Type="bigint" />
+          <Property Name="ACTIVEUSER" Type="bit" />
+          <Property Name="USERDATE" Type="date" />
+          <Property Name="Language1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Language2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Language3" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="EmployeePosition" Type="nvarchar" MaxLength="50" />
+          <Property Name="salary" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfJoining" Type="datetime" />
+          <Property Name="phone_no" Type="nvarchar" MaxLength="50" />
+          <Property Name="pincode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address1" Type="nvarchar(max)" />
+          <Property Name="Address2" Type="nvarchar(max)" />
+          <Property Name="img" Type="nvarchar" MaxLength="500" />
+          <Property Name="personID" Type="int" />
+          <Property Name="Library_menu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Library_reader" Type="nvarchar(max)" />
+          <Property Name="Library_menu_dept" Type="nvarchar" MaxLength="500" />
+          <Property Name="Ticket_User" Type="nvarchar(max)" />
+          <Property Name="event_approval_user" Type="nvarchar" MaxLength="50" />
+          <Property Name="admin_rights" Type="bit" />
+          <Property Name="Secondary_approval_required" Type="bit" />
+          <Property Name="Secondary_approval_person" Type="nvarchar" MaxLength="500" />
+          <Property Name="MSPRO_UserType" Type="int" />
+          <Property Name="ToolTrial_UserType" Type="int" />
         </EntityType>
         <EntityContainer Name="ITe_INDIAModelStoreContainer">
           <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" Schema="dbo" store:Type="Tables" />
@@ -133,6 +199,7 @@
           <EntitySet Name="Dispatch_PackingDetails" EntityType="Self.Dispatch_PackingDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dispatch_Staticdata" EntityType="Self.dispatch_Staticdata" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="dispatch_type" EntityType="Self.dispatch_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER_MST" EntityType="Self.USER_MST" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -145,6 +212,7 @@
           <EntitySet Name="Dispatch_PackingDetails" EntityType="ITe_INDIAModel.Dispatch_PackingDetails" />
           <EntitySet Name="dispatch_Staticdata" EntityType="ITe_INDIAModel.dispatch_Staticdata" />
           <EntitySet Name="dispatch_type" EntityType="ITe_INDIAModel.dispatch_type" />
+          <EntitySet Name="USER_MST" EntityType="ITe_INDIAModel.USER_MST" />
         </EntityContainer>
         <EntityType Name="Dispatch_Code">
           <Key>
@@ -266,6 +334,72 @@
           <Property Name="BuyerFacility" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="BuyerCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="BuyerPhone" Type="Int32" />
+          <Property Name="PortOfDischarge" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="KindAttention" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="USER_MST">
+          <Key>
+            <PropertyRef Name="TenentID" />
+            <PropertyRef Name="USER_ID" />
+            <PropertyRef Name="LOCATION_ID" />
+          </Key>
+          <Property Name="TenentID" Type="Int32" Nullable="false" />
+          <Property Name="USER_ID" Type="Int32" Nullable="false" />
+          <Property Name="LOCATION_ID" Type="Int32" Nullable="false" />
+          <Property Name="CRUP_ID" Type="Int32" Nullable="false" />
+          <Property Name="FIRST_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LAST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIRST_NAME1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LAST_NAME1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FIRST_NAME2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LAST_NAME2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LOGIN_ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="USER_TYPE" Type="Int32" />
+          <Property Name="REMARKS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ACTIVE_FLAG" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="LAST_LOGIN_DT" Type="DateTime" Precision="3" />
+          <Property Name="USER_DETAIL_ID" Type="Int32" />
+          <Property Name="ACC_LOCK" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FIRST_TIME" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="PASSWORD_CHNG" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="THEME_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="APPROVAL_DT" Type="DateTime" Precision="3" />
+          <Property Name="VERIFICATION_CD" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Till_DT" Type="DateTime" Precision="3" />
+          <Property Name="IsSignature" Type="Boolean" />
+          <Property Name="SignatureImage" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Avtar" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CompId" Type="Int32" />
+          <Property Name="EmpID" Type="Int32" />
+          <Property Name="CheckinSwitch" Type="Boolean" />
+          <Property Name="LoginActive" Type="Int64" />
+          <Property Name="ACTIVEUSER" Type="Boolean" />
+          <Property Name="USERDATE" Type="DateTime" Precision="0" />
+          <Property Name="Language1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Language2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Language3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="EmployeePosition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfJoining" Type="DateTime" Precision="3" />
+          <Property Name="phone_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="img" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="personID" Type="Int32" />
+          <Property Name="Library_menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Library_reader" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Library_menu_dept" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Ticket_User" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="event_approval_user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="admin_rights" Type="Boolean" />
+          <Property Name="Secondary_approval_required" Type="Boolean" />
+          <Property Name="Secondary_approval_person" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MSPRO_UserType" Type="Int32" />
+          <Property Name="ToolTrial_UserType" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -369,6 +503,8 @@
           <EntitySetMapping Name="dispatch_type">
             <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
               <MappingFragment StoreEntitySet="dispatch_type">
+                <ScalarProperty Name="KindAttention" ColumnName="KindAttention" />
+                <ScalarProperty Name="PortOfDischarge" ColumnName="PortOfDischarge" />
                 <ScalarProperty Name="BuyerPhone" ColumnName="BuyerPhone" />
                 <ScalarProperty Name="BuyerCountry" ColumnName="BuyerCountry" />
                 <ScalarProperty Name="BuyerFacility" ColumnName="BuyerFacility" />
@@ -397,6 +533,69 @@
                 <ScalarProperty Name="OurAddressName" ColumnName="OurAddressName" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER_MST">
+            <EntityTypeMapping TypeName="ITe_INDIAModel.USER_MST">
+              <MappingFragment StoreEntitySet="USER_MST">
+                <ScalarProperty Name="ToolTrial_UserType" ColumnName="ToolTrial_UserType" />
+                <ScalarProperty Name="MSPRO_UserType" ColumnName="MSPRO_UserType" />
+                <ScalarProperty Name="Secondary_approval_person" ColumnName="Secondary_approval_person" />
+                <ScalarProperty Name="Secondary_approval_required" ColumnName="Secondary_approval_required" />
+                <ScalarProperty Name="admin_rights" ColumnName="admin_rights" />
+                <ScalarProperty Name="event_approval_user" ColumnName="event_approval_user" />
+                <ScalarProperty Name="Ticket_User" ColumnName="Ticket_User" />
+                <ScalarProperty Name="Library_menu_dept" ColumnName="Library_menu_dept" />
+                <ScalarProperty Name="Library_reader" ColumnName="Library_reader" />
+                <ScalarProperty Name="Library_menu" ColumnName="Library_menu" />
+                <ScalarProperty Name="personID" ColumnName="personID" />
+                <ScalarProperty Name="img" ColumnName="img" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="pincode" ColumnName="pincode" />
+                <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+                <ScalarProperty Name="DateOfJoining" ColumnName="DateOfJoining" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+                <ScalarProperty Name="EmployeePosition" ColumnName="EmployeePosition" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Language3" ColumnName="Language3" />
+                <ScalarProperty Name="Language2" ColumnName="Language2" />
+                <ScalarProperty Name="Language1" ColumnName="Language1" />
+                <ScalarProperty Name="USERDATE" ColumnName="USERDATE" />
+                <ScalarProperty Name="ACTIVEUSER" ColumnName="ACTIVEUSER" />
+                <ScalarProperty Name="LoginActive" ColumnName="LoginActive" />
+                <ScalarProperty Name="CheckinSwitch" ColumnName="CheckinSwitch" />
+                <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+                <ScalarProperty Name="CompId" ColumnName="CompId" />
+                <ScalarProperty Name="Avtar" ColumnName="Avtar" />
+                <ScalarProperty Name="SignatureImage" ColumnName="SignatureImage" />
+                <ScalarProperty Name="IsSignature" ColumnName="IsSignature" />
+                <ScalarProperty Name="Till_DT" ColumnName="Till_DT" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="VERIFICATION_CD" ColumnName="VERIFICATION_CD" />
+                <ScalarProperty Name="APPROVAL_DT" ColumnName="APPROVAL_DT" />
+                <ScalarProperty Name="THEME_NAME" ColumnName="THEME_NAME" />
+                <ScalarProperty Name="PASSWORD_CHNG" ColumnName="PASSWORD_CHNG" />
+                <ScalarProperty Name="FIRST_TIME" ColumnName="FIRST_TIME" />
+                <ScalarProperty Name="ACC_LOCK" ColumnName="ACC_LOCK" />
+                <ScalarProperty Name="USER_DETAIL_ID" ColumnName="USER_DETAIL_ID" />
+                <ScalarProperty Name="LAST_LOGIN_DT" ColumnName="LAST_LOGIN_DT" />
+                <ScalarProperty Name="ACTIVE_FLAG" ColumnName="ACTIVE_FLAG" />
+                <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+                <ScalarProperty Name="USER_TYPE" ColumnName="USER_TYPE" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="LOGIN_ID" ColumnName="LOGIN_ID" />
+                <ScalarProperty Name="LAST_NAME2" ColumnName="LAST_NAME2" />
+                <ScalarProperty Name="FIRST_NAME2" ColumnName="FIRST_NAME2" />
+                <ScalarProperty Name="LAST_NAME1" ColumnName="LAST_NAME1" />
+                <ScalarProperty Name="FIRST_NAME1" ColumnName="FIRST_NAME1" />
+                <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+                <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+                <ScalarProperty Name="CRUP_ID" ColumnName="CRUP_ID" />
+                <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="TenentID" ColumnName="TenentID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

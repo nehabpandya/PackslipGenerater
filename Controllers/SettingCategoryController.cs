@@ -1,4 +1,5 @@
 ﻿using PackSlipApp.Database.Models;
+using PackSlipApp.Filter;
 using PackSlipApp.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace PackSlipApp.Controllers
 {
+    [SessionCheckFilter]
     public class SettingCategoryController : Controller
     {
         ITe_INDIAEntities1 context = new ITe_INDIAEntities1();

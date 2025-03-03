@@ -97,6 +97,8 @@
     <EntitySetMapping Name="dispatch_type">
       <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
         <MappingFragment StoreEntitySet="dispatch_type">
+          <ScalarProperty Name="KindAttention" ColumnName="KindAttention" />
+          <ScalarProperty Name="PortOfDischarge" ColumnName="PortOfDischarge" />
           <ScalarProperty Name="BuyerPhone" ColumnName="BuyerPhone" />
           <ScalarProperty Name="BuyerCountry" ColumnName="BuyerCountry" />
           <ScalarProperty Name="BuyerFacility" ColumnName="BuyerFacility" />
@@ -125,6 +127,69 @@
           <ScalarProperty Name="OurAddressName" ColumnName="OurAddressName" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_MST">
+      <EntityTypeMapping TypeName="ITe_INDIAModel.USER_MST">
+        <MappingFragment StoreEntitySet="USER_MST">
+          <ScalarProperty Name="ToolTrial_UserType" ColumnName="ToolTrial_UserType" />
+          <ScalarProperty Name="MSPRO_UserType" ColumnName="MSPRO_UserType" />
+          <ScalarProperty Name="Secondary_approval_person" ColumnName="Secondary_approval_person" />
+          <ScalarProperty Name="Secondary_approval_required" ColumnName="Secondary_approval_required" />
+          <ScalarProperty Name="admin_rights" ColumnName="admin_rights" />
+          <ScalarProperty Name="event_approval_user" ColumnName="event_approval_user" />
+          <ScalarProperty Name="Ticket_User" ColumnName="Ticket_User" />
+          <ScalarProperty Name="Library_menu_dept" ColumnName="Library_menu_dept" />
+          <ScalarProperty Name="Library_reader" ColumnName="Library_reader" />
+          <ScalarProperty Name="Library_menu" ColumnName="Library_menu" />
+          <ScalarProperty Name="personID" ColumnName="personID" />
+          <ScalarProperty Name="img" ColumnName="img" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="pincode" ColumnName="pincode" />
+          <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+          <ScalarProperty Name="DateOfJoining" ColumnName="DateOfJoining" />
+          <ScalarProperty Name="salary" ColumnName="salary" />
+          <ScalarProperty Name="EmployeePosition" ColumnName="EmployeePosition" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Language3" ColumnName="Language3" />
+          <ScalarProperty Name="Language2" ColumnName="Language2" />
+          <ScalarProperty Name="Language1" ColumnName="Language1" />
+          <ScalarProperty Name="USERDATE" ColumnName="USERDATE" />
+          <ScalarProperty Name="ACTIVEUSER" ColumnName="ACTIVEUSER" />
+          <ScalarProperty Name="LoginActive" ColumnName="LoginActive" />
+          <ScalarProperty Name="CheckinSwitch" ColumnName="CheckinSwitch" />
+          <ScalarProperty Name="EmpID" ColumnName="EmpID" />
+          <ScalarProperty Name="CompId" ColumnName="CompId" />
+          <ScalarProperty Name="Avtar" ColumnName="Avtar" />
+          <ScalarProperty Name="SignatureImage" ColumnName="SignatureImage" />
+          <ScalarProperty Name="IsSignature" ColumnName="IsSignature" />
+          <ScalarProperty Name="Till_DT" ColumnName="Till_DT" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="VERIFICATION_CD" ColumnName="VERIFICATION_CD" />
+          <ScalarProperty Name="APPROVAL_DT" ColumnName="APPROVAL_DT" />
+          <ScalarProperty Name="THEME_NAME" ColumnName="THEME_NAME" />
+          <ScalarProperty Name="PASSWORD_CHNG" ColumnName="PASSWORD_CHNG" />
+          <ScalarProperty Name="FIRST_TIME" ColumnName="FIRST_TIME" />
+          <ScalarProperty Name="ACC_LOCK" ColumnName="ACC_LOCK" />
+          <ScalarProperty Name="USER_DETAIL_ID" ColumnName="USER_DETAIL_ID" />
+          <ScalarProperty Name="LAST_LOGIN_DT" ColumnName="LAST_LOGIN_DT" />
+          <ScalarProperty Name="ACTIVE_FLAG" ColumnName="ACTIVE_FLAG" />
+          <ScalarProperty Name="REMARKS" ColumnName="REMARKS" />
+          <ScalarProperty Name="USER_TYPE" ColumnName="USER_TYPE" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="LOGIN_ID" ColumnName="LOGIN_ID" />
+          <ScalarProperty Name="LAST_NAME2" ColumnName="LAST_NAME2" />
+          <ScalarProperty Name="FIRST_NAME2" ColumnName="FIRST_NAME2" />
+          <ScalarProperty Name="LAST_NAME1" ColumnName="LAST_NAME1" />
+          <ScalarProperty Name="FIRST_NAME1" ColumnName="FIRST_NAME1" />
+          <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
+          <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
+          <ScalarProperty Name="CRUP_ID" ColumnName="CRUP_ID" />
+          <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="TenentID" ColumnName="TenentID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

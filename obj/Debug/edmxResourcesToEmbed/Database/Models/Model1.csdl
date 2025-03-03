@@ -7,6 +7,7 @@
     <EntitySet Name="Dispatch_PackingDetails" EntityType="ITe_INDIAModel.Dispatch_PackingDetails" />
     <EntitySet Name="dispatch_Staticdata" EntityType="ITe_INDIAModel.dispatch_Staticdata" />
     <EntitySet Name="dispatch_type" EntityType="ITe_INDIAModel.dispatch_type" />
+    <EntitySet Name="USER_MST" EntityType="ITe_INDIAModel.USER_MST" />
   </EntityContainer>
   <EntityType Name="Dispatch_Code">
     <Key>
@@ -128,5 +129,71 @@
     <Property Name="BuyerFacility" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="BuyerCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="BuyerPhone" Type="Int32" />
+    <Property Name="PortOfDischarge" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="KindAttention" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="USER_MST">
+    <Key>
+      <PropertyRef Name="TenentID" />
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="LOCATION_ID" />
+    </Key>
+    <Property Name="TenentID" Type="Int32" Nullable="false" />
+    <Property Name="USER_ID" Type="Int32" Nullable="false" />
+    <Property Name="LOCATION_ID" Type="Int32" Nullable="false" />
+    <Property Name="CRUP_ID" Type="Int32" Nullable="false" />
+    <Property Name="FIRST_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LAST_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FIRST_NAME1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LAST_NAME1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FIRST_NAME2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LAST_NAME2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LOGIN_ID" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="USER_TYPE" Type="Int32" />
+    <Property Name="REMARKS" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ACTIVE_FLAG" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="LAST_LOGIN_DT" Type="DateTime" Precision="3" />
+    <Property Name="USER_DETAIL_ID" Type="Int32" />
+    <Property Name="ACC_LOCK" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="FIRST_TIME" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD_CHNG" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="THEME_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="APPROVAL_DT" Type="DateTime" Precision="3" />
+    <Property Name="VERIFICATION_CD" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Till_DT" Type="DateTime" Precision="3" />
+    <Property Name="IsSignature" Type="Boolean" />
+    <Property Name="SignatureImage" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Avtar" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="CompId" Type="Int32" />
+    <Property Name="EmpID" Type="Int32" />
+    <Property Name="CheckinSwitch" Type="Boolean" />
+    <Property Name="LoginActive" Type="Int64" />
+    <Property Name="ACTIVEUSER" Type="Boolean" />
+    <Property Name="USERDATE" Type="DateTime" Precision="0" />
+    <Property Name="Language1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Language2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Language3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+    <Property Name="EmployeePosition" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfJoining" Type="DateTime" Precision="3" />
+    <Property Name="phone_no" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pincode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Address2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="img" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="personID" Type="Int32" />
+    <Property Name="Library_menu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Library_reader" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Library_menu_dept" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Ticket_User" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="event_approval_user" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="admin_rights" Type="Boolean" />
+    <Property Name="Secondary_approval_required" Type="Boolean" />
+    <Property Name="Secondary_approval_person" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MSPRO_UserType" Type="Int32" />
+    <Property Name="ToolTrial_UserType" Type="Int32" />
   </EntityType>
 </Schema>

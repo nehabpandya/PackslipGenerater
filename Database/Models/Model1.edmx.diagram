@@ -11,6 +11,7 @@
         <EntityTypeShape EntityType="ITe_INDIAModel.Dispatch_PackingDetails" Width="1.5" PointX="4.75" PointY="3.75" />
         <EntityTypeShape EntityType="ITe_INDIAModel.dispatch_Staticdata" Width="1.5" PointX="6.75" PointY="0.75" />
         <EntityTypeShape EntityType="ITe_INDIAModel.dispatch_type" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="ITe_INDIAModel.USER_MST" Width="1.5" PointX="0.75" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

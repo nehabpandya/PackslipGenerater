@@ -42,5 +42,7 @@ namespace PackSlipApp.Database.Models
         public string BuyerFacility { get; set; }
         public string BuyerCountry { get; set; }
         public Nullable<int> BuyerPhone { get; set; }
+        public string PortOfDischarge { get; set; }
+        public string KindAttention { get; set; }
     }
 }

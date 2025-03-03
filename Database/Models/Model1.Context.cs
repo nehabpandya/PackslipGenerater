@@ -31,5 +31,6 @@ namespace PackSlipApp.Database.Models
         public virtual DbSet<Dispatch_PackingDetails> Dispatch_PackingDetails { get; set; }
         public virtual DbSet<dispatch_Staticdata> dispatch_Staticdata { get; set; }
         public virtual DbSet<dispatch_type> dispatch_type { get; set; }
+        public virtual DbSet<USER_MST> USER_MST { get; set; }
     }
 }

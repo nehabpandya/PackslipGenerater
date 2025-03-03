@@ -1,4 +1,5 @@
 ﻿using PackSlipApp.Database.Models;
+using PackSlipApp.Filter;
 using PackSlipApp.Service;
 using PackSlipApp.ViewModel;
 using System;
@@ -12,6 +13,7 @@ using System.Web.Services.Description;
 
 namespace PackSlipApp.Controllers
 {
+    [SessionCheckFilter]
     public class UserInputController : Controller
     {
         // GET: UserInput

@@ -120,6 +120,72 @@
     <Property Name="BuyerFacility" Type="varchar(max)" />
     <Property Name="BuyerCountry" Type="varchar(max)" />
     <Property Name="BuyerPhone" Type="int" />
+    <Property Name="PortOfDischarge" Type="varchar(max)" />
+    <Property Name="KindAttention" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="USER_MST">
+    <Key>
+      <PropertyRef Name="TenentID" />
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="LOCATION_ID" />
+    </Key>
+    <Property Name="TenentID" Type="int" Nullable="false" />
+    <Property Name="USER_ID" Type="int" Nullable="false" />
+    <Property Name="LOCATION_ID" Type="int" Nullable="false" />
+    <Property Name="CRUP_ID" Type="int" Nullable="false" />
+    <Property Name="FIRST_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LAST_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="FIRST_NAME1" Type="nvarchar" MaxLength="50" />
+    <Property Name="LAST_NAME1" Type="nvarchar" MaxLength="50" />
+    <Property Name="FIRST_NAME2" Type="nvarchar" MaxLength="50" />
+    <Property Name="LAST_NAME2" Type="nvarchar" MaxLength="50" />
+    <Property Name="LOGIN_ID" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="150" />
+    <Property Name="USER_TYPE" Type="int" />
+    <Property Name="REMARKS" Type="nvarchar" MaxLength="500" />
+    <Property Name="ACTIVE_FLAG" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="LAST_LOGIN_DT" Type="datetime" />
+    <Property Name="USER_DETAIL_ID" Type="int" />
+    <Property Name="ACC_LOCK" Type="varchar" MaxLength="1" />
+    <Property Name="FIRST_TIME" Type="varchar" MaxLength="1" />
+    <Property Name="PASSWORD_CHNG" Type="nvarchar" MaxLength="150" />
+    <Property Name="THEME_NAME" Type="nvarchar" MaxLength="50" />
+    <Property Name="APPROVAL_DT" Type="datetime" />
+    <Property Name="VERIFICATION_CD" Type="nvarchar" MaxLength="40" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Till_DT" Type="datetime" />
+    <Property Name="IsSignature" Type="bit" />
+    <Property Name="SignatureImage" Type="varchar" MaxLength="1000" />
+    <Property Name="Avtar" Type="varchar" MaxLength="1000" />
+    <Property Name="CompId" Type="int" />
+    <Property Name="EmpID" Type="int" />
+    <Property Name="CheckinSwitch" Type="bit" />
+    <Property Name="LoginActive" Type="bigint" />
+    <Property Name="ACTIVEUSER" Type="bit" />
+    <Property Name="USERDATE" Type="date" />
+    <Property Name="Language1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Language2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Language3" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOfBirth" Type="datetime" />
+    <Property Name="EmployeePosition" Type="nvarchar" MaxLength="50" />
+    <Property Name="salary" Type="nvarchar" MaxLength="50" />
+    <Property Name="DateOfJoining" Type="datetime" />
+    <Property Name="phone_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="pincode" Type="nvarchar" MaxLength="50" />
+    <Property Name="Address1" Type="nvarchar(max)" />
+    <Property Name="Address2" Type="nvarchar(max)" />
+    <Property Name="img" Type="nvarchar" MaxLength="500" />
+    <Property Name="personID" Type="int" />
+    <Property Name="Library_menu" Type="nvarchar" MaxLength="50" />
+    <Property Name="Library_reader" Type="nvarchar(max)" />
+    <Property Name="Library_menu_dept" Type="nvarchar" MaxLength="500" />
+    <Property Name="Ticket_User" Type="nvarchar(max)" />
+    <Property Name="event_approval_user" Type="nvarchar" MaxLength="50" />
+    <Property Name="admin_rights" Type="bit" />
+    <Property Name="Secondary_approval_required" Type="bit" />
+    <Property Name="Secondary_approval_person" Type="nvarchar" MaxLength="500" />
+    <Property Name="MSPRO_UserType" Type="int" />
+    <Property Name="ToolTrial_UserType" Type="int" />
   </EntityType>
   <EntityContainer Name="ITe_INDIAModelStoreContainer">
     <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" Schema="dbo" store:Type="Tables" />
@@ -128,5 +194,6 @@
     <EntitySet Name="Dispatch_PackingDetails" EntityType="Self.Dispatch_PackingDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="dispatch_Staticdata" EntityType="Self.dispatch_Staticdata" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="dispatch_type" EntityType="Self.dispatch_type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USER_MST" EntityType="Self.USER_MST" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>
