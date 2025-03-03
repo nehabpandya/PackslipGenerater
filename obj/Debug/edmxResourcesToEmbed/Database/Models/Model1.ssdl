@@ -94,15 +94,32 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="type" Type="varchar(max)" />
+    <Property Name="OurAddressName" Type="varchar(max)" />
     <Property Name="OurPlantAddressLine1" Type="varchar(max)" />
     <Property Name="OurPlantAddressLine2" Type="varchar(max)" />
     <Property Name="OurPlantAddressLine3" Type="varchar(max)" />
+    <Property Name="Dist" Type="varchar(max)" />
+    <Property Name="State" Type="varchar(max)" />
+    <Property Name="Country" Type="varchar(max)" />
+    <Property Name="Phone" Type="int" />
+    <Property Name="ConsigneeAddressName" Type="varchar(max)" />
     <Property Name="ConsigneeAddressLine1" Type="varchar(max)" />
     <Property Name="ConsigneeAddressLine2" Type="varchar(max)" />
     <Property Name="ConsigneeAddressLine3" Type="varchar(max)" />
+    <Property Name="ConsigneeDist" Type="varchar(max)" />
+    <Property Name="ConsigneeState" Type="varchar(max)" />
+    <Property Name="ConsigneeCountry" Type="varchar(max)" />
+    <Property Name="ConsigneeFacility" Type="varchar(max)" />
+    <Property Name="ConsigneePhone" Type="int" />
+    <Property Name="BuyerAddressName" Type="varchar(max)" />
     <Property Name="BuyerAddressLine1" Type="varchar(max)" />
     <Property Name="BuyerAddressLine2" Type="varchar(max)" />
     <Property Name="BuyerAddressLine3" Type="varchar(max)" />
+    <Property Name="BuyerDist" Type="varchar(max)" />
+    <Property Name="BuyerState" Type="varchar(max)" />
+    <Property Name="BuyerFacility" Type="varchar(max)" />
+    <Property Name="BuyerCountry" Type="varchar(max)" />
+    <Property Name="BuyerPhone" Type="int" />
   </EntityType>
   <EntityContainer Name="ITe_INDIAModelStoreContainer">
     <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" Schema="dbo" store:Type="Tables" />

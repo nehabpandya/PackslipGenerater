@@ -9,10 +9,10 @@
     .table-bordered {
         border: 1px solid black;
     }
+
     .no-bottom-border {
         border-bottom: 1px solid white !important;
     }
-
 </style>
 
 <div class="card">
@@ -30,7 +30,7 @@
 
     <table class="table table-bordered">
         <tr>
-            <td colspan="10" align="center" style="font-weight: bold; font-size: 18px;"><center> PACKING LIST </center></td>
+            <td colspan="10" align="center" style="font-weight: bold; font-size: 18px;"><center> @Model.Category PACKING LIST </center></td>
         </tr>
 
         <tr>
@@ -44,7 +44,7 @@
         <tr>
             <td colspan="5">@Model.SNAddLine1</td>
             <td colspan="1">Packslip No</td>
-            <td colspan="1">@Model.PackSlipMainData.PackslipNo</td>
+            <td colspan="1">@Model.PackSlipNo</td>
             <td class="no-bottom-border" colspan="1"></td>
             <td colspan="1">Packslip Date</td>
             <td colspan="1">@Model.FormattedPackSlipDate</td>
@@ -110,19 +110,15 @@
         </tr>
         <tr>
             <td colspan="2">FEI#</td>
-            <td  colspan="3">@Model.FEI_</td>
+            <td colspan="3">@Model.FEI_</td>
             <td class="no-bottom-border" colspan="5">Kind Attention:</td>
         </tr>
 
         <tr>
-            <td colspan="2">FDA Facility Regn#</td><br>
+            <td colspan="2">FDA Facility Regn#</td>
+            <br>
             <td colspan="3">@Model.FDAFacilityRegn_</td>
             <td colspan="5"></td>
-        </tr>
-        <tr>
-            <td class="no-bottom-border" colspan="4"></td>
-            <td class="no-bottom-border" colspan="3"></td>
-            <td class="no-bottom-border" colspan="3"></td>
         </tr>
         <tr>
             <td class="no-bottom-border" colspan="4">Consignee</td>
@@ -130,31 +126,38 @@
             <td class="no-bottom-border" colspan="3">Buyer PO No & Date</td>
         </tr>
         <tr>
-            <td class="no-bottom-border" colspan="4">@Model.Consignee</td>
-            <td class="no-bottom-border" colspan="3">S.S.White Technologie Inc</td>
+            <td class="no-bottom-border" colspan="4">@Model.ConsigneeAddressName</td>
+            <td class="no-bottom-border" colspan="3">@Model.ConsigneeAddressName</td>
+            <td class="no-bottom-border" colspan="3">
+                @string.Join(",", Model.PoItemList.Select(p => p.PONo).Distinct())
+            </td>
+        </tr>
+        <tr>
+            <td class="no-bottom-border" colspan="4">@Model.ConsigneeAddressLine1</td>
+            <td class="no-bottom-border" colspan="3">@Model.ConsigneeAddressLine1</td>
             <td class="no-bottom-border" colspan="3"></td>
         </tr>
 
         <tr>
-            <td class="no-bottom-border" colspan="4">Add1</td>
-            <td class="no-bottom-border" colspan="3">Add1</td>
+            <td class="no-bottom-border" colspan="4">@Model.ConsigneeDist</td>
+            <td class="no-bottom-border" colspan="3">@Model.ConsigneeDist</td>
             <td class="no-bottom-border" colspan="3"></td>
         </tr>
 
         <tr>
-            <td class="no-bottom-border" colspan="4">Add2</td>
-            <td class="no-bottom-border" colspan="3">Add2</td>
+            <td class="no-bottom-border" colspan="4">@Model.ConsigneeState</td>
+            <td class="no-bottom-border" colspan="3">@Model.ConsigneeState</td>
             <td class="no-bottom-border" colspan="3"></td>
         </tr>
 
         <tr>
-            <td class="no-bottom-border" colspan="4">Add3</td>
-            <td class="no-bottom-border" colspan="3">Add3</td>
+            <td class="no-bottom-border" colspan="4">@Model.ConsigneeCountry</td>
+            <td class="no-bottom-border" colspan="3">@Model.ConsigneeCountry</td>
             <td class="no-bottom-border" colspan="3"></td>
         </tr>
         <tr>
-            <td colspan="4">Add4</td>
-            <td colspan="3">Add4</td>
+            <td colspan="4">@Model.ConsigneeCountry  @Model.ConsigneeFacility</td>
+            <td colspan="3"></td>
             <td colspan="3"></td>
         </tr>
         <tr>
@@ -191,62 +194,51 @@
                 Gross Weight (Kgs)
             </td>
         </tr>
+        @{
+
+            int? totlsum = 0;
+            int? totalQty = 0;
+            decimal? totalnetweight = 0; // Change to decimal?
+            decimal? totalgrossweight = 0; // Change to decimal?
+
+        }
         @if (Model?.PoItemList != null)
         {
             int Count = 1;
+
             foreach (var item in Model.PoItemList)
             {
+
                 <tr>
                     <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                       @Count
+                        @Count
                     </td>
 
                     <td>
-                        Line 1
+                        Pallet
                         <br>
-                        Line 2
-                        <br>
-                        Line 3
+                        (Size in inches) <br>
+                        @*@item.pallltetype*@
                     </td>
                     <td>
                         PO No
                         <br>
-                        @item.PONo
+                        <span style="float: right;">@item.Box</span>
                         <br>
 
                     </td>
                     <td>
-                        Line 1
-                        <br>
+                        @item.PONo                        <br>
                         Box
                         <br>
-                        Box Size
+                        @item.BoxType
                         <br>
                         (Size in Inches)
                     </td>
                     <td>
-                        1234
+                        @item.PartNum
                     </td>
+
                     <td>
                         Line 1
                         <br>
@@ -264,29 +256,38 @@
 
                     </td>
                     <td>
-                        uom
+                        @item.Qty
                     </td>
                     <td>
-                        net weight
+                        @item.UOM
                     </td>
                     <td>
-                        gross weghit
+                        @item.QtyKg
+                    </td>
+                    <td>
+                        @item.grossweight
                     </td>
                 </tr>
                 Count++;
+                totlsum = totlsum + (item.Box ?? 0);
+                totalQty = (totalQty ?? 0) + (int)(item.Qty ?? 0);
+                totalnetweight = (totalnetweight ?? 0) + (item.QtyKg ?? 0); // Keep decimal values
+                totalgrossweight = (totalgrossweight ?? 0) + (item.grossweight ?? 0); // Keep decimal values
             }
         }
 
         <tr>
             <td> </td>
             <td>Total</td>
-            <td>some No Boxes</td>
+            <td>Total Count of Boxed = @totlsum</td>
             <td></td>
-            <td>Total</td>
-            <td>some No</td>
             <td></td>
-            <td>some No</td>
-            <td>some No</td>
+            <td></td>
+            <td>Total Count of Qty = @totalQty</td>
+            <td></td>
+            <td>Total Count of Net weight = @totalnetweight</td>
+            <td>Total Count of Gross Weight = @totalgrossweight</td>
+
         </tr>
         <tr>
             <td colspan="10"> </td>
@@ -310,28 +311,19 @@
         </tr>
         <tr>
             <td colspan="2">Total Boxes</td>
-            <td colspan="1"></td>
+            <td colspan="1">@totlsum</td>
             <td colspan="7"></td>
-
-
-        </tr>
-        <tr>
-            <td colspan="2"></td>
-            <td colspan="1"></td>
-            <td colspan="7"></td>
-
-
         </tr>
         <tr>
             <td colspan="2">Total Net Weight</td>
-            <td colspan="1"></td>
+            <td colspan="1">@totalnetweight</td>
             <td colspan="7"></td>
 
 
         </tr>
         <tr>
             <td colspan="2">Total Gross Weight</td>
-            <td colspan="1"></td>
+            <td colspan="1">@totalgrossweight</td>
             <td colspan="7"><center>Signature : </center></td>
 
 

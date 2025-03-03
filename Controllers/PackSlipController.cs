@@ -30,61 +30,85 @@ namespace PackSlipApp.Controllers
             return View(model);
         }
 
-        public ActionResult GeneratePackslip(string packslipNo, string invoiceNo)
+        public ActionResult GeneratePackslip(int ID, string type)
         {
             dispatch_Staticdata addDetails = context.dispatch_Staticdata.FirstOrDefault();
-            GeneratedViewmodel model = new GeneratedViewmodel
+            GeneratedViewmodel Model = new GeneratedViewmodel();
+
+            try
             {
 
-                SNAddLine1 = addDetails.SNAddLine1,
-                SNAddLine2 = addDetails.SNAddLine2,
-                SNAddLine3 = addDetails.SNAddLine3,
-                SNAddLine4 = addDetails.SNAddLine4,
-                SNAddLine5 = addDetails.SNAddLine5,
-                SNAddLine6 = addDetails.SNAddLine6,
-                SNAddLine7 = addDetails.SNAddLine7,
-                PortOfLoading = addDetails.PortOfLoading,
-                CountryOfOrigin = addDetails.CountryOfOrigin,
-                PaymentTerms = addDetails.PaymentTerms,
-                TermsOfDelivery = addDetails.TermsOfDelivery,
-                IECNO = addDetails.IECNO,
-                GSTIN = addDetails.GSTIN,
-                FEI_ = addDetails.FEI_,
-                FDAFacilityRegn_ = addDetails.FDAFacilityRegn_,
-                CIN = addDetails.CIN,
-
-                PackSlipMainData = new ViewPackSlip
+                Dispatch_PackingDetails _PackingDetails = context.Dispatch_PackingDetails.Where(p => p.ID == ID).FirstOrDefault();
+                if (_PackingDetails != null)
                 {
-                    PackslipNo = packslipNo,
-                    InvoiceNo = invoiceNo,
-                },
-                InvoiceNo = invoiceNo,
-                InvoiceDate = DateTime.Now,
-                PackSlipDate = DateTime.Now,
-                AddressHeading = "Exporter", 
-                
-                BuyerPONum = 987654,
-                BuyerDate = DateTime.Now.AddDays(-10),
-                SummaryOfAdvanceLicence = "Summary here",
-               
-                ImportObigationKg = "500 KG",
+                    dispatch_Staticdata dispatch_Staticdata = context.dispatch_Staticdata.FirstOrDefault();
 
-                PoItemList = context.Dispatch_Data.
-                Where(d => d.PackslipNo == packslipNo && d.InvoiceNo == invoiceNo)
-                  .Select(x => new ListOfItemsInPo
-                  {
-                      AdvanceLicenceNo = 1,
-                      PONo = x.PoNo,
-                      A4Lot = 20,
-                      PartNum = x.PartNo,
-                      PartDesc = x.PartDesc,
-                      QtyWPc = x.Qty,
-                      UnitPrice = 450.00,
+                    dispatch_type _Type = context.dispatch_type.Where(p => p.type == _PackingDetails.Category).FirstOrDefault();
 
-                  })
-                .ToList()
-            };
-            return View(model);
+                    Model.InvoiceNo = _PackingDetails.InvoiceNo;
+                    Model.PackSlipNo = _PackingDetails.PackslipNo;
+                    Model.Category = _PackingDetails.Category;
+                    Model.InvoiceDate = DateTime.Now;
+                    Model.PackslipDate = DateTime.Now;
+                    Model.SNAddLine1 = dispatch_Staticdata.SNAddLine1;
+                    Model.SNAddLine2 = dispatch_Staticdata.SNAddLine2;
+                    Model.SNAddLine3 = dispatch_Staticdata.SNAddLine3;
+                    Model.SNAddLine4 = dispatch_Staticdata.SNAddLine4;
+                    Model.SNAddLine5 = dispatch_Staticdata.SNAddLine5;
+                    Model.SNAddLine6 = dispatch_Staticdata.SNAddLine6;
+                    Model.SNAddLine7 = dispatch_Staticdata.SNAddLine7;
+                    Model.PortOfLoading = dispatch_Staticdata.PortOfLoading;
+                    Model.CountryOfOrigin = dispatch_Staticdata.CountryOfOrigin;
+                    Model.PaymentTerms = dispatch_Staticdata.PaymentTerms;
+                    Model.TermsOfDelivery = dispatch_Staticdata.TermsOfDelivery;
+                    Model.IECNO = dispatch_Staticdata.IECNO;
+                    Model.GSTIN = dispatch_Staticdata.GSTIN;
+                    Model.FEI_ = dispatch_Staticdata.FEI_;
+                    Model.FDAFacilityRegn_ = dispatch_Staticdata.FDAFacilityRegn_;
+                    Model.CIN = dispatch_Staticdata.CIN;
+
+                    Model.ConsigneeAddressName = _Type.ConsigneeAddressName;
+                    Model.ConsigneeAddressLine1 = _Type.ConsigneeAddressLine1;
+                    Model.ConsigneeAddressLine2 = _Type.ConsigneeAddressLine2;
+                    Model.ConsigneeAddressLine3 = _Type.ConsigneeAddressLine3;
+                    Model.ConsigneeDist = _Type.ConsigneeDist;
+                    Model.ConsigneeState = _Type.ConsigneeState;
+                    Model.ConsigneeCountry = _Type.ConsigneeCountry;
+                    Model.ConsigneeFacility = _Type.ConsigneeFacility;
+                    Model.ConsigneePhone = _Type.ConsigneePhone;
+                    Model.BuyerAddressName = _Type.BuyerAddressName;
+                    Model.BuyerAddressLine1 = _Type.BuyerAddressLine1;
+                    Model.BuyerAddressLine2 = _Type.BuyerAddressLine2;
+                    Model.BuyerAddressLine3 = _Type.BuyerAddressLine3;
+                    Model.BuyerDist = _Type.BuyerDist;
+                    Model.BuyerState = _Type.BuyerState;
+                    Model.BuyerFacility = _Type.BuyerFacility;
+                    Model.BuyerCountry = _Type.BuyerCountry;
+                    Model.BuyerPhone = _Type.BuyerPhone;
+
+
+                    Model.PoItemList = (from modal in context.Dispatch_Data.Where(p => p.PID == ID)
+                                        select new ListOfItemsInPo
+                                        {
+                                            AdvanceLicenceNo = modal.LineNo,
+                                            PONo = modal.PoNo,
+                                            Qty = modal.Qty,
+                                            QtyWPc = modal.wPcs,
+                                            UOM = "Pcs",
+                                            PartNum = modal.PartNo,
+                                            Box = modal.Box,
+                                            BoxType = modal.PackingType,
+                                            //PartDesc = 
+                                        }).ToList();
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return View(Model);
         }
 
         public int TotalPalate(List<(int length, int width, int height)> dimensions)
@@ -129,9 +153,85 @@ namespace PackSlipApp.Controllers
 
             return totalPalateNo;
         }
-        public ActionResult GenerateInvoice(int packslipNo, int invoiceNo)
+        public ActionResult GenerateInvoice( int ID)
         {
-            return View();
+            dispatch_Staticdata addDetails = context.dispatch_Staticdata.FirstOrDefault();
+            GeneratedViewmodel Model = new GeneratedViewmodel();
+
+            try
+            {
+
+                Dispatch_PackingDetails _PackingDetails = context.Dispatch_PackingDetails.Where(p => p.ID == ID).FirstOrDefault();
+                if (_PackingDetails != null)
+                {
+                    dispatch_Staticdata dispatch_Staticdata = context.dispatch_Staticdata.FirstOrDefault();
+
+                    dispatch_type _Type = context.dispatch_type.Where(p => p.type == _PackingDetails.Category).FirstOrDefault();
+
+                    Model.InvoiceNo = _PackingDetails.InvoiceNo;
+                    Model.PackSlipNo = _PackingDetails.PackslipNo;
+                    Model.Category = _PackingDetails.Category;
+                    Model.InvoiceDate = DateTime.Now;
+                    Model.PackslipDate = DateTime.Now;
+                    Model.SNAddLine1 = dispatch_Staticdata.SNAddLine1;
+                    Model.SNAddLine2 = dispatch_Staticdata.SNAddLine2;
+                    Model.SNAddLine3 = dispatch_Staticdata.SNAddLine3;
+                    Model.SNAddLine4 = dispatch_Staticdata.SNAddLine4;
+                    Model.SNAddLine5 = dispatch_Staticdata.SNAddLine5;
+                    Model.SNAddLine6 = dispatch_Staticdata.SNAddLine6;
+                    Model.SNAddLine7 = dispatch_Staticdata.SNAddLine7;
+                    Model.PortOfLoading = dispatch_Staticdata.PortOfLoading;
+                    Model.CountryOfOrigin = dispatch_Staticdata.CountryOfOrigin;
+                    Model.PaymentTerms = dispatch_Staticdata.PaymentTerms;
+                    Model.TermsOfDelivery = dispatch_Staticdata.TermsOfDelivery;
+                    Model.IECNO = dispatch_Staticdata.IECNO;
+                    Model.GSTIN = dispatch_Staticdata.GSTIN;
+                    Model.FEI_ = dispatch_Staticdata.FEI_;
+                    Model.FDAFacilityRegn_ = dispatch_Staticdata.FDAFacilityRegn_;
+                    Model.CIN = dispatch_Staticdata.CIN;
+
+                    Model.ConsigneeAddressName = _Type.ConsigneeAddressName;
+                    Model.ConsigneeAddressLine1 = _Type.ConsigneeAddressLine1;
+                    Model.ConsigneeAddressLine2 = _Type.ConsigneeAddressLine2;
+                    Model.ConsigneeAddressLine3 = _Type.ConsigneeAddressLine3;
+                    Model.ConsigneeDist = _Type.ConsigneeDist;
+                    Model.ConsigneeState = _Type.ConsigneeState;
+                    Model.ConsigneeCountry = _Type.ConsigneeCountry;
+                    Model.ConsigneeFacility = _Type.ConsigneeFacility;
+                    Model.ConsigneePhone = _Type.ConsigneePhone;
+                    Model.BuyerAddressName = _Type.BuyerAddressName;
+                    Model.BuyerAddressLine1 = _Type.BuyerAddressLine1;
+                    Model.BuyerAddressLine2 = _Type.BuyerAddressLine2;
+                    Model.BuyerAddressLine3 = _Type.BuyerAddressLine3;
+                    Model.BuyerDist = _Type.BuyerDist;
+                    Model.BuyerState = _Type.BuyerState;
+                    Model.BuyerFacility = _Type.BuyerFacility;
+                    Model.BuyerCountry = _Type.BuyerCountry;
+                    Model.BuyerPhone = _Type.BuyerPhone;
+
+
+                    Model.PoItemList = (from modal in context.Dispatch_Data.Where(p => p.PID == ID)
+                                        select new ListOfItemsInPo
+                                        {
+                                            AdvanceLicenceNo = modal.LineNo,
+                                            PONo = modal.PoNo,
+                                            Qty = modal.Qty,
+                                            QtyWPc = modal.wPcs,
+                                            UOM = "Pcs",
+                                            PartNum = modal.PartNo,
+                                            Box = modal.Box,
+                                            BoxType = modal.PackingType,
+                                            //PartDesc = 
+                                        }).ToList();
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return View(Model);
         }
         public void DownloadExcel()
         {

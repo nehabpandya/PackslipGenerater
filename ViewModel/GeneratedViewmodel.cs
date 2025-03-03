@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace PackSlipApp.ViewModel
@@ -12,10 +13,13 @@ namespace PackSlipApp.ViewModel
         public ViewPackSlip PackSlipMainData;
 
         public ViewPackSlipViewModel UseInputList;
-        
+
         public string InvoiceNo { get; set; }
+        public string PackSlipNo { get; set; }
+        public string Category { get; set; }
 
         public DateTime? InvoiceDate { get; set; }
+        public DateTime? PackslipDate { get; set; }
         public string FormattedInvoiceDate => InvoiceDate?.ToString("dd-MMM-yyyy");
 
         public DateTime? PackSlipDate { get; set; }
@@ -42,8 +46,8 @@ namespace PackSlipApp.ViewModel
         public DateTime BuyerDate { get; set; }
 
         public string SummaryOfAdvanceLicence { get; set; }
-       
-       
+
+
         public string ImportObigationKg { get; set; }
         public List<ListOfItemsInPo> PoItemList { get; set; }
 
@@ -65,24 +69,57 @@ namespace PackSlipApp.ViewModel
         public string FDAFacilityRegn_ { get; set; }
         public string Signature { get; set; }
 
-
+        public string OurAddressName { get; set; }
+        public string OurPlantAddressLine1 { get; set; }
+        public string OurPlantAddressLine2 { get; set; }
+        public string OurPlantAddressLine3 { get; set; }
+        public string Dist { get; set; }
+        public string State { get; set; }
+        public string Country { get; set; }
+        public int? Phone { get; set; }
+        public string ConsigneeAddressName { get; set; }
+        public string ConsigneeAddressLine1 { get; set; }
+        public string ConsigneeAddressLine2 { get; set; }
+        public string ConsigneeAddressLine3 { get; set; }
+        public string ConsigneeDist { get; set; }
+        public string ConsigneeState { get; set; }
+        public string ConsigneeCountry { get; set; }
+        public string ConsigneeFacility { get; set; }
+        public int? ConsigneePhone { get; set; }
+        public string BuyerAddressName { get; set; }
+        public string BuyerAddressLine1 { get; set; }
+        public string BuyerAddressLine2 { get; set; }
+        public string BuyerAddressLine3 { get; set; }
+        public string BuyerDist { get; set; }
+        public string BuyerState { get; set; }
+        public string BuyerFacility { get; set; }
+        public string BuyerCountry { get; set; }
+        public int? BuyerPhone { get; set; }
+        public string Portofdischarge { get; set; }
+        public string Finaldestination { get; set; }
+        public string Destinationcountry { get; set; }
     }
 
     public class ListOfItemsInPo
     {
-        public int AdvanceLicenceNo { get; set; }
+        public int? AdvanceLicenceNo { get; set; }
         public string PONo { get; set; }
         public int A4Lot { get; set; }
         public string PartNum { get; set; }
+        public int? Box { get; set; }
+        public string BoxType { get; set; }
         public string PartDesc { get; set; }
-        public double? QtyWPc { get; set; }  
-        public double? Qty { get; set; }
+        public decimal? QtyWPc { get; set; }
+        public decimal? Qty { get; set; }
+        public string UOM { get; set; }
 
-        public double? QtyKg => (Qty.HasValue && QtyWPc.HasValue) ? (Qty.Value * QtyWPc.Value) : (double?)null;
+        public decimal? QtyKg => (Qty.HasValue && QtyWPc.HasValue) ? (Qty.Value * QtyWPc.Value) : (decimal?)null;
+        public decimal? grossweight => (QtyKg ?? 0) + ((Box ?? 0) * (decimal)2.372) + (decimal)15.51;
 
-        public double? UnitPrice { get; set; }
 
-        public double? TotalValue => (Qty.HasValue && UnitPrice.HasValue) ? (Qty.Value * UnitPrice.Value) : (double?)null;
+        public decimal? UnitPrice { get; set; }
+        //gross weight formula
+        public decimal? TotalValue => (Qty.HasValue && UnitPrice.HasValue) ? (Qty.Value * UnitPrice.Value) : (decimal?)null;
 
         public string TotalValueInWords => TotalValue.HasValue
         ? ConvertToWords((long)TotalValue.Value)
@@ -92,12 +129,12 @@ namespace PackSlipApp.ViewModel
             if (number == 0)
                 return "Zero";
 
-            var culture = new CultureInfo("en-IN"); 
-            return number.ToString("N0", culture) + " Rupees"; 
+            var culture = new CultureInfo("en-IN");
+            return number.ToString("N0", culture) + " Rupees";
         }
         public string ImportItemDesc { get; set; }
     }
 
-  
+
 
 }

@@ -97,15 +97,32 @@
     <EntitySetMapping Name="dispatch_type">
       <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
         <MappingFragment StoreEntitySet="dispatch_type">
+          <ScalarProperty Name="BuyerPhone" ColumnName="BuyerPhone" />
+          <ScalarProperty Name="BuyerCountry" ColumnName="BuyerCountry" />
+          <ScalarProperty Name="BuyerFacility" ColumnName="BuyerFacility" />
+          <ScalarProperty Name="BuyerState" ColumnName="BuyerState" />
+          <ScalarProperty Name="BuyerDist" ColumnName="BuyerDist" />
           <ScalarProperty Name="BuyerAddressLine3" ColumnName="BuyerAddressLine3" />
           <ScalarProperty Name="BuyerAddressLine2" ColumnName="BuyerAddressLine2" />
           <ScalarProperty Name="BuyerAddressLine1" ColumnName="BuyerAddressLine1" />
+          <ScalarProperty Name="BuyerAddressName" ColumnName="BuyerAddressName" />
+          <ScalarProperty Name="ConsigneePhone" ColumnName="ConsigneePhone" />
+          <ScalarProperty Name="ConsigneeFacility" ColumnName="ConsigneeFacility" />
+          <ScalarProperty Name="ConsigneeCountry" ColumnName="ConsigneeCountry" />
+          <ScalarProperty Name="ConsigneeState" ColumnName="ConsigneeState" />
+          <ScalarProperty Name="ConsigneeDist" ColumnName="ConsigneeDist" />
           <ScalarProperty Name="ConsigneeAddressLine3" ColumnName="ConsigneeAddressLine3" />
           <ScalarProperty Name="ConsigneeAddressLine2" ColumnName="ConsigneeAddressLine2" />
           <ScalarProperty Name="ConsigneeAddressLine1" ColumnName="ConsigneeAddressLine1" />
+          <ScalarProperty Name="ConsigneeAddressName" ColumnName="ConsigneeAddressName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Dist" ColumnName="Dist" />
           <ScalarProperty Name="OurPlantAddressLine3" ColumnName="OurPlantAddressLine3" />
           <ScalarProperty Name="OurPlantAddressLine2" ColumnName="OurPlantAddressLine2" />
           <ScalarProperty Name="OurPlantAddressLine1" ColumnName="OurPlantAddressLine1" />
+          <ScalarProperty Name="OurAddressName" ColumnName="OurAddressName" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>

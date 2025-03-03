@@ -131,6 +131,7 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\PackSlipController.cs" />
+    <Compile Include="Controllers\SettingCategoryController.cs" />
     <Compile Include="Controllers\UserInputController.cs" />
     <Compile Include="Database\Models\Dispatch_Data.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -172,6 +173,7 @@
     <Compile Include="Service\Dispatchservice.cs" />
     <Compile Include="ViewModel\AddPackingDetailsViewModel.cs" />
     <Compile Include="ViewModel\GeneratedViewmodel.cs" />
+    <Compile Include="ViewModel\SettingCategoryViewModel.cs" />
     <Compile Include="ViewModel\ViewPackSlipViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +261,8 @@
     <Content Include="Views\PackSlip\ViewPackSlip.cshtml" />
     <Content Include="Views\PackSlip\GeneratePackslip.cshtml" />
     <Content Include="Views\PackSlip\GenerateInvoice.cshtml" />
+    <Content Include="Views\SettingCategory\AddSettings.cshtml" />
+    <Content Include="Views\SettingCategory\ViewSetting.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

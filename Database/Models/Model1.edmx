@@ -99,15 +99,32 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="type" Type="varchar(max)" />
+          <Property Name="OurAddressName" Type="varchar(max)" />
           <Property Name="OurPlantAddressLine1" Type="varchar(max)" />
           <Property Name="OurPlantAddressLine2" Type="varchar(max)" />
           <Property Name="OurPlantAddressLine3" Type="varchar(max)" />
+          <Property Name="Dist" Type="varchar(max)" />
+          <Property Name="State" Type="varchar(max)" />
+          <Property Name="Country" Type="varchar(max)" />
+          <Property Name="Phone" Type="int" />
+          <Property Name="ConsigneeAddressName" Type="varchar(max)" />
           <Property Name="ConsigneeAddressLine1" Type="varchar(max)" />
           <Property Name="ConsigneeAddressLine2" Type="varchar(max)" />
           <Property Name="ConsigneeAddressLine3" Type="varchar(max)" />
+          <Property Name="ConsigneeDist" Type="varchar(max)" />
+          <Property Name="ConsigneeState" Type="varchar(max)" />
+          <Property Name="ConsigneeCountry" Type="varchar(max)" />
+          <Property Name="ConsigneeFacility" Type="varchar(max)" />
+          <Property Name="ConsigneePhone" Type="int" />
+          <Property Name="BuyerAddressName" Type="varchar(max)" />
           <Property Name="BuyerAddressLine1" Type="varchar(max)" />
           <Property Name="BuyerAddressLine2" Type="varchar(max)" />
           <Property Name="BuyerAddressLine3" Type="varchar(max)" />
+          <Property Name="BuyerDist" Type="varchar(max)" />
+          <Property Name="BuyerState" Type="varchar(max)" />
+          <Property Name="BuyerFacility" Type="varchar(max)" />
+          <Property Name="BuyerCountry" Type="varchar(max)" />
+          <Property Name="BuyerPhone" Type="int" />
         </EntityType>
         <EntityContainer Name="ITe_INDIAModelStoreContainer">
           <EntitySet Name="Dispatch_Code" EntityType="Self.Dispatch_Code" Schema="dbo" store:Type="Tables" />
@@ -223,15 +240,32 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OurAddressName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="OurPlantAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="OurPlantAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="OurPlantAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Dist" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="Int32" />
+          <Property Name="ConsigneeAddressName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ConsigneeAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ConsigneeAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="ConsigneeAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConsigneeDist" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConsigneeState" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConsigneeCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConsigneeFacility" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ConsigneePhone" Type="Int32" />
+          <Property Name="BuyerAddressName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="BuyerAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="BuyerAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="BuyerAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerDist" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerState" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerFacility" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BuyerPhone" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -335,15 +369,32 @@
           <EntitySetMapping Name="dispatch_type">
             <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
               <MappingFragment StoreEntitySet="dispatch_type">
+                <ScalarProperty Name="BuyerPhone" ColumnName="BuyerPhone" />
+                <ScalarProperty Name="BuyerCountry" ColumnName="BuyerCountry" />
+                <ScalarProperty Name="BuyerFacility" ColumnName="BuyerFacility" />
+                <ScalarProperty Name="BuyerState" ColumnName="BuyerState" />
+                <ScalarProperty Name="BuyerDist" ColumnName="BuyerDist" />
                 <ScalarProperty Name="BuyerAddressLine3" ColumnName="BuyerAddressLine3" />
                 <ScalarProperty Name="BuyerAddressLine2" ColumnName="BuyerAddressLine2" />
                 <ScalarProperty Name="BuyerAddressLine1" ColumnName="BuyerAddressLine1" />
+                <ScalarProperty Name="BuyerAddressName" ColumnName="BuyerAddressName" />
+                <ScalarProperty Name="ConsigneePhone" ColumnName="ConsigneePhone" />
+                <ScalarProperty Name="ConsigneeFacility" ColumnName="ConsigneeFacility" />
+                <ScalarProperty Name="ConsigneeCountry" ColumnName="ConsigneeCountry" />
+                <ScalarProperty Name="ConsigneeState" ColumnName="ConsigneeState" />
+                <ScalarProperty Name="ConsigneeDist" ColumnName="ConsigneeDist" />
                 <ScalarProperty Name="ConsigneeAddressLine3" ColumnName="ConsigneeAddressLine3" />
                 <ScalarProperty Name="ConsigneeAddressLine2" ColumnName="ConsigneeAddressLine2" />
                 <ScalarProperty Name="ConsigneeAddressLine1" ColumnName="ConsigneeAddressLine1" />
+                <ScalarProperty Name="ConsigneeAddressName" ColumnName="ConsigneeAddressName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Dist" ColumnName="Dist" />
                 <ScalarProperty Name="OurPlantAddressLine3" ColumnName="OurPlantAddressLine3" />
                 <ScalarProperty Name="OurPlantAddressLine2" ColumnName="OurPlantAddressLine2" />
                 <ScalarProperty Name="OurPlantAddressLine1" ColumnName="OurPlantAddressLine1" />
+                <ScalarProperty Name="OurAddressName" ColumnName="OurAddressName" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

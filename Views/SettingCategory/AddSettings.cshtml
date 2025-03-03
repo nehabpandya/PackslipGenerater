@@ -1,0 +1,124 @@
+﻿
+@{
+    ViewBag.Title = "AddSettings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@model PackSlipApp.ViewModel.SettingCategoryViewModel
+
+@{
+    ViewBag.Title = "Add or Edit Setting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@(Model.id == 0 ? "Create New Setting" : "Edit Setting")</h2>
+
+@using (Html.BeginForm("SaveSettings", "SettingCategory", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.id)
+
+    <div class="card-body">
+        <div class="live-preview">
+            <div class="row gy-4">
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.Type)
+                    @Html.TextBoxFor(model => model.Type, new { @class = "form-control", required = "required" })
+                   
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.ConsigneeAddressName)
+                    @Html.TextBoxFor(model => model.ConsigneeAddressName, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.ConsigneeAddressLine1)
+                    @Html.TextBoxFor(model => model.ConsigneeAddressLine1, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.ConsigneeAddressLine2)
+                    @Html.TextBoxFor(model => model.ConsigneeAddressLine2, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.ConsigneeAddressLine3)
+                    @Html.TextBoxFor(model => model.ConsigneeAddressLine3, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.ConsigneeDist)
+                    @Html.TextBoxFor(model => model.ConsigneeDist, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.ConsigneeState)
+                    @Html.TextBoxFor(model => model.ConsigneeState, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.ConsigneeCountry)
+                    @Html.TextBoxFor(model => model.ConsigneeCountry, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.ConsigneeFacility)
+                    @Html.TextBoxFor(model => model.ConsigneeFacility, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.ConsigneePhone)
+                    @Html.TextBoxFor(model => model.ConsigneePhone, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.BuyerAddressName)
+                    @Html.TextBoxFor(model => model.BuyerAddressName, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.BuyerAddressLine1)
+                    @Html.TextBoxFor(model => model.BuyerAddressLine1, new { @class = "form-control", required = "required" })
+
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.BuyerAddressLine2)
+                    @Html.TextBoxFor(model => model.BuyerAddressLine2, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.BuyerAddressLine3)
+                    @Html.TextBoxFor(model => model.BuyerAddressLine3, new { @class = "form-control", required = "required" })
+
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.BuyerDist)
+                    @Html.TextBoxFor(model => model.BuyerDist, new { @class = "form-control", required = "required" })
+
+                </div>
+
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.BuyerState)
+                    @Html.TextBoxFor(model => model.BuyerState, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.BuyerCountry)
+                    @Html.TextBoxFor(model => model.BuyerCountry, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.BuyerPhone)
+                    @Html.TextBoxFor(model => model.BuyerPhone, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    <button type="submit" class="btn btn-success">Update</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+

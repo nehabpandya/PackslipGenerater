@@ -25,13 +25,13 @@
                     <td>@item.PackslipNo</td>
                     <td>@item.InvoiceNo</td>
                     <td>
-                        <a href="@Url.Action("GeneratePackslip", "PackSlip", new { packslipNo = item.PackslipNo, invoiceNo = item.InvoiceNo })"
+                        <a href="@Url.Action("GeneratePackslip", "PackSlip", new { ID = item.Id , type = "Packslip"})"
                            class="btn btn-primary">
                             Generate Packslip
                         </a>
                     </td>
                     <td>
-                        <a href="@Url.Action("GenerateInvoice", "PackSlip", new { packslipNo = item.PackslipNo, invoiceNo = item.InvoiceNo })"
+                        <a href="@Url.Action("GenerateInvoice", "PackSlip", new { ID = item.Id, type = "Invoice" })"
                            class="btn btn-primary">
                             Generate Invoice
                         </a>

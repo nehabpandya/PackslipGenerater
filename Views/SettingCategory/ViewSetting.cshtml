@@ -1,0 +1,89 @@
+﻿@model List<PackSlipApp.ViewModel.SettingCategoryViewModel>
+@{
+    ViewBag.Title = "ViewSetting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ViewSetting</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Type</th>
+            <th>ConsigneeAddressName</th>
+            @*<th>ConsigneeAddressLine1 </th>
+            <th>ConsigneeAddressLine2 </th>
+            <th>ConsigneeAddressLine3 </th>*@
+            @*<th>ConsigneeDist </th>
+            <th>ConsigneeState </th>*@
+            <th>ConsigneeCountry </th>
+            @*<th>ConsigneeFacility </th>
+            <th>ConsigneePhone </th>*@
+            <th>BuyerAddressName </th>
+            @*<th>BuyerAddressLine1 </th>
+            <th>BuyerAddressLine2 </th>
+            <th>BuyerAddressLine3 </th>*@
+            @*<th>BuyerDist </th>
+            <th>BuyerState </th>*@
+            <th>BuyerCountry </th>
+            @*<th>BuyerFacility </th>*@
+            @*<th>BuyerPhone </th>*@
+            <th>Action </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+                    {
+                        int count = 1;
+                        foreach (var item in Model)
+                        {
+                <tr>
+                    <td>@count</td>
+                    <td>@item.Type</td>
+                    <td>@item.ConsigneeAddressName</td>
+                    @*<td>@item.ConsigneeAddressLine1</td>
+                    <td>@item.ConsigneeAddressLine2</td>
+                    <td>@item.ConsigneeAddressLine3</td>*@
+                    @*<td>@item.ConsigneeDist</td>
+                    <td>@item.ConsigneeState</td>*@
+                    <td>@item.ConsigneeCountry</td>
+                    @*<td>@item.ConsigneeFacility</td>
+                    <td>@item.ConsigneePhone</td>*@
+                    <td>@item.BuyerAddressName</td>
+                    @*<td>@item.BuyerAddressLine1</td>
+                    <td>@item.BuyerAddressLine2</td>
+                    <td>@item.BuyerAddressLine3</td>
+                    <td>@item.BuyerDist</td>
+                    <td>@item.BuyerState</td>*@
+                    <td>@item.BuyerCountry</td>
+                    @*<td>@item.BuyerFacility</td>*@
+                    @*<td>@item.BuyerPhone</td>*@
+
+                    <td>
+                        <a href="@Url.Action("AddSettings", "SettingCategory", new { id = item.id })"
+                           class="btn btn-primary">
+                            Edit
+                        </a>
+                    </td>
+
+                </tr>
+                count++;
+            }
+        }
+
+    </tbody>
+</table>
+@*<td>
+        <a href="@Url.Action("GeneratePackslip", "PackSlip", new { packslipNo = item.PackslipNo, invoiceNo = item.InvoiceNo })"
+           class="btn btn-primary">
+            Generate Packslip
+        </a>
+    </td>
+    <td>
+        <a href="@Url.Action("GenerateInvoice", "PackSlip", new { packslipNo = item.PackslipNo, invoiceNo = item.InvoiceNo })"
+           class="btn btn-primary">
+            Generate Invoice
+        </a>
+    </td>*@
