@@ -93,35 +93,46 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="type" Type="varchar(max)" />
-    <Property Name="OurAddressName" Type="varchar(max)" />
-    <Property Name="OurPlantAddressLine1" Type="varchar(max)" />
-    <Property Name="OurPlantAddressLine2" Type="varchar(max)" />
-    <Property Name="OurPlantAddressLine3" Type="varchar(max)" />
-    <Property Name="Dist" Type="varchar(max)" />
-    <Property Name="State" Type="varchar(max)" />
-    <Property Name="Country" Type="varchar(max)" />
-    <Property Name="Phone" Type="int" />
-    <Property Name="ConsigneeAddressName" Type="varchar(max)" />
-    <Property Name="ConsigneeAddressLine1" Type="varchar(max)" />
-    <Property Name="ConsigneeAddressLine2" Type="varchar(max)" />
-    <Property Name="ConsigneeAddressLine3" Type="varchar(max)" />
-    <Property Name="ConsigneeDist" Type="varchar(max)" />
-    <Property Name="ConsigneeState" Type="varchar(max)" />
-    <Property Name="ConsigneeCountry" Type="varchar(max)" />
-    <Property Name="ConsigneeFacility" Type="varchar(max)" />
+    <Property Name="type" Type="nvarchar(max)" />
+    <Property Name="SN Plant Name" Type="nvarchar(max)" />
+    <Property Name="SN PlantAddressLine1" Type="nvarchar(max)" />
+    <Property Name="SN PlantAddressLine2" Type="nvarchar(max)" />
+    <Property Name="SN PlantAddressLine3" Type="nvarchar(max)" />
+    <Property Name="Dist" Type="nvarchar(max)" />
+    <Property Name="State" Type="nvarchar(max)" />
+    <Property Name="Country" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nvarchar(max)" />
+    <Property Name="ConsigneeAddressName" Type="nvarchar(max)" />
+    <Property Name="ConsigneeAddressLine1" Type="nvarchar(max)" />
+    <Property Name="ConsigneeAddressLine2" Type="nvarchar(max)" />
+    <Property Name="ConsigneeAddressLine3" Type="nvarchar(max)" />
+    <Property Name="ConsigneeDist" Type="nvarchar(max)" />
+    <Property Name="ConsigneeState" Type="nvarchar(max)" />
+    <Property Name="ConsigneeCountry" Type="nvarchar(max)" />
+    <Property Name="ConsigneeFacility" Type="nvarchar(max)" />
     <Property Name="ConsigneePhone" Type="int" />
-    <Property Name="BuyerAddressName" Type="varchar(max)" />
-    <Property Name="BuyerAddressLine1" Type="varchar(max)" />
-    <Property Name="BuyerAddressLine2" Type="varchar(max)" />
-    <Property Name="BuyerAddressLine3" Type="varchar(max)" />
-    <Property Name="BuyerDist" Type="varchar(max)" />
-    <Property Name="BuyerState" Type="varchar(max)" />
-    <Property Name="BuyerFacility" Type="varchar(max)" />
-    <Property Name="BuyerCountry" Type="varchar(max)" />
+    <Property Name="BuyerAddressName" Type="nvarchar(max)" />
+    <Property Name="BuyerAddressLine1" Type="nvarchar(max)" />
+    <Property Name="BuyerAddressLine2" Type="nvarchar(max)" />
+    <Property Name="BuyerAddressLine3" Type="nvarchar(max)" />
+    <Property Name="BuyerDist" Type="nvarchar(max)" />
+    <Property Name="BuyerState" Type="nvarchar(max)" />
+    <Property Name="BuyerFacility" Type="nvarchar(max)" />
+    <Property Name="BuyerCountry" Type="nvarchar(max)" />
     <Property Name="BuyerPhone" Type="int" />
-    <Property Name="PortOfDischarge" Type="varchar(max)" />
-    <Property Name="KindAttention" Type="varchar(max)" />
+    <Property Name="PortOfDischarge" Type="nvarchar(max)" />
+    <Property Name="KindAttention" Type="nvarchar(max)" />
+    <Property Name="PortOfLoading" Type="nvarchar(max)" />
+    <Property Name="CountryOfOrigin" Type="nvarchar(max)" />
+    <Property Name="PaymentTerms" Type="nvarchar(max)" />
+    <Property Name="Vessel_FlightNo" Type="nvarchar(max)" />
+    <Property Name="TermsOfDelivery" Type="nvarchar(max)" />
+    <Property Name="IECNO" Type="nvarchar(max)" />
+    <Property Name="GSTIN" Type="nvarchar(max)" />
+    <Property Name="FEI#" Type="nvarchar(max)" />
+    <Property Name="FDAFacilityRegn#" Type="nvarchar(max)" />
+    <Property Name="CIN" Type="nvarchar(max)" />
+    <Property Name="Signature" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="USER_MST">
     <Key>

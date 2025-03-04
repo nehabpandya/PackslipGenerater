@@ -8,7 +8,7 @@ namespace PackSlipApp.ViewModel
 {
     public class SettingCategoryViewModel
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Type")]
         public string Type { get; set; }

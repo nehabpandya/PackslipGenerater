@@ -45,13 +45,13 @@ namespace PackSlipApp.Controllers
                 {
                     dispatch_Staticdata dispatch_Staticdata = context.dispatch_Staticdata.FirstOrDefault();
 
-                    dispatch_type _Type = context.dispatch_type.Where(p => p.type == _PackingDetails.Category).FirstOrDefault();
+                    dispatch_type _Type = context.dispatch_type.FirstOrDefault(p => p.type == _PackingDetails.Category);
 
                     Model.InvoiceNo = _PackingDetails.InvoiceNo;
                     Model.PackSlipNo = _PackingDetails.PackslipNo;
                     Model.Category = _PackingDetails.Category;
                     Model.InvoiceDate = DateTime.Now;
-                    Model.PackslipDate = DateTime.Now;
+                    //Model.PackslipDate = DateTime.Now;
                     Model.SNAddLine1 = dispatch_Staticdata.SNAddLine1;
                     Model.SNAddLine2 = dispatch_Staticdata.SNAddLine2;
                     Model.SNAddLine3 = dispatch_Staticdata.SNAddLine3;
@@ -87,8 +87,9 @@ namespace PackSlipApp.Controllers
                     Model.BuyerFacility = _Type.BuyerFacility;
                     Model.BuyerCountry = _Type.BuyerCountry;
                     Model.BuyerPhone = _Type.BuyerPhone;
-
-
+                    Model.Portofdischarge = _Type.PortOfDischarge;
+                    Model.Finaldestination = _Type.PortOfDischarge; // Ensure this field exists in _Type
+                    Model.Kind = _Type.KindAttention;
                     Model.PoItemList = (from modal in context.Dispatch_Data.Where(p => p.PID == ID)
                                         select new ListOfItemsInPo
                                         {
@@ -112,6 +113,7 @@ namespace PackSlipApp.Controllers
 
             return View(Model);
         }
+
 
         public int TotalPalate(List<(int length, int width, int height)> dimensions)
         {
@@ -174,7 +176,7 @@ namespace PackSlipApp.Controllers
                     Model.PackSlipNo = _PackingDetails.PackslipNo;
                     Model.Category = _PackingDetails.Category;
                     Model.InvoiceDate = DateTime.Now;
-                    Model.PackslipDate = DateTime.Now;
+                    //Model.PackslipDate = DateTime.Now;
                     Model.SNAddLine1 = dispatch_Staticdata.SNAddLine1;
                     Model.SNAddLine2 = dispatch_Staticdata.SNAddLine2;
                     Model.SNAddLine3 = dispatch_Staticdata.SNAddLine3;

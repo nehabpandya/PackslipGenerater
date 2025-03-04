@@ -16,14 +16,14 @@ namespace PackSlipApp.Database.Models
     {
         public int id { get; set; }
         public string type { get; set; }
-        public string OurAddressName { get; set; }
-        public string OurPlantAddressLine1 { get; set; }
-        public string OurPlantAddressLine2 { get; set; }
-        public string OurPlantAddressLine3 { get; set; }
+        public string SN_Plant_Name { get; set; }
+        public string SN_PlantAddressLine1 { get; set; }
+        public string SN_PlantAddressLine2 { get; set; }
+        public string SN_PlantAddressLine3 { get; set; }
         public string Dist { get; set; }
         public string State { get; set; }
         public string Country { get; set; }
-        public Nullable<int> Phone { get; set; }
+        public string Phone { get; set; }
         public string ConsigneeAddressName { get; set; }
         public string ConsigneeAddressLine1 { get; set; }
         public string ConsigneeAddressLine2 { get; set; }
@@ -44,5 +44,16 @@ namespace PackSlipApp.Database.Models
         public Nullable<int> BuyerPhone { get; set; }
         public string PortOfDischarge { get; set; }
         public string KindAttention { get; set; }
+        public string PortOfLoading { get; set; }
+        public string CountryOfOrigin { get; set; }
+        public string PaymentTerms { get; set; }
+        public string Vessel_FlightNo { get; set; }
+        public string TermsOfDelivery { get; set; }
+        public string IECNO { get; set; }
+        public string GSTIN { get; set; }
+        public string FEI_ { get; set; }
+        public string FDAFacilityRegn_ { get; set; }
+        public string CIN { get; set; }
+        public string Signature { get; set; }
     }
 }

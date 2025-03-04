@@ -19,7 +19,7 @@ namespace PackSlipApp.ViewModel
         public string Category { get; set; }
 
         public DateTime? InvoiceDate { get; set; }
-        public DateTime? PackslipDate { get; set; }
+        //public DateTime? PackslipDate { get; set; }
         public string FormattedInvoiceDate => InvoiceDate?.ToString("dd-MMM-yyyy");
 
         public DateTime? PackSlipDate { get; set; }
@@ -97,7 +97,8 @@ namespace PackSlipApp.ViewModel
         public int? BuyerPhone { get; set; }
         public string Portofdischarge { get; set; }
         public string Finaldestination { get; set; }
-        public string Destinationcountry { get; set; }
+        public string Kind { get; set; }
+
     }
 
     public class ListOfItemsInPo

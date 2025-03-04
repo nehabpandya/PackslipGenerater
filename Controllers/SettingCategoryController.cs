@@ -21,13 +21,13 @@ namespace PackSlipApp.Controllers
             if (ModelState.IsValid)
             {
                 // Check if it's an edit or a new record
-                var existingRecord = context.dispatch_type.FirstOrDefault(x => x.id == model.id);
+                var existingRecord = context.dispatch_type.FirstOrDefault(x => x.id == model.Id);
 
                 if (existingRecord != null) // Update existing record
                 {
                     
 
-                         existingRecord.id = model.id;
+                         existingRecord.id = model.Id;
                          existingRecord.type = model.Type;
                          existingRecord.ConsigneeAddressName = model.ConsigneeAddressName;
                          existingRecord.ConsigneeAddressLine1 = model.ConsigneeAddressLine1;
@@ -53,7 +53,7 @@ namespace PackSlipApp.Controllers
                     dispatch_type newRecord = new dispatch_type
                     {
                        
-                        id = model.id,
+                        id = model.Id,
                         type = model.Type,
                         ConsigneeAddressName = model.ConsigneeAddressName,
                         ConsigneeAddressLine1 = model.ConsigneeAddressLine1,
@@ -93,7 +93,7 @@ namespace PackSlipApp.Controllers
             Model = (from modal in context.dispatch_type
                       select new SettingCategoryViewModel
                       {
-id=modal.id,
+                    Id=modal.id,
                     Type = modal.type,
                     ConsigneeAddressName = modal.ConsigneeAddressName,
                     ConsigneeAddressLine1 = modal.ConsigneeAddressLine1,
@@ -124,7 +124,7 @@ id=modal.id,
             SettingCategoryViewModel model = new SettingCategoryViewModel
             {
 
-                id = addDetails.id,
+                Id = addDetails.id,
                 Type = addDetails.type,
                 
                 ConsigneeAddressName = addDetails.ConsigneeAddressName,

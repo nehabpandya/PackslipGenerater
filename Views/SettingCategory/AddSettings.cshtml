@@ -12,11 +12,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@(Model.id == 0 ? "Create New Setting" : "Edit Setting")</h2>
+<h2>@(Model.Id == 0 ? "Create New Setting" : "Edit Setting")</h2>
 
 @using (Html.BeginForm("SaveSettings", "SettingCategory", FormMethod.Post))
 {
-    @Html.HiddenFor(model => model.id)
+    @Html.HiddenFor(model => model.Id)
 
     <div class="card-body">
         <div class="live-preview">

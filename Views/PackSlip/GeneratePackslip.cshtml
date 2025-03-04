@@ -60,10 +60,10 @@
         <tr>
             <td colspan="5">@Model.SNAddLine3</td>
             <td colspan="1">Port of Discharge</td>
-            <td colspan="1">@Model.PortOfDischarge</td>
+            <td colspan="1">@Model.Portofdischarge @Model.BuyerCountry</td>
             <td class="no-bottom-border" colspan="1"></td>
             <td colspan="1">Final Destination</td>
-            <td colspan="1">@Model.FinalDestination</td>
+            <td colspan="1">@Model.Portofdischarge</td>
         </tr>
         <tr>
             <td colspan="5">@Model.SNAddLine4</td>
@@ -71,7 +71,7 @@
             <td colspan="1">@Model.CountryOfOrigin</td>
             <td colspan="1"></td>
             <td colspan="1">Destination Country</td>
-            <td colspan="1">@Model.DestinationCountry</td>
+            <td colspan="1">@Model.BuyerCountry</td>
         </tr>
 
         <tr>
@@ -129,7 +129,7 @@
             <td class="no-bottom-border" colspan="4">@Model.ConsigneeAddressName</td>
             <td class="no-bottom-border" colspan="3">@Model.ConsigneeAddressName</td>
             <td class="no-bottom-border" colspan="3">
-                @string.Join(",", Model.PoItemList.Select(p => p.PONo).Distinct())
+                @*@string.Join(",", Model?.PoItemList?.Select(p => p.PONo).Distinct())*@
             </td>
         </tr>
         <tr>

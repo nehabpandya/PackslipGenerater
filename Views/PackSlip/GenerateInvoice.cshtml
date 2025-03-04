@@ -27,179 +27,169 @@
             </button>
         </div>
     </div>
-
     <table class="table table-bordered">
         <tr>
-            <td colspan="10" align="center" style="font-weight: bold; font-size: 18px;"><center> @Model.Category PACKING LIST </center></td>
+            <td colspan="12" align="center" style="font-weight: bold; font-size: 18px;"><center> @Model.Category PACKING LIST </center></td>
         </tr>
 
         <tr>
             <td colspan="5"><b>Expoter</b></td>
             <td colspan="1">Invoice No</td>
-            <td colspan="1">@Model.InvoiceNo</td>
+            <td colspan="2">@Model.InvoiceNo</td>
             <td class="no-bottom-border" colspan="1"></td>
             <td colspan="1">Invoice Date</td>
-            <td colspan="1">@Model.FormattedInvoiceDate</td>
+
+            <td colspan="2">@Model.FormattedInvoiceDate</td>
         </tr>
         <tr>
             <td colspan="5">@Model.SNAddLine1</td>
             <td colspan="1">Packslip No</td>
-            <td colspan="1">@Model.PackSlipNo</td>
+            <td colspan="2">@Model.PackSlipNo</td>
             <td class="no-bottom-border" colspan="1"></td>
             <td colspan="1">Packslip Date</td>
-            <td colspan="1">@Model.FormattedPackSlipDate</td>
+            <td colspan="2">@Model.FormattedPackSlipDate</td>
         </tr>
         <tr>
             <td colspan="5">@Model.SNAddLine2</td>
             <td colspan="1">Port of Loading</td>
-            <td colspan="1">@Model.PortOfLoading</td>
+            <td colspan="2">@Model.PortOfLoading</td>
             <td class="no-bottom-border" colspan="1"></td>
+
             <td colspan="1">Vessel/Flight No</td>
-            <td colspan="1"></td>
         </tr>
         <tr>
             <td colspan="5">@Model.SNAddLine3</td>
             <td colspan="1">Port of Discharge</td>
-            <td colspan="1">@Model.PortOfDischarge</td>
+            <td colspan="2">@Model.PortOfDischarge</td>
+
             <td class="no-bottom-border" colspan="1"></td>
+
             <td colspan="1">Final Destination</td>
-            <td colspan="1">@Model.FinalDestination</td>
+            <td colspan="2">@Model.FinalDestination</td>
         </tr>
         <tr>
             <td colspan="5">@Model.SNAddLine4</td>
             <td colspan="1">Country Of Origin</td>
-            <td colspan="1">@Model.CountryOfOrigin</td>
+            <td colspan="2">@Model.CountryOfOrigin</td>
+
+
             <td colspan="1"></td>
             <td colspan="1">Destination Country</td>
-            <td colspan="1">@Model.DestinationCountry</td>
+            <td colspan="2">@Model.DestinationCountry</td>
+
         </tr>
 
         <tr>
             <td colspan="5">@Model.SNAddLine5</td>
             <td colspan="1">Payment Terms</td>
-            <td colspan="4">@Model.PaymentTerms</td>
+            <td colspan="6">@Model.PaymentTerms</td>
 
         </tr>
 
         <tr>
             <td colspan="5">@Model.SNAddLine6</td>
-            <td class="no-bottom-border" colspan="5">Other Reference</td>
+            <td class="no-bottom-border" colspan="7"><b>Other Reference</b></td>
         </tr>
 
         <tr>
             <td colspan="5">@Model.SNAddLine7</td>
-            <td class="no-bottom-border" colspan="5">1 Medical Device</td>
+            <td class="no-bottom-border" colspan="7">1 Medical Device</td>
         </tr>
 
         <tr>
             <td colspan="2">CIN</td>
             <td colspan="3">@Model.CIN</td>
-            <td colspan="5">2 Medical Device</td>
+            <td colspan="7"> </td>
         </tr>
 
         <tr>
             <td colspan="2">IES NO</td>
             <td colspan="3">@Model.IECNO</td>
-            <td class="no-bottom-border" colspan="5">Other Details</td>
+            <td class="no-bottom-border" colspan="7">Other Details</td>
         </tr>
 
         <tr>
             <td colspan="2">GSTIN</td>
             <td colspan="3">@Model.GSTIN</td>
-            <td class="no-bottom-border" colspan="5"></td>
+            <td class="no-bottom-border" colspan="7"></td>
         </tr>
         <tr>
             <td colspan="2">FEI#</td>
             <td colspan="3">@Model.FEI_</td>
-            <td class="no-bottom-border" colspan="5">Kind Attention:</td>
+            <td class="no-bottom-border" colspan="7">Kind Attention:</td>
         </tr>
 
         <tr>
             <td colspan="2">FDA Facility Regn#</td>
             <br>
             <td colspan="3">@Model.FDAFacilityRegn_</td>
+            <td colspan="7"></td>
+        </tr>
+        <tr>
+            <td class="no-bottom-border" colspan="5">Consignee</td>
+            <td class="no-bottom-border" colspan="3">Buyer (If Other than Consignee)</td>
+            <td class="no-bottom-border" colspan="5">Buyer PO No & Date</td>
+        </tr>
+        <tr>
+            <td class="no-bottom-border" colspan="5">@Model.ConsigneeAddressName</td>
+            <td class="no-bottom-border" colspan="3">@Model.ConsigneeAddressName</td>
+            <td class="no-bottom-border" colspan="5">
+                @*@string.Join(",", Model.PoItemList.Select(p => p.PONo).Distinct())*@
+            </td>
+        </tr>
+        <tr>
+            <td class="no-bottom-border" colspan="5">@Model.ConsigneeAddressLine1</td>
+            <td class="no-bottom-border" colspan="3">@Model.ConsigneeAddressLine1</td>
+            <td class="no-bottom-border" colspan="6"></td>
+        </tr>
+
+        <tr>
+            <td class="no-bottom-border" colspan="5">@Model.ConsigneeDist</td>
+            <td class="no-bottom-border" colspan="3">@Model.ConsigneeDist</td>
+            <td class="no-bottom-border" colspan="5"></td>
+        </tr>
+
+        <tr>
+            <td class="no-bottom-border" colspan="5">@Model.ConsigneeState</td>
+            <td class="no-bottom-border" colspan="3">@Model.ConsigneeState</td>
+            <td class="no-bottom-border" colspan="5"></td>
+        </tr>
+
+        <tr>
+            <td class="no-bottom-border" colspan="5">@Model.ConsigneeCountry</td>
+            <td class="no-bottom-border" colspan="3">@Model.ConsigneeCountry</td>
+            <td class="no-bottom-border" colspan="5"></td>
+        </tr>
+        <tr>
+            <td colspan="5">@Model.ConsigneeCountry  @Model.ConsigneeFacility</td>
+            <td colspan="3"></td>
             <td colspan="5"></td>
         </tr>
         <tr>
-            <td class="no-bottom-border" colspan="4">Consignee</td>
-            <td class="no-bottom-border" colspan="3">Buyer (If Other than Consignee)</td>
-            <td class="no-bottom-border" colspan="3">Buyer PO No & Date</td>
-        </tr>
-        <tr>
-            <td class="no-bottom-border" colspan="4">@Model.ConsigneeAddressName</td>
-            <td class="no-bottom-border" colspan="3">@Model.ConsigneeAddressName</td>
-            <td class="no-bottom-border" colspan="3">
-                @string.Join(",", Model.PoItemList.Select(p => p.PONo).Distinct())
-            </td>
-        </tr>
-        <tr>
-            <td class="no-bottom-border" colspan="4">@Model.ConsigneeAddressLine1</td>
-            <td class="no-bottom-border" colspan="3">@Model.ConsigneeAddressLine1</td>
-            <td class="no-bottom-border" colspan="3"></td>
+            <td colspan="12"></td>
         </tr>
 
-        <tr>
-            <td class="no-bottom-border" colspan="4">@Model.ConsigneeDist</td>
-            <td class="no-bottom-border" colspan="3">@Model.ConsigneeDist</td>
-            <td class="no-bottom-border" colspan="3"></td>
-        </tr>
 
         <tr>
-            <td class="no-bottom-border" colspan="4">@Model.ConsigneeState</td>
-            <td class="no-bottom-border" colspan="3">@Model.ConsigneeState</td>
-            <td class="no-bottom-border" colspan="3"></td>
-        </tr>
-
-        <tr>
-            <td class="no-bottom-border" colspan="4">@Model.ConsigneeCountry</td>
-            <td class="no-bottom-border" colspan="3">@Model.ConsigneeCountry</td>
-            <td class="no-bottom-border" colspan="3"></td>
-        </tr>
-        <tr>
-            <td colspan="4">@Model.ConsigneeCountry  @Model.ConsigneeFacility</td>
-            <td colspan="3"></td>
-            <td colspan="3"></td>
-        </tr>
-        <tr>
-            <td colspan="9"></td>
-        </tr>
-        <tr>
-            <td>
-                Sr No
-            </td>
-            <td>
-                Marks & Nos
-            </td>
-            <td colspan="2">
-                <center>
-                    No & Kind of Packing
-                </center>
-            </td>
-            <td>
-                Part No
-            </td>
-            <td>
-                Description
-            </td>
-            <td>
-                Quantity (Pcs)
-            </td>
-            <td>
-                UOM
-            </td>
-            <td>
-                Net Weight (Kgs)
-            </td>
-            <td>
-                Gross Weight (Kgs)
-            </td>
+            <td><b>Sr No</b></td>
+            <td><b>Marks & Nos</b></td>
+            <td><b>Advance Lic No</b></td>
+            <td><b>Adv Lic Sr No</b></td>
+            <td><b>Part No</b></td>
+            <td><b>Description</b></td>
+            <td><b>Quantity(Pcs)</b></td>
+            <td><b>UOM</b></td>
+            <td><b>Quantity(Kgs)</b></td>
+            <td><b>UOM</b></td>
+            <td><b>Unit Price(USD)</b></td>
+            <td><b>Total Value(USD)</b></td>
         </tr>
         @{
 
             int? totlsum = 0;
             int? totalQty = 0;
-            decimal? totalnetweight = 0; // Change to decimal?
-            decimal? totalgrossweight = 0; // Change to decimal?
+            decimal? totalnetweight = 0;
+            decimal? totalgrossweight = 0;
 
         }
         @if (Model?.PoItemList != null)
@@ -277,65 +267,63 @@
         }
 
         <tr>
+            <td>1 </td>
+            <td>Pallet 1 of 1</td>
+            <td>2411002663</td>
+            <td>1</td>
+            <td>TP348</td>
+            <td>Insertion and Removal Instruments</td>
+            <td>111</td>
+            <td>Pcs</td>
+            <td>1.11</td>
+            <td>Kg</td>
+            <td>22.78</td>
+            <td>2528.58</td>
+        </tr>
+        <tr>
             <td> </td>
-            <td>Total</td>
-            <td>Total Count of Boxed = @totlsum</td>
             <td></td>
             <td></td>
             <td></td>
-            <td>Total Count of Qty = @totalQty</td>
             <td></td>
-            <td>Total Count of Net weight = @totalnetweight</td>
-            <td>Total Count of Gross Weight = @totalgrossweight</td>
-
+            <td><b>Total</b></td>
+            <td>@totalQty</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
-            <td colspan="10"> </td>
-
+            <td colspan="12"> </td>
         </tr>
         <tr>
-            <td colspan="10">
-                <center>
-                    <b>
-                        Made in India
-                    </b>
-                </center>
+            <td colspan="12">
+                <span style="margin-left: 15px;">Total Amount ( in Words ) : </span>
+                <span style="margin-left: 85px; font-size: 20px;"><b>USD Thirty-Nine Thousand Seven Hundred One and Eighty-Two Cents only</b></span>
+
             </td>
         </tr>
         <tr>
-            <td colspan="2">Total Pallets</td>
-            <td colspan="1"></td>
-            <td colspan="7"></td>
-
-
+            <td></td>
+            <td colspan="6"><b>Summary of Advance License used for Export</b></td>
+            <td colspan="1"><b>Export Item Sr no</b></td>
+            <td colspan="1"><b>Export Qty (Kgs)</b></td>
+            <td colspan="1"><b>Impoty Item Name</b></td>
+            <td colspan="2"><b>Import Obligation (Kgs)</b></td>
         </tr>
         <tr>
-            <td colspan="2">Total Boxes</td>
-            <td colspan="1">@totlsum</td>
-            <td colspan="7"></td>
+            <td></td>
+            <td colspan="6">Advance License No 2411002663 dtd 22-Aug-2023</td>
+            <td colspan="1">1</td>
+            <td colspan="1">1.110</td>
+            <td colspan="1">SS Rd Gr 440C</td>
+            <td colspan="2">3.05</td>
         </tr>
         <tr>
-            <td colspan="2">Total Net Weight</td>
-            <td colspan="1">@totalnetweight</td>
-            <td colspan="7"></td>
-
-
+            <td></td>
+            <td colspan="11">Declaration  <br /> We declare that this invoice shows the actual price of the goods <br />described and that all particulars are true & correct. <br /> <center>&nbsp;&nbsp;&nbsp;&nbsp;Signature:</center></td>
         </tr>
-        <tr>
-            <td colspan="2">Total Gross Weight</td>
-            <td colspan="1">@totalgrossweight</td>
-            <td colspan="7"><center>Signature : </center></td>
-
-
-        </tr>
-        <tr>
-            <td colspan="2"></td>
-            <td colspan="1"></td>
-            <td colspan="7"></td>
-
-
-        </tr>
-
     </table>
 
 </div>

@@ -97,6 +97,17 @@
     <EntitySetMapping Name="dispatch_type">
       <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
         <MappingFragment StoreEntitySet="dispatch_type">
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+          <ScalarProperty Name="CIN" ColumnName="CIN" />
+          <ScalarProperty Name="FDAFacilityRegn_" ColumnName="FDAFacilityRegn#" />
+          <ScalarProperty Name="FEI_" ColumnName="FEI#" />
+          <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
+          <ScalarProperty Name="IECNO" ColumnName="IECNO" />
+          <ScalarProperty Name="TermsOfDelivery" ColumnName="TermsOfDelivery" />
+          <ScalarProperty Name="Vessel_FlightNo" ColumnName="Vessel_FlightNo" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="CountryOfOrigin" ColumnName="CountryOfOrigin" />
+          <ScalarProperty Name="PortOfLoading" ColumnName="PortOfLoading" />
           <ScalarProperty Name="KindAttention" ColumnName="KindAttention" />
           <ScalarProperty Name="PortOfDischarge" ColumnName="PortOfDischarge" />
           <ScalarProperty Name="BuyerPhone" ColumnName="BuyerPhone" />
@@ -121,10 +132,10 @@
           <ScalarProperty Name="Country" ColumnName="Country" />
           <ScalarProperty Name="State" ColumnName="State" />
           <ScalarProperty Name="Dist" ColumnName="Dist" />
-          <ScalarProperty Name="OurPlantAddressLine3" ColumnName="OurPlantAddressLine3" />
-          <ScalarProperty Name="OurPlantAddressLine2" ColumnName="OurPlantAddressLine2" />
-          <ScalarProperty Name="OurPlantAddressLine1" ColumnName="OurPlantAddressLine1" />
-          <ScalarProperty Name="OurAddressName" ColumnName="OurAddressName" />
+          <ScalarProperty Name="SN_PlantAddressLine3" ColumnName="SN PlantAddressLine3" />
+          <ScalarProperty Name="SN_PlantAddressLine2" ColumnName="SN PlantAddressLine2" />
+          <ScalarProperty Name="SN_PlantAddressLine1" ColumnName="SN PlantAddressLine1" />
+          <ScalarProperty Name="SN_Plant_Name" ColumnName="SN Plant Name" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
