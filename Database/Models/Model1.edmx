@@ -125,19 +125,25 @@
           <Property Name="BuyerFacility" Type="nvarchar(max)" />
           <Property Name="BuyerCountry" Type="nvarchar(max)" />
           <Property Name="BuyerPhone" Type="int" />
+          <Property Name="FinalDestination" Type="nvarchar(max)" />
           <Property Name="PortOfDischarge" Type="nvarchar(max)" />
           <Property Name="KindAttention" Type="nvarchar(max)" />
           <Property Name="PortOfLoading" Type="nvarchar(max)" />
+          <Property Name="DestinationCountry" Type="nvarchar(max)" />
           <Property Name="CountryOfOrigin" Type="nvarchar(max)" />
           <Property Name="PaymentTerms" Type="nvarchar(max)" />
           <Property Name="Vessel_FlightNo" Type="nvarchar(max)" />
           <Property Name="TermsOfDelivery" Type="nvarchar(max)" />
           <Property Name="IECNO" Type="nvarchar(max)" />
           <Property Name="GSTIN" Type="nvarchar(max)" />
-          <Property Name="FEI#" Type="nvarchar(max)" />
-          <Property Name="FDAFacilityRegn#" Type="nvarchar(max)" />
+          <Property Name="FEI" Type="nvarchar(max)" />
+          <Property Name="FDAFacilityRegn" Type="nvarchar(max)" />
           <Property Name="CIN" Type="nvarchar(max)" />
           <Property Name="Signature" Type="nvarchar(max)" />
+          <Property Name="OtherReference1" Type="nvarchar(max)" />
+          <Property Name="OtherReference2" Type="nvarchar(max)" />
+          <Property Name="TypeCode" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" />
         </EntityType>
         <EntityType Name="USER_MST">
           <Key>
@@ -222,8 +228,8 @@
           <EntitySet Name="Dispatch_Grade" EntityType="ITe_INDIAModel.Dispatch_Grade" />
           <EntitySet Name="Dispatch_PackingDetails" EntityType="ITe_INDIAModel.Dispatch_PackingDetails" />
           <EntitySet Name="dispatch_Staticdata" EntityType="ITe_INDIAModel.dispatch_Staticdata" />
-          <EntitySet Name="dispatch_type" EntityType="ITe_INDIAModel.dispatch_type" />
           <EntitySet Name="USER_MST" EntityType="ITe_INDIAModel.USER_MST" />
+          <EntitySet Name="dispatch_type" EntityType="ITe_INDIAModel.dispatch_type" />
         </EntityContainer>
         <EntityType Name="Dispatch_Code">
           <Key>
@@ -313,52 +319,6 @@
           <Property Name="CIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Signature" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="dispatch_type">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SN_Plant_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SN_PlantAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SN_PlantAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="SN_PlantAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Dist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ConsigneeAddressName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ConsigneeAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ConsigneeAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ConsigneeAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ConsigneeDist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ConsigneeState" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ConsigneeCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ConsigneeFacility" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ConsigneePhone" Type="Int32" />
-          <Property Name="BuyerAddressName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BuyerAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BuyerAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BuyerAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BuyerDist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BuyerState" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BuyerFacility" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BuyerCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="BuyerPhone" Type="Int32" />
-          <Property Name="PortOfDischarge" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="KindAttention" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PortOfLoading" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CountryOfOrigin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PaymentTerms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Vessel_FlightNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TermsOfDelivery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IECNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="GSTIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="FEI_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="FDAFacilityRegn_" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="USER_MST">
           <Key>
             <PropertyRef Name="TenentID" />
@@ -422,6 +382,58 @@
           <Property Name="Secondary_approval_person" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="MSPRO_UserType" Type="Int32" />
           <Property Name="ToolTrial_UserType" Type="Int32" />
+        </EntityType>
+        <EntityType Name="dispatch_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SN_Plant_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SN_PlantAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SN_PlantAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SN_PlantAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Dist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsigneeAddressName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsigneeAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsigneeAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsigneeAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsigneeDist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsigneeState" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsigneeCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsigneeFacility" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsigneePhone" Type="Int32" />
+          <Property Name="BuyerAddressName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerAddressLine1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerAddressLine2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerAddressLine3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerDist" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerState" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerFacility" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerPhone" Type="Int32" />
+          <Property Name="FinalDestination" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PortOfDischarge" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KindAttention" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PortOfLoading" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DestinationCountry" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CountryOfOrigin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentTerms" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Vessel_FlightNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TermsOfDelivery" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IECNO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GSTIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FEI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FDAFacilityRegn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CIN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Signature" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OtherReference1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OtherReference2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TypeCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -522,53 +534,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="dispatch_type">
-            <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
-              <MappingFragment StoreEntitySet="dispatch_type">
-                <ScalarProperty Name="Signature" ColumnName="Signature" />
-                <ScalarProperty Name="CIN" ColumnName="CIN" />
-                <ScalarProperty Name="FDAFacilityRegn_" ColumnName="FDAFacilityRegn#" />
-                <ScalarProperty Name="FEI_" ColumnName="FEI#" />
-                <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
-                <ScalarProperty Name="IECNO" ColumnName="IECNO" />
-                <ScalarProperty Name="TermsOfDelivery" ColumnName="TermsOfDelivery" />
-                <ScalarProperty Name="Vessel_FlightNo" ColumnName="Vessel_FlightNo" />
-                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
-                <ScalarProperty Name="CountryOfOrigin" ColumnName="CountryOfOrigin" />
-                <ScalarProperty Name="PortOfLoading" ColumnName="PortOfLoading" />
-                <ScalarProperty Name="KindAttention" ColumnName="KindAttention" />
-                <ScalarProperty Name="PortOfDischarge" ColumnName="PortOfDischarge" />
-                <ScalarProperty Name="BuyerPhone" ColumnName="BuyerPhone" />
-                <ScalarProperty Name="BuyerCountry" ColumnName="BuyerCountry" />
-                <ScalarProperty Name="BuyerFacility" ColumnName="BuyerFacility" />
-                <ScalarProperty Name="BuyerState" ColumnName="BuyerState" />
-                <ScalarProperty Name="BuyerDist" ColumnName="BuyerDist" />
-                <ScalarProperty Name="BuyerAddressLine3" ColumnName="BuyerAddressLine3" />
-                <ScalarProperty Name="BuyerAddressLine2" ColumnName="BuyerAddressLine2" />
-                <ScalarProperty Name="BuyerAddressLine1" ColumnName="BuyerAddressLine1" />
-                <ScalarProperty Name="BuyerAddressName" ColumnName="BuyerAddressName" />
-                <ScalarProperty Name="ConsigneePhone" ColumnName="ConsigneePhone" />
-                <ScalarProperty Name="ConsigneeFacility" ColumnName="ConsigneeFacility" />
-                <ScalarProperty Name="ConsigneeCountry" ColumnName="ConsigneeCountry" />
-                <ScalarProperty Name="ConsigneeState" ColumnName="ConsigneeState" />
-                <ScalarProperty Name="ConsigneeDist" ColumnName="ConsigneeDist" />
-                <ScalarProperty Name="ConsigneeAddressLine3" ColumnName="ConsigneeAddressLine3" />
-                <ScalarProperty Name="ConsigneeAddressLine2" ColumnName="ConsigneeAddressLine2" />
-                <ScalarProperty Name="ConsigneeAddressLine1" ColumnName="ConsigneeAddressLine1" />
-                <ScalarProperty Name="ConsigneeAddressName" ColumnName="ConsigneeAddressName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="State" ColumnName="State" />
-                <ScalarProperty Name="Dist" ColumnName="Dist" />
-                <ScalarProperty Name="SN_PlantAddressLine3" ColumnName="SN PlantAddressLine3" />
-                <ScalarProperty Name="SN_PlantAddressLine2" ColumnName="SN PlantAddressLine2" />
-                <ScalarProperty Name="SN_PlantAddressLine1" ColumnName="SN PlantAddressLine1" />
-                <ScalarProperty Name="SN_Plant_Name" ColumnName="SN Plant Name" />
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="USER_MST">
             <EntityTypeMapping TypeName="ITe_INDIAModel.USER_MST">
               <MappingFragment StoreEntitySet="USER_MST">
@@ -629,6 +594,59 @@
                 <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
                 <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
                 <ScalarProperty Name="TenentID" ColumnName="TenentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="dispatch_type">
+            <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
+              <MappingFragment StoreEntitySet="dispatch_type">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+                <ScalarProperty Name="OtherReference2" ColumnName="OtherReference2" />
+                <ScalarProperty Name="OtherReference1" ColumnName="OtherReference1" />
+                <ScalarProperty Name="Signature" ColumnName="Signature" />
+                <ScalarProperty Name="CIN" ColumnName="CIN" />
+                <ScalarProperty Name="FDAFacilityRegn" ColumnName="FDAFacilityRegn" />
+                <ScalarProperty Name="FEI" ColumnName="FEI" />
+                <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
+                <ScalarProperty Name="IECNO" ColumnName="IECNO" />
+                <ScalarProperty Name="TermsOfDelivery" ColumnName="TermsOfDelivery" />
+                <ScalarProperty Name="Vessel_FlightNo" ColumnName="Vessel_FlightNo" />
+                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+                <ScalarProperty Name="CountryOfOrigin" ColumnName="CountryOfOrigin" />
+                <ScalarProperty Name="DestinationCountry" ColumnName="DestinationCountry" />
+                <ScalarProperty Name="PortOfLoading" ColumnName="PortOfLoading" />
+                <ScalarProperty Name="KindAttention" ColumnName="KindAttention" />
+                <ScalarProperty Name="PortOfDischarge" ColumnName="PortOfDischarge" />
+                <ScalarProperty Name="FinalDestination" ColumnName="FinalDestination" />
+                <ScalarProperty Name="BuyerPhone" ColumnName="BuyerPhone" />
+                <ScalarProperty Name="BuyerCountry" ColumnName="BuyerCountry" />
+                <ScalarProperty Name="BuyerFacility" ColumnName="BuyerFacility" />
+                <ScalarProperty Name="BuyerState" ColumnName="BuyerState" />
+                <ScalarProperty Name="BuyerDist" ColumnName="BuyerDist" />
+                <ScalarProperty Name="BuyerAddressLine3" ColumnName="BuyerAddressLine3" />
+                <ScalarProperty Name="BuyerAddressLine2" ColumnName="BuyerAddressLine2" />
+                <ScalarProperty Name="BuyerAddressLine1" ColumnName="BuyerAddressLine1" />
+                <ScalarProperty Name="BuyerAddressName" ColumnName="BuyerAddressName" />
+                <ScalarProperty Name="ConsigneePhone" ColumnName="ConsigneePhone" />
+                <ScalarProperty Name="ConsigneeFacility" ColumnName="ConsigneeFacility" />
+                <ScalarProperty Name="ConsigneeCountry" ColumnName="ConsigneeCountry" />
+                <ScalarProperty Name="ConsigneeState" ColumnName="ConsigneeState" />
+                <ScalarProperty Name="ConsigneeDist" ColumnName="ConsigneeDist" />
+                <ScalarProperty Name="ConsigneeAddressLine3" ColumnName="ConsigneeAddressLine3" />
+                <ScalarProperty Name="ConsigneeAddressLine2" ColumnName="ConsigneeAddressLine2" />
+                <ScalarProperty Name="ConsigneeAddressLine1" ColumnName="ConsigneeAddressLine1" />
+                <ScalarProperty Name="ConsigneeAddressName" ColumnName="ConsigneeAddressName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Dist" ColumnName="Dist" />
+                <ScalarProperty Name="SN_PlantAddressLine3" ColumnName="SN PlantAddressLine3" />
+                <ScalarProperty Name="SN_PlantAddressLine2" ColumnName="SN PlantAddressLine2" />
+                <ScalarProperty Name="SN_PlantAddressLine1" ColumnName="SN PlantAddressLine1" />
+                <ScalarProperty Name="SN_Plant_Name" ColumnName="SN Plant Name" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -42,18 +42,24 @@ namespace PackSlipApp.Database.Models
         public string BuyerFacility { get; set; }
         public string BuyerCountry { get; set; }
         public Nullable<int> BuyerPhone { get; set; }
+        public string FinalDestination { get; set; }
         public string PortOfDischarge { get; set; }
         public string KindAttention { get; set; }
         public string PortOfLoading { get; set; }
+        public string DestinationCountry { get; set; }
         public string CountryOfOrigin { get; set; }
         public string PaymentTerms { get; set; }
         public string Vessel_FlightNo { get; set; }
         public string TermsOfDelivery { get; set; }
         public string IECNO { get; set; }
         public string GSTIN { get; set; }
-        public string FEI_ { get; set; }
-        public string FDAFacilityRegn_ { get; set; }
+        public string FEI { get; set; }
+        public string FDAFacilityRegn { get; set; }
         public string CIN { get; set; }
         public string Signature { get; set; }
+        public string OtherReference1 { get; set; }
+        public string OtherReference2 { get; set; }
+        public string TypeCode { get; set; }
+        public Nullable<bool> IsActive { get; set; }
     }
 }

@@ -23,14 +23,12 @@ namespace PackSlipApp.Filter
                     return;
 
                 }
-
-                if (session["Username"] == null)
-                {
-                    filterContext.Result = new RedirectResult("~/Authentication/SignInCover");
-                    return;
-                }
             }
-
+            if (session["Username"] == null)
+            {
+                filterContext.Result = new RedirectResult("~/Authentication/SignInCover");
+                return;
+            }
             base.OnActionExecuting(filterContext);
         }
     }

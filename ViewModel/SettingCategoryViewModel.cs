@@ -8,10 +8,28 @@ namespace PackSlipApp.ViewModel
 {
     public class SettingCategoryViewModel
     {
-        public int Id { get; set; }
+        public int id { get; set; }
 
         [Display(Name = "Type")]
         public string Type { get; set; }
+        [Display(Name = "TypeCode")]
+        public string TypeCode { get; set; }
+        [Display(Name = "SN Plant Name")]
+        public string SNPlantName { get; set; }
+        [Display(Name = "Shipping Address Line 1")]
+        public string SNPlantAddressLine1 { get; set; }
+        [Display(Name = "Shipping Address Line 2")]
+        public string SNPlantAddressLine2 { get; set; }
+        [Display(Name = "Shipping Address Line 3")]
+        public string SNPlantAddressLine3 { get; set; }
+        [Display(Name = "Dist")]
+        public string Dist { get; set; }
+        [Display(Name = "State")]
+        public string State { get; set; }
+        [Display(Name = "Country")]
+        public string Country { get; set; }
+        [Display(Name = "Phone")]
+        public string Phone { get; set; }
 
         // Consignee Details
         [Display(Name = "Consignee Name")]
@@ -69,23 +87,46 @@ namespace PackSlipApp.ViewModel
         [Display(Name = "Buyer Phone")]
         public int? BuyerPhone { get; set; }
 
-        public string SNAddLine1 { get; set; }
+        [Display(Name = "Final Destination")]
+        public string FinalDestination { get; set; }
 
+        [Display(Name = "Port Of Discharge")]
+        public string PortOfDischarge { get; set; }
+        [Display(Name = "Kind Attention")]
+        public string KindAttention { get; set; }
 
+        [Display(Name = "Port of Loading")]
+        public string PortOfLoading { get; set; }
 
+        [Display(Name = "Country of Origin")]
+        public string CountryOfOrigin { get; set; }
 
+        [Display(Name = "Payment Terms")]
+        public string PaymentTerms { get; set; }
 
+        [Display(Name = "Vessel/Flight No.")]
+        public string Vessel_FlightNo { get; set; }
 
+        [Display(Name = "Terms of Delivery")]
+        public string TermsOfDelivery { get; set; }
 
+        [Display(Name = "IEC Number")]
+        public string IECNO { get; set; }
 
+        [Display(Name = "GSTIN")]
+        public string GSTIN { get; set; }
 
+        [Display(Name = "FEI")]
+        public string FEI { get; set; }
 
+        [Display(Name = "FDA Facility Registration")]
+        public string FDAFacilityRegn { get; set; }
 
+        [Display(Name = "CIN")]
+        public string CIN { get; set; }
 
-
-
-
-
+        [Display(Name = "Signature")]
+        public string Signature { get; set; }
 
 
 

@@ -94,53 +94,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="dispatch_type">
-      <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
-        <MappingFragment StoreEntitySet="dispatch_type">
-          <ScalarProperty Name="Signature" ColumnName="Signature" />
-          <ScalarProperty Name="CIN" ColumnName="CIN" />
-          <ScalarProperty Name="FDAFacilityRegn_" ColumnName="FDAFacilityRegn#" />
-          <ScalarProperty Name="FEI_" ColumnName="FEI#" />
-          <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
-          <ScalarProperty Name="IECNO" ColumnName="IECNO" />
-          <ScalarProperty Name="TermsOfDelivery" ColumnName="TermsOfDelivery" />
-          <ScalarProperty Name="Vessel_FlightNo" ColumnName="Vessel_FlightNo" />
-          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
-          <ScalarProperty Name="CountryOfOrigin" ColumnName="CountryOfOrigin" />
-          <ScalarProperty Name="PortOfLoading" ColumnName="PortOfLoading" />
-          <ScalarProperty Name="KindAttention" ColumnName="KindAttention" />
-          <ScalarProperty Name="PortOfDischarge" ColumnName="PortOfDischarge" />
-          <ScalarProperty Name="BuyerPhone" ColumnName="BuyerPhone" />
-          <ScalarProperty Name="BuyerCountry" ColumnName="BuyerCountry" />
-          <ScalarProperty Name="BuyerFacility" ColumnName="BuyerFacility" />
-          <ScalarProperty Name="BuyerState" ColumnName="BuyerState" />
-          <ScalarProperty Name="BuyerDist" ColumnName="BuyerDist" />
-          <ScalarProperty Name="BuyerAddressLine3" ColumnName="BuyerAddressLine3" />
-          <ScalarProperty Name="BuyerAddressLine2" ColumnName="BuyerAddressLine2" />
-          <ScalarProperty Name="BuyerAddressLine1" ColumnName="BuyerAddressLine1" />
-          <ScalarProperty Name="BuyerAddressName" ColumnName="BuyerAddressName" />
-          <ScalarProperty Name="ConsigneePhone" ColumnName="ConsigneePhone" />
-          <ScalarProperty Name="ConsigneeFacility" ColumnName="ConsigneeFacility" />
-          <ScalarProperty Name="ConsigneeCountry" ColumnName="ConsigneeCountry" />
-          <ScalarProperty Name="ConsigneeState" ColumnName="ConsigneeState" />
-          <ScalarProperty Name="ConsigneeDist" ColumnName="ConsigneeDist" />
-          <ScalarProperty Name="ConsigneeAddressLine3" ColumnName="ConsigneeAddressLine3" />
-          <ScalarProperty Name="ConsigneeAddressLine2" ColumnName="ConsigneeAddressLine2" />
-          <ScalarProperty Name="ConsigneeAddressLine1" ColumnName="ConsigneeAddressLine1" />
-          <ScalarProperty Name="ConsigneeAddressName" ColumnName="ConsigneeAddressName" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="State" ColumnName="State" />
-          <ScalarProperty Name="Dist" ColumnName="Dist" />
-          <ScalarProperty Name="SN_PlantAddressLine3" ColumnName="SN PlantAddressLine3" />
-          <ScalarProperty Name="SN_PlantAddressLine2" ColumnName="SN PlantAddressLine2" />
-          <ScalarProperty Name="SN_PlantAddressLine1" ColumnName="SN PlantAddressLine1" />
-          <ScalarProperty Name="SN_Plant_Name" ColumnName="SN Plant Name" />
-          <ScalarProperty Name="type" ColumnName="type" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="USER_MST">
       <EntityTypeMapping TypeName="ITe_INDIAModel.USER_MST">
         <MappingFragment StoreEntitySet="USER_MST">
@@ -201,6 +154,59 @@
           <ScalarProperty Name="LOCATION_ID" ColumnName="LOCATION_ID" />
           <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
           <ScalarProperty Name="TenentID" ColumnName="TenentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dispatch_type">
+      <EntityTypeMapping TypeName="ITe_INDIAModel.dispatch_type">
+        <MappingFragment StoreEntitySet="dispatch_type">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+          <ScalarProperty Name="OtherReference2" ColumnName="OtherReference2" />
+          <ScalarProperty Name="OtherReference1" ColumnName="OtherReference1" />
+          <ScalarProperty Name="Signature" ColumnName="Signature" />
+          <ScalarProperty Name="CIN" ColumnName="CIN" />
+          <ScalarProperty Name="FDAFacilityRegn" ColumnName="FDAFacilityRegn" />
+          <ScalarProperty Name="FEI" ColumnName="FEI" />
+          <ScalarProperty Name="GSTIN" ColumnName="GSTIN" />
+          <ScalarProperty Name="IECNO" ColumnName="IECNO" />
+          <ScalarProperty Name="TermsOfDelivery" ColumnName="TermsOfDelivery" />
+          <ScalarProperty Name="Vessel_FlightNo" ColumnName="Vessel_FlightNo" />
+          <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+          <ScalarProperty Name="CountryOfOrigin" ColumnName="CountryOfOrigin" />
+          <ScalarProperty Name="DestinationCountry" ColumnName="DestinationCountry" />
+          <ScalarProperty Name="PortOfLoading" ColumnName="PortOfLoading" />
+          <ScalarProperty Name="KindAttention" ColumnName="KindAttention" />
+          <ScalarProperty Name="PortOfDischarge" ColumnName="PortOfDischarge" />
+          <ScalarProperty Name="FinalDestination" ColumnName="FinalDestination" />
+          <ScalarProperty Name="BuyerPhone" ColumnName="BuyerPhone" />
+          <ScalarProperty Name="BuyerCountry" ColumnName="BuyerCountry" />
+          <ScalarProperty Name="BuyerFacility" ColumnName="BuyerFacility" />
+          <ScalarProperty Name="BuyerState" ColumnName="BuyerState" />
+          <ScalarProperty Name="BuyerDist" ColumnName="BuyerDist" />
+          <ScalarProperty Name="BuyerAddressLine3" ColumnName="BuyerAddressLine3" />
+          <ScalarProperty Name="BuyerAddressLine2" ColumnName="BuyerAddressLine2" />
+          <ScalarProperty Name="BuyerAddressLine1" ColumnName="BuyerAddressLine1" />
+          <ScalarProperty Name="BuyerAddressName" ColumnName="BuyerAddressName" />
+          <ScalarProperty Name="ConsigneePhone" ColumnName="ConsigneePhone" />
+          <ScalarProperty Name="ConsigneeFacility" ColumnName="ConsigneeFacility" />
+          <ScalarProperty Name="ConsigneeCountry" ColumnName="ConsigneeCountry" />
+          <ScalarProperty Name="ConsigneeState" ColumnName="ConsigneeState" />
+          <ScalarProperty Name="ConsigneeDist" ColumnName="ConsigneeDist" />
+          <ScalarProperty Name="ConsigneeAddressLine3" ColumnName="ConsigneeAddressLine3" />
+          <ScalarProperty Name="ConsigneeAddressLine2" ColumnName="ConsigneeAddressLine2" />
+          <ScalarProperty Name="ConsigneeAddressLine1" ColumnName="ConsigneeAddressLine1" />
+          <ScalarProperty Name="ConsigneeAddressName" ColumnName="ConsigneeAddressName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Dist" ColumnName="Dist" />
+          <ScalarProperty Name="SN_PlantAddressLine3" ColumnName="SN PlantAddressLine3" />
+          <ScalarProperty Name="SN_PlantAddressLine2" ColumnName="SN PlantAddressLine2" />
+          <ScalarProperty Name="SN_PlantAddressLine1" ColumnName="SN PlantAddressLine1" />
+          <ScalarProperty Name="SN_Plant_Name" ColumnName="SN Plant Name" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

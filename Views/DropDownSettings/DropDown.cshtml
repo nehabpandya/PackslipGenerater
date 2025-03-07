@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewBag.Title = "DropDown";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-6">
+        <div class="row"> Box Type </div>
+        <div class="row">
+            <div class="col-3">
+                <input type="text" class="form-control" />
+            </div>
+            <div class="col-3">
+                <input type="text" class="form-control" />
+            </div>
+            <div class="col-3">
+                <a href="@Url.Action("Create")" class="btn btn-primary">Add New</a>
+            </div>
+        </div>
+            <table class="table">
+                <tr>
+                    <th>Display Text</th>
+                    <th>Value</th>
+                    <th>Active</th>
+                </tr>
+                @*@foreach (var item in Model)
+            {*@
+                @*<tr>
+                    <td>@item.DropdownType</td>
+                    <td>@item.Value</td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning">Edit</a>
+                        <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+            }*@
+            </table>
+
+
+        </div>
+    <div class="col-6">
+        <table class="table">
+            <tr>
+                <th>Dropdown Type</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </tr>
+            @*@foreach (var item in Model)
+            {*@
+            @*<tr>
+                    <td>@item.DropdownType</td>
+                    <td>@item.Value</td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning">Edit</a>
+                        <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+            }*@
+        </table>
+
+    </div>
+</div>
+
+

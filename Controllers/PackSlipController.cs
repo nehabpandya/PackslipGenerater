@@ -170,7 +170,7 @@ namespace PackSlipApp.Controllers
                 {
                     dispatch_Staticdata dispatch_Staticdata = context.dispatch_Staticdata.FirstOrDefault();
 
-                    dispatch_type _Type = context.dispatch_type.Where(p => p.type == _PackingDetails.Category).FirstOrDefault();
+                    dispatch_type _Type = context.dispatch_type.Where(p => p.TypeCode == _PackingDetails.Category).FirstOrDefault();
 
                     Model.InvoiceNo = _PackingDetails.InvoiceNo;
                     Model.PackSlipNo = _PackingDetails.PackslipNo;

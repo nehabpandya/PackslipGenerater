@@ -120,19 +120,25 @@
     <Property Name="BuyerFacility" Type="nvarchar(max)" />
     <Property Name="BuyerCountry" Type="nvarchar(max)" />
     <Property Name="BuyerPhone" Type="int" />
+    <Property Name="FinalDestination" Type="nvarchar(max)" />
     <Property Name="PortOfDischarge" Type="nvarchar(max)" />
     <Property Name="KindAttention" Type="nvarchar(max)" />
     <Property Name="PortOfLoading" Type="nvarchar(max)" />
+    <Property Name="DestinationCountry" Type="nvarchar(max)" />
     <Property Name="CountryOfOrigin" Type="nvarchar(max)" />
     <Property Name="PaymentTerms" Type="nvarchar(max)" />
     <Property Name="Vessel_FlightNo" Type="nvarchar(max)" />
     <Property Name="TermsOfDelivery" Type="nvarchar(max)" />
     <Property Name="IECNO" Type="nvarchar(max)" />
     <Property Name="GSTIN" Type="nvarchar(max)" />
-    <Property Name="FEI#" Type="nvarchar(max)" />
-    <Property Name="FDAFacilityRegn#" Type="nvarchar(max)" />
+    <Property Name="FEI" Type="nvarchar(max)" />
+    <Property Name="FDAFacilityRegn" Type="nvarchar(max)" />
     <Property Name="CIN" Type="nvarchar(max)" />
     <Property Name="Signature" Type="nvarchar(max)" />
+    <Property Name="OtherReference1" Type="nvarchar(max)" />
+    <Property Name="OtherReference2" Type="nvarchar(max)" />
+    <Property Name="TypeCode" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" />
   </EntityType>
   <EntityType Name="USER_MST">
     <Key>

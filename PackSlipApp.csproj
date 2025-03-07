@@ -130,6 +130,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DropDownSettingsController.cs" />
     <Compile Include="Controllers\PackSlipController.cs" />
     <Compile Include="Controllers\SettingCategoryController.cs" />
     <Compile Include="Controllers\UserInputController.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\Dispatchservice.cs" />
     <Compile Include="ViewModel\AddPackingDetailsViewModel.cs" />
+    <Compile Include="ViewModel\DropdownViewModel.cs" />
     <Compile Include="ViewModel\GeneratedViewmodel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\SettingCategoryViewModel.cs" />
@@ -4179,6 +4181,7 @@
     <Content Include="Views\PackSlip\GenerateInvoice.cshtml" />
     <Content Include="Views\SettingCategory\AddSettings.cshtml" />
     <Content Include="Views\SettingCategory\ViewSetting.cshtml" />
+    <Content Include="Views\DropDownSettings\DropDown.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

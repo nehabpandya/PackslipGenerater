@@ -12,11 +12,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>@(Model.Id == 0 ? "Create New Setting" : "Edit Setting")</h2>
+<h2>@(Model.id == 0 ? "Create New Setting" : "Edit Setting")</h2>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <script>
+        alert("@TempData["ErrorMessage"]");
+    </script>
+}
 
 @using (Html.BeginForm("SaveSettings", "SettingCategory", FormMethod.Post))
 {
-    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.id)
 
     <div class="card-body">
         <div class="live-preview">
@@ -24,7 +31,10 @@
                 <div class="col-xxl-2 col-md-2">
                     @Html.LabelFor(model => model.Type)
                     @Html.TextBoxFor(model => model.Type, new { @class = "form-control", required = "required" })
-
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.TypeCode)
+                    @Html.TextBoxFor(model => model.TypeCode, new { @class = "form-control", required = "required" })
                 </div>
                 <div class="col-xxl-2 col-md-2">
                     @Html.LabelFor(model => model.ConsigneeAddressName)
@@ -89,11 +99,34 @@
                     @Html.LabelFor(model => model.BuyerAddressLine3)
                     @Html.TextBoxFor(model => model.BuyerAddressLine3, new { @class = "form-control", required = "required" })
 
-
                 </div>
                 <div class="col-xxl-2 col-md-2">
                     @Html.LabelFor(model => model.BuyerDist)
                     @Html.TextBoxFor(model => model.BuyerDist, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.Dist)
+                    @Html.TextBoxFor(model => model.Dist, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.State)
+                    @Html.TextBoxFor(model => model.State, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.State)
+                    @Html.TextBoxFor(model => model.State, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.Country)
+                    @Html.TextBoxFor(model => model.Country, new { @class = "form-control", required = "required" })
+
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.Phone)
+                    @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", required = "required" })
 
                 </div>
 
@@ -111,26 +144,94 @@
                     @Html.LabelFor(model => model.BuyerPhone)
                     @Html.TextBoxFor(model => model.BuyerPhone, new { @class = "form-control", required = "required" })
                 </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.BuyerFacility)
+                    @Html.TextBoxFor(model => model.BuyerFacility, new { @class = "form-control", required = "required" })
+                </div>
 
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.SNPlantName)
+                    @Html.TextBoxFor(model => model.SNPlantName, new { @class = "form-control", required = "required" })
+                </div>
 
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.SNPlantAddressLine1)
+                    @Html.TextBoxFor(model => model.SNPlantAddressLine1, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.FinalDestination)
+                    @Html.TextBoxFor(model => model.FinalDestination, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.SNPlantAddressLine2)
+                    @Html.TextBoxFor(model => model.SNPlantAddressLine2, new { @class = "form-control", required = "required" })
+                </div>
 
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.SNPlantAddressLine3)
+                    @Html.TextBoxFor(model => model.SNPlantAddressLine3, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.PortOfLoading)
+                    @Html.TextBoxFor(model => model.PortOfLoading, new { @class = "form-control", required = "required" })
+                </div>
 
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.CountryOfOrigin)
+                    @Html.TextBoxFor(model => model.CountryOfOrigin, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.PortOfDischarge)
+                    @Html.TextBoxFor(model => model.PortOfDischarge, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.KindAttention)
+                    @Html.TextBoxFor(model => model.KindAttention, new { @class = "form-control", required = "required" })
+                </div>
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.PaymentTerms)
+                    @Html.TextBoxFor(model => model.PaymentTerms, new { @class = "form-control", required = "required" })
+                </div>
 
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.Vessel_FlightNo)
+                    @Html.TextBoxFor(model => model.Vessel_FlightNo, new { @class = "form-control", required = "required" })
+                </div>
 
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.TermsOfDelivery)
+                    @Html.TextBoxFor(model => model.TermsOfDelivery, new { @class = "form-control", required = "required" })
+                </div>
 
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.IECNO)
+                    @Html.TextBoxFor(model => model.IECNO, new { @class = "form-control", required = "required" })
+                </div>
 
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.GSTIN)
+                    @Html.TextBoxFor(model => model.GSTIN, new { @class = "form-control", required = "required" })
+                </div>
 
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.FEI)
+                    @Html.TextBoxFor(model => model.FEI, new { @class = "form-control", required = "required" })
+                </div>
 
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.FDAFacilityRegn)
+                    @Html.TextBoxFor(model => model.FDAFacilityRegn, new { @class = "form-control", required = "required" })
+                </div>
 
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.CIN)
+                    @Html.TextBoxFor(model => model.CIN, new { @class = "form-control", required = "required" })
+                </div>
 
-
-
-
-
-
-
-
-
+                <div class="col-xxl-2 col-md-2">
+                    @Html.LabelFor(model => model.Signature)
+                    @Html.TextBoxFor(model => model.Signature, new { @class = "form-control", required = "required" })
+                </div>
 
                 <div class="col-xxl-2 col-md-2">
                     <button type="submit" class="btn btn-success">Update</button>
